@@ -30,18 +30,28 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
         settingbutton.setOnClickListener(this);
         alarmbutton.setOnClickListener(this);
 
-        FloatingActionButton actionButton = new FloatingActionButton.Builder(getActivity()).build();
+        ImageView icon = new ImageView(getActivity());
+        icon.setImageResource(R.drawable.alarmbutton);
+        FloatingActionButton actionButton = new FloatingActionButton.Builder(getActivity())
+                .setContentView(icon)
+                .setPosition(5)
+                .build();
 
         Log.v("dd", "" + actionButton);
 
         SubActionButton.Builder itemBuilder = new SubActionButton.Builder(getActivity());
         // repeat many times:
-        ImageView itemIcon = new ImageView(getActivity());
-        itemIcon.setImageResource(R.drawable.alarmbutton);
-        SubActionButton button1 = itemBuilder.setContentView(itemIcon).build();
+        ImageView itemIcon1 = new ImageView(getActivity());
+        itemIcon1.setImageResource(R.drawable.alarmbutton);
+        SubActionButton button1 = itemBuilder.setContentView(itemIcon1).build();
+
+        ImageView itemIcon2 = new ImageView(getActivity());
+        itemIcon2.setImageResource(R.drawable.alarmbutton);
+        SubActionButton button2 = itemBuilder.setContentView(itemIcon2).build();
 
         FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(getActivity())
                 .addSubActionView(button1)
+                .addSubActionView(button2)
                 .attachTo(actionButton)
                 .build();
 
