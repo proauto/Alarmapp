@@ -1,0 +1,46 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp">
+        <Button
+            android:id="@+id/settingbutton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/settingbutton"/>
+        <Button
+            android:id="@+id/alarmbutton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/alarmbutton"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/clockposition"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@drawable/clockposition"/>
+
+        <TextView
+            android:id="@+id/rabbitbutton"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_below="@+id/clockposition"
+            android:background="@drawable/rabbitbutton"
+            android:clickable="true"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
