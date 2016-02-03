@@ -26,17 +26,26 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <!--
         <TextView
             android:id="@+id/clockposition"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:background="@drawable/clockposition"/>
+            android:background="@drawable/clockposition"/>-->
+
+        <creativestudioaq.alarmapp.AnalogClockView
+            android:id="@+id/clock"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_centerHorizontal="true"
+            />
 
         <TextView
             android:id="@+id/rabbitbutton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/clockposition"
+            android:layout_below="@+id/clock"
             android:background="@drawable/rabbitbutton"
            />
 

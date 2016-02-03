@@ -18,6 +18,7 @@ import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
  */
 public class MainFragment extends android.support.v4.app.Fragment implements View.OnClickListener {
 
+    private AnalogClockView mClockView;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
 
         Button settingbutton = (Button)view.findViewById(R.id.settingbutton);
         Button alarmbutton = (Button)view.findViewById(R.id.alarmbutton);
+        mClockView = (AnalogClockView)view.findViewById(R.id.clock);
         settingbutton.setOnClickListener(this);
         alarmbutton.setOnClickListener(this);
 
@@ -55,8 +57,19 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
                 .attachTo(actionButton)
                 .build();
 
-
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mClockView.start();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mClockView.stop();
     }
 
     @Override
