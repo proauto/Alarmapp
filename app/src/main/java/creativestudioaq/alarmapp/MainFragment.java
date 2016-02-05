@@ -2,14 +2,12 @@ package creativestudioaq.alarmapp;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
@@ -19,6 +17,7 @@ import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 public class MainFragment extends android.support.v4.app.Fragment implements View.OnClickListener {
 
     private AnalogClockView mClockView;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -32,30 +31,31 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
         settingbutton.setOnClickListener(this);
         alarmbutton.setOnClickListener(this);
 
-        ImageView icon = new ImageView(getActivity());
-        icon.setImageResource(R.drawable.alarmbutton);
-        FloatingActionButton actionButton = new FloatingActionButton.Builder(getActivity())
-                .setContentView(icon)
-                .setPosition(5)
-                .build();
-
-        Log.v("dd", "" + actionButton);
+        ImageView rabbitbutton = (ImageView)view.findViewById(R.id.rabbitbutton);
 
         SubActionButton.Builder itemBuilder = new SubActionButton.Builder(getActivity());
         // repeat many times:
         ImageView itemIcon1 = new ImageView(getActivity());
-        itemIcon1.setImageResource(R.drawable.alarmbutton);
+        itemIcon1.setImageResource(R.drawable.rabbit);
         SubActionButton button1 = itemBuilder.setContentView(itemIcon1).build();
 
         ImageView itemIcon2 = new ImageView(getActivity());
-        itemIcon2.setImageResource(R.drawable.alarmbutton);
+        itemIcon2.setImageResource(R.drawable.rabbit);
         SubActionButton button2 = itemBuilder.setContentView(itemIcon2).build();
 
+        ImageView itemIcon3 = new ImageView(getActivity());
+        itemIcon3.setImageResource(R.drawable.rabbit);
+        SubActionButton button3 = itemBuilder.setContentView(itemIcon3).build();
+
         FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(getActivity())
+                .setStartAngle(225)
+                .setEndAngle(315)
                 .addSubActionView(button1)
                 .addSubActionView(button2)
-                .attachTo(actionButton)
+                .addSubActionView(button3)
+                .attachTo(rabbitbutton)
                 .build();
+
 
         return view;
     }
@@ -72,14 +72,19 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
         mClockView.stop();
     }
 
+
     @Override
     public void onClick(View v) {
 
+
+
         switch(v.getId()){
             case R.id.settingbutton:
+
                 ((MainActivity)getActivity()).getViewPager().setCurrentItem(0);
                 break;
             case R.id.alarmbutton:
+
                 ((MainActivity)getActivity()).getViewPager().setCurrentItem(2);
                 break;
 

@@ -2,7 +2,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#3d4244">
 
 
     <RelativeLayout
@@ -14,14 +15,18 @@
             android:layout_height="48dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
-            android:background="@drawable/settingbutton"/>
+            android:text="설정"
+            android:textColor="#FFFFFF"
+            android:background="#00000000"/>
         <Button
             android:id="@+id/alarmbutton"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:background="@drawable/alarmbutton"/>
+            android:text="알람"
+            android:textColor="#FFFFFF"
+            android:background="#00000000"/>
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -40,14 +45,15 @@
             android:layout_height="300dp"
             android:layout_centerHorizontal="true"
             />
-
-        <TextView
+        <ImageView
             android:id="@+id/rabbitbutton"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/clock"
-            android:background="@drawable/rabbitbutton"
-           />
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:layout_width="81dp"
+            android:layout_height="88dp"
+            android:src="@drawable/rabbit"/>
+
 
     </RelativeLayout>
 

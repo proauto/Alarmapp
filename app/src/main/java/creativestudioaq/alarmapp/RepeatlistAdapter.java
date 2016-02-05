@@ -5,30 +5,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.RadioButton;
 import android.widget.TextView;
-
-import com.rey.material.widget.Switch;
 
 import java.util.ArrayList;
 
 /**
- * Created by honggyu on 2016-01-31.
+ * Created by honggyu on 2016-02-05.
  */
-
-
-
-//List Adapter Class
-public class AlarmlistAdapter extends BaseAdapter {
+public class RepeatlistAdapter extends BaseAdapter {
 
 
     private LayoutInflater _inflater;
-    private static ArrayList<Alarmlist> _lists;
+    private static ArrayList<Repeatlist> _lists;
     private int _layout;
     private static Context m_ctx;
 
 
 
-    public AlarmlistAdapter(Context context, int layout, ArrayList<Alarmlist> lists) {
+    public RepeatlistAdapter(Context context, int layout, ArrayList<Repeatlist> lists) {
         _inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
         _lists = lists;
@@ -57,13 +52,11 @@ public class AlarmlistAdapter extends BaseAdapter {
         convertView = _inflater.inflate(_layout, parent, false);
 
 
-        TextView alarmtime = (TextView)convertView.findViewById(R.id.alarmtime);
-        TextView alarmday = (TextView)convertView.findViewById(R.id.alarmday);
-        Switch toggle = (Switch)convertView.findViewById(R.id.toggle);
+        TextView textlist = (TextView)convertView.findViewById(R.id.textlist);
+        RadioButton buttonlist = (RadioButton)convertView.findViewById(R.id.buttonlist);
 
-        alarmtime.setText(_lists.get(position).gettime());
-        alarmday.setText(_lists.get(position).getday());
-        toggle.setChecked(_lists.get(position).getcheck());
+        textlist.setText(_lists.get(position).gettime());
+        buttonlist.setChecked(_lists.get(position).getcheck());
 
 
 
@@ -71,4 +64,3 @@ public class AlarmlistAdapter extends BaseAdapter {
     }
 
 }
-

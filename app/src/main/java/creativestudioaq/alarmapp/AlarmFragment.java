@@ -41,23 +41,24 @@ public class AlarmFragment extends android.support.v4.app.Fragment {
 
 
         //어댑터생성
-        AlarmlistAdapter adapter = new AlarmlistAdapter(getActivity(),R.layout.alarmlist_sub,_lists);
+        AlarmlistAdapter adapter = new AlarmlistAdapter(getActivity(), R.layout.alarmlist_sub, _lists);
         alarmlist.setAdapter(adapter);
 
         alarmplus.setText("알람추가");
         alarmplus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               showTimePickerDialog();
+                showTimePickerDialog();
             }
         });
         return view;
     }
-    private void showTimePickerDialog(){
+
+    private void showTimePickerDialog() {
 
         long now = System.currentTimeMillis();
-        SimpleDateFormat dateFormat1 = new  SimpleDateFormat("HH", java.util.Locale.getDefault());
-        SimpleDateFormat dateFormat2 = new  SimpleDateFormat("mm", java.util.Locale.getDefault());
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("HH", java.util.Locale.getDefault());
+        SimpleDateFormat dateFormat2 = new SimpleDateFormat("mm", java.util.Locale.getDefault());
         Date date = new Date(now);
         String strDate1 = dateFormat1.format(date);
         String strDate2 = dateFormat2.format(date);
@@ -65,24 +66,26 @@ public class AlarmFragment extends android.support.v4.app.Fragment {
         int numInt2 = Integer.parseInt(strDate2);
 
 
-        Dialog.Builder builder=new TimePickerDialog.Builder(R.style.Material_App_Dialog_TimePicker_gogo,numInt1,numInt2){
-            @Override public void onPositiveActionClicked(    DialogFragment fragment){
-                TimePickerDialog dialog=(TimePickerDialog)fragment.getDialog();
+        Dialog.Builder builder = new TimePickerDialog.Builder(R.style.Material_App_Dialog_TimePicker_gogo, numInt1, numInt2) {
+            @Override
+            public void onPositiveActionClicked(DialogFragment fragment) {
+                TimePickerDialog dialog = (TimePickerDialog) fragment.getDialog();
 
-                SimpleDateFormat dateFormat3 = new  SimpleDateFormat("aa HH시 mm분", java.util.Locale.getDefault());
-                Intent intent1 = new Intent(getActivity(),MakeAlarmActivity.class);
+                SimpleDateFormat dateFormat3 = new SimpleDateFormat("aa HH시 mm분", java.util.Locale.getDefault());
+                Intent intent1 = new Intent(getActivity(), MakeAlarmActivity.class);
                 intent1.putExtra("time", dialog.getFormattedTime(dateFormat3));
                 getActivity().startActivity(intent1);
 
                 super.onPositiveActionClicked(fragment);
             }
-            @Override public void onNegativeActionClicked(    DialogFragment fragment){
+
+            @Override
+            public void onNegativeActionClicked(DialogFragment fragment) {
                 super.onNegativeActionClicked(fragment);
             }
-        }
-                ;
+        };
         builder.positiveAction("저장").negativeAction("취소");
-        DialogFragment fragment=DialogFragment.newInstance(builder);
-        fragment.show(getFragmentManager(),null);
+        DialogFragment fragment = DialogFragment.newInstance(builder);
+        fragment.show(getFragmentManager(), null);
     }
 }

@@ -6,13 +6,15 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
+
+import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private BackPressCloseHandler backpress;
     private ViewPager mViewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +33,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         backpress = new BackPressCloseHandler(this);
-
-        ImageView icon = new ImageView(this);
-        icon.setImageResource(R.drawable.alarmbutton);
 
 
     }
@@ -68,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             // Show 3 total pages.
             return 3;
         }
+
 
     }
 
