@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TimePicker
+        android:id="@+id/timepicker1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
     <LinearLayout
+        android:layout_above="@+id/buttonslayout"
         android:layout_width="match_parent"
         android:layout_height="60dp">
 
@@ -58,4 +65,33 @@
 
     </LinearLayout>
 
-</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/buttonslayout"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/cancelbutton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@+id/centerbar"
+            android:layout_alignStart="@+id/centerbar"
+            android:gravity="center"/>
+
+        <Button
+            android:id="@+id/savebutton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignEnd="@+id/centerbar"
+            android:layout_alignRight="@+id/centerbar"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/centerbar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
+
+</RelativeLayout>

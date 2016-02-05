@@ -17,6 +17,9 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_makealarm);
 
+        Intent intentget = getIntent();
+        String time = intentget.getStringExtra("time");
+
         Button cancelbutton = (Button)findViewById(R.id.cancelbutton);
         Button savebutton = (Button)findViewById(R.id.savebutton);
         TextView repeatnumber = (TextView)findViewById(R.id.repeatnumber);
@@ -29,7 +32,7 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
 
         cancelbutton.setText("< 시간 설정");
         savebutton.setText("저장");
-        selecttime.setText("오후 12시 45분");
+        selecttime.setText(time);
         selectday.setText("월 목");
 
         cancelbutton.setOnClickListener(this);

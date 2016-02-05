@@ -17,4 +17,23 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="Material.App.Dialog.TimePicker.gogo" parent="Material.App.Dialog">
+        <item name="tp_backgroundColor">#2d3233</item>
+        <item name="tp_selectionColor">#29abe2</item>
+        <item name="tp_selectionRadius">16dp</item>
+        <item name="tp_tickSize">1dp</item>
+        <item name="tp_textSize">@dimen/abc_text_size_caption_material</item>
+        <item name="tp_textStyle">normal</item>
+        <item name="tp_textColor">@color/abc_primary_text_material_dark</item>
+        <item name="tp_textHighlightColor">#FFFFFFFF</item>
+        <item name="tp_animDuration">@android:integer/config_mediumAnimTime</item>
+        <item name="tp_inInterpolator">@android:anim/decelerate_interpolator</item>
+        <item name="tp_outInterpolator">@android:anim/decelerate_interpolator</item>
+        <item name="tp_mode">hour</item>
+        <item name="tp_headerHeight">120dp</item>
+        <item name="tp_textTimeSize">@dimen/abc_text_size_display_2_material</item>
+        <item name="tp_textTimeColor">#90FFFFFF</item>
+        <item name="tp_leadingZero">false</item>
+    </style>
+
 </resources>
