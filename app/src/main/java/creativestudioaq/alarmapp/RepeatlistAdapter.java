@@ -22,7 +22,6 @@ public class RepeatlistAdapter extends BaseAdapter {
     private static Context m_ctx;
 
 
-
     public RepeatlistAdapter(Context context, int layout, ArrayList<Repeatlist> lists) {
         _inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
@@ -52,12 +51,11 @@ public class RepeatlistAdapter extends BaseAdapter {
         convertView = _inflater.inflate(_layout, parent, false);
 
 
-        TextView textlist = (TextView)convertView.findViewById(R.id.textlist);
-        RadioButton buttonlist = (RadioButton)convertView.findViewById(R.id.buttonlist);
+        TextView textlist = (TextView) convertView.findViewById(R.id.textlist);
+        RadioButton buttonlist = (RadioButton) convertView.findViewById(R.id.buttonlist);
 
         textlist.setText(_lists.get(position).gettime());
         buttonlist.setChecked(_lists.get(position).getcheck());
-
 
 
         return convertView;

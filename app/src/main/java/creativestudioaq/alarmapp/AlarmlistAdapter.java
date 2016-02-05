@@ -16,7 +16,6 @@ import java.util.ArrayList;
  */
 
 
-
 //List Adapter Class
 public class AlarmlistAdapter extends BaseAdapter {
 
@@ -25,7 +24,6 @@ public class AlarmlistAdapter extends BaseAdapter {
     private static ArrayList<Alarmlist> _lists;
     private int _layout;
     private static Context m_ctx;
-
 
 
     public AlarmlistAdapter(Context context, int layout, ArrayList<Alarmlist> lists) {
@@ -57,14 +55,13 @@ public class AlarmlistAdapter extends BaseAdapter {
         convertView = _inflater.inflate(_layout, parent, false);
 
 
-        TextView alarmtime = (TextView)convertView.findViewById(R.id.alarmtime);
-        TextView alarmday = (TextView)convertView.findViewById(R.id.alarmday);
-        Switch toggle = (Switch)convertView.findViewById(R.id.toggle);
+        TextView alarmtime = (TextView) convertView.findViewById(R.id.alarmtime);
+        TextView alarmday = (TextView) convertView.findViewById(R.id.alarmday);
+        Switch toggle = (Switch) convertView.findViewById(R.id.toggle);
 
         alarmtime.setText(_lists.get(position).gettime());
         alarmday.setText(_lists.get(position).getday());
         toggle.setChecked(_lists.get(position).getcheck());
-
 
 
         return convertView;

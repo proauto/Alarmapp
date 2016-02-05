@@ -9,18 +9,18 @@ import android.widget.EditText;
 /**
  * Created by honggyu on 2016-02-01.
  */
-public class FeelTalkActivity extends Activity implements View.OnClickListener{
+public class FeelTalkActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feeltalk);
 
-        Button cancelbutton = (Button)findViewById(R.id.cancelbutton);
-        Button savebutton = (Button)findViewById(R.id.savebutton);
-        Button loadbutton = (Button)findViewById(R.id.loadbutton);
-        Button previewbutton = (Button)findViewById(R.id.previewbutton);
-        EditText firsttalk = (EditText)findViewById(R.id.firsttalk);
-        EditText secondtalk = (EditText)findViewById(R.id.secondtalk);
+        Button cancelbutton = (Button) findViewById(R.id.cancelbutton);
+        Button savebutton = (Button) findViewById(R.id.savebutton);
+        Button loadbutton = (Button) findViewById(R.id.loadbutton);
+        Button previewbutton = (Button) findViewById(R.id.previewbutton);
+        EditText firsttalk = (EditText) findViewById(R.id.firsttalk);
+        EditText secondtalk = (EditText) findViewById(R.id.secondtalk);
 
         cancelbutton.setText("취소");
         savebutton.setText("저장");
@@ -34,7 +34,7 @@ public class FeelTalkActivity extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
+        switch (v.getId()) {
             case R.id.cancelbutton:
                 finish();
                 break;

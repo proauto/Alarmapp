@@ -20,14 +20,12 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         Intent intentget = getIntent();
         String time = intentget.getStringExtra("time");
 
-        Button cancelbutton = (Button)findViewById(R.id.cancelbutton);
-        Button savebutton = (Button)findViewById(R.id.savebutton);
-        TextView repeatnumber = (TextView)findViewById(R.id.repeatnumber);
-        TextView alarmsound = (TextView)findViewById(R.id.alarmsound);
-        TextView selecttime = (TextView)findViewById(R.id.selecttime);
-        TextView selectday = (TextView)findViewById(R.id.selectday);
-
-
+        Button cancelbutton = (Button) findViewById(R.id.cancelbutton);
+        Button savebutton = (Button) findViewById(R.id.savebutton);
+        TextView repeatnumber = (TextView) findViewById(R.id.repeatnumber);
+        TextView alarmsound = (TextView) findViewById(R.id.alarmsound);
+        TextView selecttime = (TextView) findViewById(R.id.selecttime);
+        TextView selectday = (TextView) findViewById(R.id.selectday);
 
 
         cancelbutton.setText("< 시간 설정");
@@ -44,7 +42,7 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
+        switch (v.getId()) {
             case R.id.cancelbutton:
                 finish();
                 break;
@@ -56,11 +54,11 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
                 startActivity(intent1);
                 break;*/
             case R.id.repeatnumber:
-                Intent intent2 = new Intent(MakeAlarmActivity.this,RepeatNumberActivity.class);
+                Intent intent2 = new Intent(MakeAlarmActivity.this, RepeatNumberActivity.class);
                 startActivity(intent2);
                 break;
             case R.id.alarmsound:
-                Intent intent3 = new Intent(MakeAlarmActivity.this,AlarmSoundActivity.class);
+                Intent intent3 = new Intent(MakeAlarmActivity.this, AlarmSoundActivity.class);
                 startActivity(intent3);
                 break;
         }

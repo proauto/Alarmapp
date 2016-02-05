@@ -13,7 +13,7 @@ public class WhoMakeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_whomake);
 
-        TextView whomaketext = (TextView)findViewById(R.id.whomaketext);
+        TextView whomaketext = (TextView) findViewById(R.id.whomaketext);
         whomaketext.setText("디자이너 : 고은별, 김유리, 서민아\n개발자 : 김호성, 민지영, 이홍규");
     }
 }

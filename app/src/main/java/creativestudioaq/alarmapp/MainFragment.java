@@ -22,16 +22,16 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_main,container,false);
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
 
 
-        Button settingbutton = (Button)view.findViewById(R.id.settingbutton);
-        Button alarmbutton = (Button)view.findViewById(R.id.alarmbutton);
-        mClockView = (AnalogClockView)view.findViewById(R.id.clock);
+        Button settingbutton = (Button) view.findViewById(R.id.settingbutton);
+        Button alarmbutton = (Button) view.findViewById(R.id.alarmbutton);
+        mClockView = (AnalogClockView) view.findViewById(R.id.clock);
         settingbutton.setOnClickListener(this);
         alarmbutton.setOnClickListener(this);
 
-        ImageView rabbitbutton = (ImageView)view.findViewById(R.id.rabbitbutton);
+        ImageView rabbitbutton = (ImageView) view.findViewById(R.id.rabbitbutton);
 
         SubActionButton.Builder itemBuilder = new SubActionButton.Builder(getActivity());
         // repeat many times:
@@ -77,15 +77,14 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
     public void onClick(View v) {
 
 
-
-        switch(v.getId()){
+        switch (v.getId()) {
             case R.id.settingbutton:
 
-                ((MainActivity)getActivity()).getViewPager().setCurrentItem(0);
+                ((MainActivity) getActivity()).getViewPager().setCurrentItem(0);
                 break;
             case R.id.alarmbutton:
 
-                ((MainActivity)getActivity()).getViewPager().setCurrentItem(2);
+                ((MainActivity) getActivity()).getViewPager().setCurrentItem(2);
                 break;
 
         }

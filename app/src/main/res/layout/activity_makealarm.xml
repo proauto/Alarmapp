@@ -46,15 +46,15 @@
                 android:id="@+id/selecttime"
                 android:layout_width="wrap_content"
                 android:layout_height="70dp"
-                android:textColor="#FFFFFF"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#FFFFFF" />
 
             <TextView
                 android:id="@+id/selectday"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:textColor="#FFFFFF"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#FFFFFF" />
 
 
         </LinearLayout>
@@ -102,8 +102,8 @@
                         android:id="@+id/firsttalk"
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
-                        android:text="토끼의 말풍선을 채워주세요."
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:text="토끼의 말풍선을 채워주세요." />
                 </LinearLayout>
 
                 <RelativeLayout
@@ -124,66 +124,66 @@
                         android:layout_height="70dp"
                         android:layout_toLeftOf="@+id/myphoto"
                         android:layout_toStartOf="@id/myphoto"
-                        android:text="(유저네임)의 말풍선을 채워주세요."
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:text="(유저네임)의 말풍선을 채워주세요." />
 
                 </RelativeLayout>
             </LinearLayout>
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_above="@+id/buttonslayout"
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="60dp"
+            android:layout_above="@+id/buttonslayout">
 
             <Button
-                android:text="일"
                 android:id="@+id/sunday"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:text="일" />
 
             <Button
-                android:text="월"
                 android:id="@+id/monday"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:text="월" />
 
             <Button
-                android:text="화"
                 android:id="@+id/tuesday"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:text="화" />
 
             <Button
-                android:text="수"
                 android:id="@+id/wednesday"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:text="수" />
 
             <Button
-                android:text="목"
                 android:id="@+id/thursday"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:text="목" />
 
             <Button
-                android:text="금"
                 android:id="@+id/friday"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:text="금" />
 
             <Button
-                android:text="토"
                 android:id="@+id/saturday"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:text="토" />
 
         </LinearLayout>
 

@@ -14,7 +14,7 @@ public class TimeSettingDialog extends Dialog implements View.OnClickListener {
 
     Context ctx;
 
-    public TimeSettingDialog(Context context){
+    public TimeSettingDialog(Context context) {
         super(context);
         ctx = context;
 
@@ -22,16 +22,15 @@ public class TimeSettingDialog extends Dialog implements View.OnClickListener {
         setContentView(R.layout.dialog_timeselect);
 
 
-
-        Button sunday = (Button)findViewById(R.id.sunday);
-        Button monday = (Button)findViewById(R.id.monday);
-        Button tuesday = (Button)findViewById(R.id.tuesday);
-        Button wednsday = (Button)findViewById(R.id.wednesday);
-        Button thursday = (Button)findViewById(R.id.thursday);
-        Button friday = (Button)findViewById(R.id.friday);
-        Button saturday = (Button)findViewById(R.id.saturday);
-        Button cancelbutton = (Button)findViewById(R.id.cancelbutton);
-        Button savebutton = (Button)findViewById(R.id.savebutton);
+        Button sunday = (Button) findViewById(R.id.sunday);
+        Button monday = (Button) findViewById(R.id.monday);
+        Button tuesday = (Button) findViewById(R.id.tuesday);
+        Button wednsday = (Button) findViewById(R.id.wednesday);
+        Button thursday = (Button) findViewById(R.id.thursday);
+        Button friday = (Button) findViewById(R.id.friday);
+        Button saturday = (Button) findViewById(R.id.saturday);
+        Button cancelbutton = (Button) findViewById(R.id.cancelbutton);
+        Button savebutton = (Button) findViewById(R.id.savebutton);
 
 
         sunday.setOnClickListener(this);
@@ -69,7 +68,7 @@ public class TimeSettingDialog extends Dialog implements View.OnClickListener {
                 dismiss();
                 break;
             case R.id.savebutton:
-                Intent intent1 = new Intent(ctx,MakeAlarmActivity.class);
+                Intent intent1 = new Intent(ctx, MakeAlarmActivity.class);
                 ctx.startActivity(intent1);
                 dismiss();
                 break;

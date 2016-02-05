@@ -15,8 +15,8 @@ public class AlarmSoundActivity extends Activity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarmsound);
 
-        Button cancelbutton = (Button)findViewById(R.id.cancelbutton);
-        Button savebutton = (Button)findViewById(R.id.savebutton);
+        Button cancelbutton = (Button) findViewById(R.id.cancelbutton);
+        Button savebutton = (Button) findViewById(R.id.savebutton);
 
         cancelbutton.setText("취소");
         savebutton.setText("저장");
@@ -24,9 +24,10 @@ public class AlarmSoundActivity extends Activity implements View.OnClickListener
         cancelbutton.setOnClickListener(this);
         savebutton.setOnClickListener(this);
     }
+
     @Override
     public void onClick(View v) {
-        switch(v.getId()) {
+        switch (v.getId()) {
             case R.id.cancelbutton:
                 finish();
                 break;

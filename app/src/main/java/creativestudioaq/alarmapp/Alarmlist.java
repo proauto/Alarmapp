@@ -13,7 +13,7 @@ public class Alarmlist {
         return _time;
     }
 
-    public String getday(){
+    public String getday() {
         return _day;
     }
 
@@ -22,8 +22,7 @@ public class Alarmlist {
     }
 
 
-
-    public Alarmlist(String time,String day, Boolean check) {
+    public Alarmlist(String time, String day, Boolean check) {
         _time = time;
         _day = day;
         _check = check;

@@ -14,18 +14,18 @@ public class NameActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name);
 
-        Button cancelbutton = (Button)findViewById(R.id.cancelbutton);
-        Button savebutton = (Button)findViewById(R.id.savebutton);
-
+        Button cancelbutton = (Button) findViewById(R.id.cancelbutton);
+        Button savebutton = (Button) findViewById(R.id.savebutton);
         cancelbutton.setText("취소");
         savebutton.setText("저장");
 
         cancelbutton.setOnClickListener(this);
         savebutton.setOnClickListener(this);
     }
+
     @Override
     public void onClick(View v) {
-        switch(v.getId()) {
+        switch (v.getId()) {
             case R.id.cancelbutton:
                 finish();
                 break;

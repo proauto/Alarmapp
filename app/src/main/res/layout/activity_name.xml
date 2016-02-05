@@ -14,7 +14,7 @@
             android:layout_height="match_parent"
             android:layout_alignLeft="@+id/centerbar"
             android:layout_alignStart="@+id/centerbar"
-            android:gravity="center"/>
+            android:gravity="center" />
 
         <Button
             android:id="@+id/savebutton"
@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:layout_alignEnd="@+id/centerbar"
             android:layout_alignRight="@+id/centerbar"
-            android:gravity="center"/>
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/centerbar"

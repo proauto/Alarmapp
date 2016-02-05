@@ -13,7 +13,7 @@ public class VersionActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_version);
 
-        TextView versiontext = (TextView)findViewById(R.id.versiontext);
+        TextView versiontext = (TextView) findViewById(R.id.versiontext);
 
         versiontext.setText("Version 1.0");
     }

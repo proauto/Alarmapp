@@ -14,11 +14,9 @@ public class Repeatlist {
     }
 
 
-
     public Boolean getcheck() {
         return _check;
     }
-
 
 
     public Repeatlist(String time, Boolean check) {

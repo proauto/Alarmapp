@@ -14,162 +14,165 @@ import android.widget.RelativeLayout;
 
 import java.util.Calendar;
 
-public class AnalogClockView extends RelativeLayout{
-	private Context mContext;
+public class AnalogClockView extends RelativeLayout {
+    private Context mContext;
 
-	/* views */
-	private ImageView mHourHand;
-	private ImageView mMinuteHand;
-	private ImageView mSecondHand;
+    /* views */
+    private ImageView mHourHand;
+    private ImageView mMinuteHand;
+    private ImageView mSecondHand;
 
-	/* state */
-	private boolean isRunning = false;
-	private boolean isFirstTick = true;
-	
-	/* angle */
-	private int mHourAngle = INVALID_ANGLE;
-	private int mMinuteAngle = INVALID_ANGLE;
-	private int mSecondAngle = INVALID_ANGLE;
-	
-	/* resources */
-	private int mDialBackgroundResource = R.drawable.clock_dial_typical;
-	private int mHourBackgroundResource = R.drawable.clock_hand_hour;
-	private int mMinuteBackgroundResource = R.drawable.clock_hand_minute;
-	private int mSecondBackgroundResource = R.drawable.clock_hand_second;
-	
-	private static final int INVALID_ANGLE = -1;
-	private static final int DEGREE_MINUTE = 6;
-	private static final int MINUTE_TO_HOUR_DEGREE = 12;
-	private static final int HOUR_TO_HOUR_DEGREE = 30;
-	private static final String TAG = "clock";
-	private static final String TIMEZONE_ID = "America/Los_Angeles";
+    /* state */
+    private boolean isRunning = false;
+    private boolean isFirstTick = true;
 
-	public AnalogClockView(Context context) {
-		super(context);
-		// TODO Auto-generated constructor stub
-		init(context);
-	}
-	public AnalogClockView(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		// TODO Auto-generated constructor stub
-		setIcons(context, attrs);
-		init(context);
-	}
-	public AnalogClockView(Context context, AttributeSet attrs, int defStyle) {
-		super(context, attrs, defStyle);
-		// TODO Auto-generated constructor stub
-		setIcons(context, attrs);
-		init(context);
-	}
-	private void setIcons(Context context, AttributeSet attrs){
-		TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AnalogClockView);
+    /* angle */
+    private int mHourAngle = INVALID_ANGLE;
+    private int mMinuteAngle = INVALID_ANGLE;
+    private int mSecondAngle = INVALID_ANGLE;
 
-		mDialBackgroundResource = array.getResourceId(R.styleable.AnalogClockView_dial, R.drawable.clock_dial_typical);
-		mHourBackgroundResource = array.getResourceId(R.styleable.AnalogClockView_hand_hour, R.drawable.clock_hand_hour);
-		mMinuteBackgroundResource = array.getResourceId(R.styleable.AnalogClockView_hand_minute, R.drawable.clock_hand_minute);
-		mSecondBackgroundResource = array.getResourceId(R.styleable.AnalogClockView_hand_second, R.drawable.clock_hand_second);
-		array.recycle();
-	}
+    /* resources */
+    private int mDialBackgroundResource = R.drawable.clock_dial_typical;
+    private int mHourBackgroundResource = R.drawable.clock_hand_hour;
+    private int mMinuteBackgroundResource = R.drawable.clock_hand_minute;
+    private int mSecondBackgroundResource = R.drawable.clock_hand_second;
 
-	private void init(Context con){
-		this.mContext = con;
+    private static final int INVALID_ANGLE = -1;
+    private static final int DEGREE_MINUTE = 6;
+    private static final int MINUTE_TO_HOUR_DEGREE = 12;
+    private static final int HOUR_TO_HOUR_DEGREE = 30;
+    private static final String TAG = "clock";
+    private static final String TIMEZONE_ID = "America/Los_Angeles";
 
-		LayoutParams lp;
+    public AnalogClockView(Context context) {
+        super(context);
+        // TODO Auto-generated constructor stub
+        init(context);
+    }
 
-		mHourHand = new ImageView(mContext);
-		setHourResource(mHourBackgroundResource);
-		mHourHand.setScaleType(ScaleType.CENTER_INSIDE);
-		lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-		lp.addRule(CENTER_IN_PARENT);
-		this.addView(mHourHand, lp);
+    public AnalogClockView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        // TODO Auto-generated constructor stub
+        setIcons(context, attrs);
+        init(context);
+    }
 
-		mMinuteHand = new ImageView(mContext);
-		setMinuteResource(mMinuteBackgroundResource);
-		mMinuteHand.setScaleType(ScaleType.CENTER_INSIDE);
-		lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-		lp.addRule(CENTER_IN_PARENT);
-		this.addView(mMinuteHand, lp);
+    public AnalogClockView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        // TODO Auto-generated constructor stub
+        setIcons(context, attrs);
+        init(context);
+    }
 
-		mSecondHand = new ImageView(mContext);
-		setSecondResource(mSecondBackgroundResource);
-		mSecondHand.setScaleType(ScaleType.CENTER_INSIDE);
-		lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-		lp.addRule(CENTER_IN_PARENT);
-		this.addView(mSecondHand, lp);
+    private void setIcons(Context context, AttributeSet attrs) {
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AnalogClockView);
 
-		setBackgroundResource(mDialBackgroundResource);
-	}
+        mDialBackgroundResource = array.getResourceId(R.styleable.AnalogClockView_dial, R.drawable.clock_dial_typical);
+        mHourBackgroundResource = array.getResourceId(R.styleable.AnalogClockView_hand_hour, R.drawable.clock_hand_hour);
+        mMinuteBackgroundResource = array.getResourceId(R.styleable.AnalogClockView_hand_minute, R.drawable.clock_hand_minute);
+        mSecondBackgroundResource = array.getResourceId(R.styleable.AnalogClockView_hand_second, R.drawable.clock_hand_second);
+        array.recycle();
+    }
 
-	public void toggle(){
-		if (isRunning)
-			stop();
-		else
-			start();
-	}
-	public void start(){
-		if (isRunning)
-			return;
+    private void init(Context con) {
+        this.mContext = con;
 
-		isRunning = true;
-		isFirstTick = true;
+        LayoutParams lp;
 
-		Calendar tempCal = Calendar.getInstance();
-		int timeToWaitInMilli = (int)tempCal.getTimeInMillis()%1000;
+        mHourHand = new ImageView(mContext);
+        setHourResource(mHourBackgroundResource);
+        mHourHand.setScaleType(ScaleType.CENTER_INSIDE);
+        lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        lp.addRule(CENTER_IN_PARENT);
+        this.addView(mHourHand, lp);
 
-		mHandler.sendEmptyMessageDelayed(0, timeToWaitInMilli);
-	}
-	public void stop(){
-		if (!isRunning)
-			return;
-		isRunning = false;
-	}
+        mMinuteHand = new ImageView(mContext);
+        setMinuteResource(mMinuteBackgroundResource);
+        mMinuteHand.setScaleType(ScaleType.CENTER_INSIDE);
+        lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        lp.addRule(CENTER_IN_PARENT);
+        this.addView(mMinuteHand, lp);
 
-	//set Time in this Method
-	private void proceed(){
-		if (!isRunning)
-			return;
-		//TimeZone tz = TimeZone.getTimeZone(TIMEZONE_ID);
+        mSecondHand = new ImageView(mContext);
+        setSecondResource(mSecondBackgroundResource);
+        mSecondHand.setScaleType(ScaleType.CENTER_INSIDE);
+        lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+        lp.addRule(CENTER_IN_PARENT);
+        this.addView(mSecondHand, lp);
 
-		Calendar tempCal = Calendar.getInstance();
-		//tempCal.setTimeZone(tz);
-		
-		int hour = tempCal.get(Calendar.HOUR);
-		int min = tempCal.get(Calendar.MINUTE);
-		int sec = tempCal.get(Calendar.SECOND);
+        setBackgroundResource(mDialBackgroundResource);
+    }
+
+    public void toggle() {
+        if (isRunning)
+            stop();
+        else
+            start();
+    }
+
+    public void start() {
+        if (isRunning)
+            return;
+
+        isRunning = true;
+        isFirstTick = true;
+
+        Calendar tempCal = Calendar.getInstance();
+        int timeToWaitInMilli = (int) tempCal.getTimeInMillis() % 1000;
+
+        mHandler.sendEmptyMessageDelayed(0, timeToWaitInMilli);
+    }
+
+    public void stop() {
+        if (!isRunning)
+            return;
+        isRunning = false;
+    }
+
+    //set Time in this Method
+    private void proceed() {
+        if (!isRunning)
+            return;
+        //TimeZone tz = TimeZone.getTimeZone(TIMEZONE_ID);
+
+        Calendar tempCal = Calendar.getInstance();
+        //tempCal.setTimeZone(tz);
+
+        int hour = tempCal.get(Calendar.HOUR);
+        int min = tempCal.get(Calendar.MINUTE);
+        int sec = tempCal.get(Calendar.SECOND);
 //		Log.i(TAG, "hour : " + hour + ", minute : " + min + ", sec : " + sec);
 
-		int newHourAngle = hour * HOUR_TO_HOUR_DEGREE + (min/MINUTE_TO_HOUR_DEGREE)*DEGREE_MINUTE;
-		int newMinuteAngle = min * DEGREE_MINUTE;
-		int newSecondAngle = sec * DEGREE_MINUTE;
+        int newHourAngle = hour * HOUR_TO_HOUR_DEGREE + (min / MINUTE_TO_HOUR_DEGREE) * DEGREE_MINUTE;
+        int newMinuteAngle = min * DEGREE_MINUTE;
+        int newSecondAngle = sec * DEGREE_MINUTE;
 
-		if (isFirstTick){
-			if (mHourAngle != INVALID_ANGLE && mMinuteAngle != INVALID_ANGLE && mSecondAngle != INVALID_ANGLE){
-				rotate(mHourHand, mHourAngle, newHourAngle);
-				rotate(mMinuteHand, mMinuteAngle, newMinuteAngle);
-				rotate(mSecondHand, mSecondAngle, newSecondAngle);
-			}
-			else{
-				rotate(mHourHand, newHourAngle, newHourAngle);
-				rotate(mMinuteHand, newMinuteAngle, newMinuteAngle);
-				rotate(mSecondHand, newSecondAngle, newSecondAngle);
-			}
-			isFirstTick = false;
-		}
-		else{
-			if (min == 0 && sec == 0)
-				rotate(mHourHand, newHourAngle - DEGREE_MINUTE, newHourAngle);
-			if (sec == 0)
-				rotate(mMinuteHand, newMinuteAngle - DEGREE_MINUTE, newMinuteAngle);
+        if (isFirstTick) {
+            if (mHourAngle != INVALID_ANGLE && mMinuteAngle != INVALID_ANGLE && mSecondAngle != INVALID_ANGLE) {
+                rotate(mHourHand, mHourAngle, newHourAngle);
+                rotate(mMinuteHand, mMinuteAngle, newMinuteAngle);
+                rotate(mSecondHand, mSecondAngle, newSecondAngle);
+            } else {
+                rotate(mHourHand, newHourAngle, newHourAngle);
+                rotate(mMinuteHand, newMinuteAngle, newMinuteAngle);
+                rotate(mSecondHand, newSecondAngle, newSecondAngle);
+            }
+            isFirstTick = false;
+        } else {
+            if (min == 0 && sec == 0)
+                rotate(mHourHand, newHourAngle - DEGREE_MINUTE, newHourAngle);
+            if (sec == 0)
+                rotate(mMinuteHand, newMinuteAngle - DEGREE_MINUTE, newMinuteAngle);
 
-			rotate(mSecondHand, newSecondAngle - DEGREE_MINUTE, newSecondAngle);
-		}
-		mHourAngle = newHourAngle;
-		mMinuteAngle = newMinuteAngle;
-		mSecondAngle = newSecondAngle;
+            rotate(mSecondHand, newSecondAngle - DEGREE_MINUTE, newSecondAngle);
+        }
+        mHourAngle = newHourAngle;
+        mMinuteAngle = newMinuteAngle;
+        mSecondAngle = newSecondAngle;
 //		Log.i(TAG, "hourAngle : " + mHourAngle + ", minuteAngle : " + mMinuteAngle + ", secAngle : " + mSecondAngle);
-	}
+    }
 
-//	private void _rotate(ImageView view, Point p, int angle){
+    //	private void _rotate(ImageView view, Point p, int angle){
 //		int xd = (getWidth() - p.x)/2;
 //		int yd = (getHeight() - p.y)/2;
 //		//		int xd = getWidth()/2 - p.x/5;//(getWidth() - p.x)/2;
@@ -185,49 +188,51 @@ public class AnalogClockView extends RelativeLayout{
 //		view.setImageMatrix(matrix);
 //		view.invalidate();
 //	}
-	private void rotate(ImageView view, int fromAngle, int toAngle){
-		Animation anim;
-		anim = new RotateAnimation(fromAngle, toAngle,
-				RotateAnimation.RELATIVE_TO_SELF, 0.5f,
-				RotateAnimation.RELATIVE_TO_SELF, 0.5f);
-		int gap = Math.abs(toAngle - fromAngle);
-		if (gap != DEGREE_MINUTE){
-			anim.setDuration(600);
-			anim.setInterpolator(AnimationUtils.loadInterpolator(mContext,
-					android.R.anim.accelerate_interpolator));
-		}
-		else{
-			anim.setDuration(150);
-			anim.setInterpolator(AnimationUtils.loadInterpolator(mContext,
-					android.R.anim.overshoot_interpolator));
-		}
-		anim.setFillAfter(true);
-		view.startAnimation(anim);
-	}
+    private void rotate(ImageView view, int fromAngle, int toAngle) {
+        Animation anim;
+        anim = new RotateAnimation(fromAngle, toAngle,
+                RotateAnimation.RELATIVE_TO_SELF, 0.5f,
+                RotateAnimation.RELATIVE_TO_SELF, 0.5f);
+        int gap = Math.abs(toAngle - fromAngle);
+        if (gap != DEGREE_MINUTE) {
+            anim.setDuration(600);
+            anim.setInterpolator(AnimationUtils.loadInterpolator(mContext,
+                    android.R.anim.accelerate_interpolator));
+        } else {
+            anim.setDuration(150);
+            anim.setInterpolator(AnimationUtils.loadInterpolator(mContext,
+                    android.R.anim.overshoot_interpolator));
+        }
+        anim.setFillAfter(true);
+        view.startAnimation(anim);
+    }
 
-	public void setDialResource(int id){
-		this.mDialBackgroundResource = id;
-		setBackgroundResource(mDialBackgroundResource);
-	}
-	public void setHourResource(int id){
-		this.mHourBackgroundResource = id;
-		mHourHand.setImageResource(id);
-	}
-	public void setMinuteResource(int id){
-		this.mMinuteBackgroundResource = id;
-		mMinuteHand.setImageResource(id);
-	}
-	public void setSecondResource(int id){
-		this.mSecondBackgroundResource = id;
-		mSecondHand.setImageResource(id);
-	}
+    public void setDialResource(int id) {
+        this.mDialBackgroundResource = id;
+        setBackgroundResource(mDialBackgroundResource);
+    }
 
-	private Handler mHandler = new Handler(){
-		public void handleMessage( Message msg ){
-			if (isRunning){
-				proceed();
-				mHandler.sendEmptyMessageDelayed( 0 , 1000 );
-			}
-		}
-	};
+    public void setHourResource(int id) {
+        this.mHourBackgroundResource = id;
+        mHourHand.setImageResource(id);
+    }
+
+    public void setMinuteResource(int id) {
+        this.mMinuteBackgroundResource = id;
+        mMinuteHand.setImageResource(id);
+    }
+
+    public void setSecondResource(int id) {
+        this.mSecondBackgroundResource = id;
+        mSecondHand.setImageResource(id);
+    }
+
+    private Handler mHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            if (isRunning) {
+                proceed();
+                mHandler.sendEmptyMessageDelayed(0, 1000);
+            }
+        }
+    };
 }

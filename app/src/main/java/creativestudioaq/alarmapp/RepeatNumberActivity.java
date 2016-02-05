@@ -29,10 +29,10 @@ public class RepeatNumberActivity extends Activity implements View.OnClickListen
 
         setContentView(R.layout.activity_repeatnumber);
 
-        Button cancelbutton = (Button)findViewById(R.id.cancelbutton);
-        Button savebutton = (Button)findViewById(R.id.savebutton);
-        minutelistview = (ListView)findViewById(R.id.minutelist);
-        repeatlistview = (ListView)findViewById(R.id.repeatlist);
+        Button cancelbutton = (Button) findViewById(R.id.cancelbutton);
+        Button savebutton = (Button) findViewById(R.id.savebutton);
+        minutelistview = (ListView) findViewById(R.id.minutelist);
+        repeatlistview = (ListView) findViewById(R.id.repeatlist);
 
 
         //예시 생성
@@ -45,8 +45,8 @@ public class RepeatNumberActivity extends Activity implements View.OnClickListen
         minutelistview.setAdapter(adapter1);
 
 
-         adapter2 = new RepeatlistAdapter(this, R.layout.repeatlist_sub, repeatlist);
-         repeatlistview.setAdapter(adapter2);
+        adapter2 = new RepeatlistAdapter(this, R.layout.repeatlist_sub, repeatlist);
+        repeatlistview.setAdapter(adapter2);
 
 
         repeatlistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -57,7 +57,7 @@ public class RepeatNumberActivity extends Activity implements View.OnClickListen
                 String content = "";
                 Repeatlist s = new Repeatlist(content, false);
 
-Log.v("1", "1");
+                Log.v("1", "1");
 
                 for (i = 0; i < 5; i++) {
                     content = repeatlist.get(i).gettime();
@@ -83,7 +83,7 @@ Log.v("1", "1");
                 String content = "";
                 Repeatlist s = new Repeatlist(content, false);
 
-                Log.v("2","2");
+                Log.v("2", "2");
 
                 for (i = 0; i < 5; i++) {
                     content = minutelist.get(i).gettime();
@@ -109,9 +109,10 @@ Log.v("1", "1");
         cancelbutton.setOnClickListener(this);
         savebutton.setOnClickListener(this);
     }
+
     @Override
     public void onClick(View v) {
-        switch(v.getId()) {
+        switch (v.getId()) {
             case R.id.cancelbutton:
                 finish();
                 break;
@@ -121,30 +122,30 @@ Log.v("1", "1");
         }
     }
 
-    private void makeListContent(){
+    private void makeListContent() {
 
         //minutelist 채우기
-        Repeatlist s = new Repeatlist("3분",true);
+        Repeatlist s = new Repeatlist("3분", true);
         minutelist.add(s);
-        s = new Repeatlist("5분",false);
+        s = new Repeatlist("5분", false);
         minutelist.add(s);
-        s = new Repeatlist("10분",false);
+        s = new Repeatlist("10분", false);
         minutelist.add(s);
-        s = new Repeatlist("15분",false);
+        s = new Repeatlist("15분", false);
         minutelist.add(s);
-        s = new Repeatlist("30분",false);
+        s = new Repeatlist("30분", false);
         minutelist.add(s);
 
         //repeatlist 채우기
-        s = new Repeatlist("1회",true);
+        s = new Repeatlist("1회", true);
         repeatlist.add(s);
-        s = new Repeatlist("2회",false);
+        s = new Repeatlist("2회", false);
         repeatlist.add(s);
-        s = new Repeatlist("3회",false);
+        s = new Repeatlist("3회", false);
         repeatlist.add(s);
-        s = new Repeatlist("5회",false);
+        s = new Repeatlist("5회", false);
         repeatlist.add(s);
-        s = new Repeatlist("10회",false);
+        s = new Repeatlist("10회", false);
         repeatlist.add(s);
 
     }

@@ -14,7 +14,7 @@
             android:layout_height="match_parent"
             android:layout_alignLeft="@+id/centerbar"
             android:layout_alignStart="@+id/centerbar"
-            android:gravity="center"/>
+            android:gravity="center" />
 
         <Button
             android:id="@+id/savebutton"
@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:layout_alignEnd="@+id/centerbar"
             android:layout_alignRight="@+id/centerbar"
-            android:gravity="center"/>
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/centerbar"
@@ -34,33 +34,38 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp">
+
         <ImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/settingbutton"/>
+            android:src="@drawable/settingbutton" />
+
         <EditText
             android:id="@+id/firsttalk"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:hint="토끼의 말풍선을 채워주세요."/>
+            android:hint="토끼의 말풍선을 채워주세요." />
     </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="70dp">
+
         <ImageView
             android:id="@+id/myphoto"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/settingbutton"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
+            android:src="@drawable/settingbutton" />
+
         <EditText
             android:id="@+id/secondtalk"
             android:layout_width="match_parent"
             android:layout_height="70dp"
             android:layout_toLeftOf="@+id/myphoto"
             android:layout_toStartOf="@id/myphoto"
-            android:hint="(유저네임)의 말풍선을 채워주세요."/>
+            android:hint="(유저네임)의 말풍선을 채워주세요." />
 
     </RelativeLayout>
 
@@ -74,7 +79,7 @@
             android:layout_height="match_parent"
             android:layout_alignLeft="@+id/centerbar2"
             android:layout_alignStart="@+id/centerbar2"
-            android:gravity="center"/>
+            android:gravity="center" />
 
         <Button
             android:id="@+id/previewbutton"
@@ -82,7 +87,7 @@
             android:layout_height="match_parent"
             android:layout_alignEnd="@+id/centerbar2"
             android:layout_alignRight="@+id/centerbar2"
-            android:gravity="center"/>
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/centerbar2"

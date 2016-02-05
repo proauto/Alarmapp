@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TimePicker
         android:id="@+id/timepicker1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="wrap_content" />
 
     <LinearLayout
-        android:layout_above="@+id/buttonslayout"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="60dp"
+        android:layout_above="@+id/buttonslayout">
 
         <Button
-            android:text="일"
             android:id="@+id/sunday"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="일" />
 
         <Button
-            android:text="월"
             android:id="@+id/monday"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="월" />
 
         <Button
-            android:text="화"
             android:id="@+id/tuesday"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="화" />
 
         <Button
-            android:text="수"
             android:id="@+id/wednesday"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="수" />
 
         <Button
-            android:text="목"
             android:id="@+id/thursday"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="목" />
 
         <Button
-            android:text="금"
             android:id="@+id/friday"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="금" />
 
         <Button
-            android:text="토"
             android:id="@+id/saturday"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:text="토" />
 
     </LinearLayout>
 
@@ -77,7 +77,7 @@
             android:layout_height="match_parent"
             android:layout_alignLeft="@+id/centerbar"
             android:layout_alignStart="@+id/centerbar"
-            android:gravity="center"/>
+            android:gravity="center" />
 
         <Button
             android:id="@+id/savebutton"
@@ -85,7 +85,7 @@
             android:layout_height="match_parent"
             android:layout_alignEnd="@+id/centerbar"
             android:layout_alignRight="@+id/centerbar"
-            android:gravity="center"/>
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/centerbar"

@@ -25,18 +25,18 @@ public class AlarmFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_alarm,container,false);
+        View view = inflater.inflate(R.layout.fragment_alarm, container, false);
 
 
-        ListView alarmlist = (ListView)view.findViewById(R.id.alarmlist);
-        Button alarmplus = (Button)view.findViewById(R.id.alarmplus);
+        ListView alarmlist = (ListView) view.findViewById(R.id.alarmlist);
+        Button alarmplus = (Button) view.findViewById(R.id.alarmplus);
         ArrayList<Alarmlist> _lists = new ArrayList<Alarmlist>();
 
 
         //예시 생성
-        Alarmlist s = new Alarmlist("11:30","월,금",true);
+        Alarmlist s = new Alarmlist("11:30", "월,금", true);
         _lists.add(s);
-        s = new Alarmlist("10:30","모든 요일",false);
+        s = new Alarmlist("10:30", "모든 요일", false);
         _lists.add(s);
 
 
