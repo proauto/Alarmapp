@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,176 +13,215 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="52dp">
+            android:layout_height="52dp"
+            android:background="#000000">
 
             <Button
                 android:id="@+id/cancelbutton"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignLeft="@+id/centerbar"
-                android:layout_alignStart="@+id/centerbar"
-                android:gravity="center"/>
+                android:background="#00000000"
+                android:gravity="center"
+                android:textColor="#FFFFFF" />
 
             <Button
                 android:id="@+id/savebutton"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_alignEnd="@+id/centerbar"
-                android:layout_alignRight="@+id/centerbar"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="#00000000"
+                android:gravity="center"
+                android:textColor="#FFFFFF" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#29abe2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/selecttime"
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:textColor="#FFFFFF"
                 android:gravity="center"/>
 
             <TextView
-                android:id="@+id/centerbar"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true" />
-        </RelativeLayout>
+                android:id="@+id/selectday"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:textColor="#FFFFFF"
+                android:gravity="center"/>
 
-        <TimePicker
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="60dp">
-
-            <Button
-                android:text="일"
-                android:id="@+id/sunday"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:text="월"
-                android:id="@+id/monday"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:text="화"
-                android:id="@+id/tuesday"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:text="수"
-                android:id="@+id/wednesday"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:text="목"
-                android:id="@+id/thursday"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:text="금"
-                android:id="@+id/friday"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:text="토"
-                android:id="@+id/saturday"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
 
         </LinearLayout>
 
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="200dp"
+            android:background="#e6e6e6">
 
             <TextView
                 android:id="@+id/feel"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:text="교감"/>
-            <Button
+                android:gravity="center"
+                android:text="교감" />
+
+            <com.rey.material.widget.Switch
                 android:id="@+id/feelbutton"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                style="@style/Material.Widget.Switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"/>
-            <TextView
+                android:layout_alignParentRight="true"
+                android:checked="false"
+                android:gravity="center" />
+
+            <LinearLayout
                 android:id="@+id/feeltalk"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/feelbutton"/>
-        </RelativeLayout>
+                android:layout_below="@+id/feelbutton"
+                android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="아래의 텍스트를 똑같이 입력하면 알람이 꺼지는 미션이야" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp">
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/settingbutton" />
+
+                    <TextView
+                        android:id="@+id/firsttalk"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:text="토끼의 말풍선을 채워주세요."
+                        android:gravity="center"/>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp">
+
+                    <ImageView
+                        android:id="@+id/myphoto"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:src="@drawable/settingbutton" />
+
+                    <TextView
+                        android:id="@+id/secondtalk"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_toLeftOf="@+id/myphoto"
+                        android:layout_toStartOf="@id/myphoto"
+                        android:text="(유저네임)의 말풍선을 채워주세요."
+                        android:gravity="center"/>
+
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:text="반복" />
-
-            <Button
-                android:id="@+id/repeatbutton"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true" />
-
-            <TextView
-                android:id="@+id/repeatnumber"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@+id/repeatbutton"
-                android:gravity="center"
-                android:text="12분 12회" />
-        </RelativeLayout>
-
-        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="vertical">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="알림음" />
+                android:id="@+id/alarmtext"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="알람 소리" />
 
             <TextView
                 android:id="@+id/alarmsound"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:text="Temmie" />
-        </LinearLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_toEndOf="@+id/alarmtext"
+                android:layout_toRightOf="@+id/alarmtext"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingStart="20dp"
+                android:text="GoodMorning" />
+        </RelativeLayout>
+
+        <com.rey.material.widget.Slider
+            style="@style/Material.Widget.Slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="60dp">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="알림 시 진동" />
+                android:gravity="center"
+                android:text="알림시 진동" />
 
-            <Button
+
+            <com.rey.material.widget.Switch
                 android:id="@+id/notibutton"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                style="@style/Material.Widget.Switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true" />
+                android:layout_alignParentRight="true"
+                android:checked="false"
+                android:gravity="center" />
+
 
         </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <TextView
+                android:id="@+id/repeattext"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center"
+                android:text="다시 알림" />
+
+
+            <com.rey.material.widget.Switch
+                android:id="@+id/repeatbutton"
+                style="@style/Material.Widget.Switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:checked="false"
+                android:gravity="center" />
+
+
+            <TextView
+                android:id="@+id/repeatnumber"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_toEndOf="@+id/repeattext"
+                android:layout_toRightOf="@+id/repeattext"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingStart="20dp"
+                android:text="12분 12회" />
+        </RelativeLayout>
+
 
     </LinearLayout>
 </ScrollView>

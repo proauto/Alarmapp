@@ -19,30 +19,21 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
 
         Button cancelbutton = (Button)findViewById(R.id.cancelbutton);
         Button savebutton = (Button)findViewById(R.id.savebutton);
-        Button sunday = (Button)findViewById(R.id.sunday);
-        Button monday = (Button)findViewById(R.id.monday);
-        Button tuesday = (Button)findViewById(R.id.tuesday);
-        Button wednsday = (Button)findViewById(R.id.wednesday);
-        Button thursday = (Button)findViewById(R.id.thursday);
-        Button friday = (Button)findViewById(R.id.friday);
-        Button saturday = (Button)findViewById(R.id.saturday);
-        TextView feeltalk = (TextView)findViewById(R.id.feeltalk);
         TextView repeatnumber = (TextView)findViewById(R.id.repeatnumber);
         TextView alarmsound = (TextView)findViewById(R.id.alarmsound);
+        TextView selecttime = (TextView)findViewById(R.id.selecttime);
+        TextView selectday = (TextView)findViewById(R.id.selectday);
 
-        cancelbutton.setText("취소");
+
+
+
+        cancelbutton.setText("< 시간 설정");
         savebutton.setText("저장");
+        selecttime.setText("오후 12시 45분");
+        selectday.setText("월 목");
 
         cancelbutton.setOnClickListener(this);
         savebutton.setOnClickListener(this);
-        sunday.setOnClickListener(this);
-        monday.setOnClickListener(this);
-        tuesday.setOnClickListener(this);
-        wednsday.setOnClickListener(this);
-        thursday.setOnClickListener(this);
-        friday.setOnClickListener(this);
-        saturday.setOnClickListener(this);
-        feeltalk.setOnClickListener(this);
         repeatnumber.setOnClickListener(this);
         alarmsound.setOnClickListener(this);
 
@@ -57,24 +48,10 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
             case R.id.savebutton:
                 finish();
                 break;
-            case R.id.sunday:
-                break;
-            case R.id.monday:
-                break;
-            case R.id.tuesday:
-                break;
-            case R.id.wednesday:
-                break;
-            case R.id.thursday:
-                break;
-            case R.id.friday:
-                break;
-            case R.id.saturday:
-                break;
-            case R.id.feeltalk:
+           /* case R.id.feeltalk:
                 Intent intent1 = new Intent(MakeAlarmActivity.this,FeelTalkActivity.class);
                 startActivity(intent1);
-                break;
+                break;*/
             case R.id.repeatnumber:
                 Intent intent2 = new Intent(MakeAlarmActivity.this,RepeatNumberActivity.class);
                 startActivity(intent2);
