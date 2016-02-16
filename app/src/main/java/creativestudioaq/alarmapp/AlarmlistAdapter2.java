@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 
 //List Adapter Class
-public class AlarmlistAdapter extends BaseAdapter {
+public class AlarmlistAdapter2 extends BaseAdapter {
 
 
     private LayoutInflater _inflater;
@@ -26,7 +26,7 @@ public class AlarmlistAdapter extends BaseAdapter {
     private static Context m_ctx;
 
 
-    public AlarmlistAdapter(Context context, int layout, ArrayList<Alarmlist> lists) {
+    public AlarmlistAdapter2(Context context, int layout, ArrayList<Alarmlist> lists) {
         _inflater = (LayoutInflater) context.getSystemService(
                 Context.LAYOUT_INFLATER_SERVICE);
         _lists = lists;

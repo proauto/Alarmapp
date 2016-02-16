@@ -41,7 +41,7 @@ public class AlarmFragment extends android.support.v4.app.Fragment {
 
 
         //어댑터생성
-        AlarmlistAdapter adapter = new AlarmlistAdapter(getActivity(), R.layout.alarmlist_sub, _lists);
+        AlarmlistAdapter2 adapter = new AlarmlistAdapter2(getActivity(), R.layout.alarmlist_sub, _lists);
         alarmlist.setAdapter(adapter);
 
 
