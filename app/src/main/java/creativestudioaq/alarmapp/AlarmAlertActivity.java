@@ -2,7 +2,6 @@ package creativestudioaq.alarmapp;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -11,16 +10,15 @@ import android.os.Vibrator;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-import android.view.HapticFeedbackConstants;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 
-public class AlarmAlertActivity extends Activity implements OnClickListener {
+public class AlarmAlertActivity extends Activity  {
 
     private Alarm alarm;
     private MediaPlayer mediaPlayer;
@@ -28,12 +26,13 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
     private StringBuilder answerBuilder = new StringBuilder();
 
     private MathProblem mathProblem;
+    private Game game;
     private Vibrator vibrator;
 
     private boolean alarmActive;
 
     private TextView problemView;
-    private TextView answerView;
+    private EditText answerView;
     private String answerString;
 
     @Override
@@ -50,44 +49,47 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
         Bundle bundle = this.getIntent().getExtras();
         alarm = (Alarm) bundle.getSerializable("alarm");
 
-        this.setTitle(alarm.getAlarmName());
 
-        switch (alarm.getDifficulty()) {
-            case EASY:
-                mathProblem = new MathProblem(3);
-                break;
-            case MEDIUM:
-                mathProblem = new MathProblem(4);
-                break;
-            case HARD:
-                mathProblem = new MathProblem(5);
-                break;
-        }
 
-        answerString = String.valueOf(mathProblem.getAnswer());
-        if (answerString.endsWith(".0")) {
-            answerString = answerString.substring(0, answerString.length() - 2);
-        }
+      //게임 띄우기
+        mathProblem = new MathProblem(3);
+        game = new Game();
 
-        problemView = (TextView) findViewById(R.id.textView1);
-        problemView.setText(mathProblem.toString());
 
-        answerView = (TextView) findViewById(R.id.textView2);
-        answerView.setText("= ?");
+        problemView = (TextView) findViewById(R.id.gamequestion);
+        problemView.setText(game.getAnswer());
 
-        ((Button) findViewById(R.id.Button0)).setOnClickListener(this);
-        ((Button) findViewById(R.id.Button1)).setOnClickListener(this);
-        ((Button) findViewById(R.id.Button2)).setOnClickListener(this);
-        ((Button) findViewById(R.id.Button3)).setOnClickListener(this);
-        ((Button) findViewById(R.id.Button4)).setOnClickListener(this);
-        ((Button) findViewById(R.id.Button5)).setOnClickListener(this);
-        ((Button) findViewById(R.id.Button6)).setOnClickListener(this);
-        ((Button) findViewById(R.id.Button7)).setOnClickListener(this);
-        ((Button) findViewById(R.id.Button8)).setOnClickListener(this);
-        ((Button) findViewById(R.id.Button9)).setOnClickListener(this);
-        ((Button) findViewById(R.id.Button_clear)).setOnClickListener(this);
-        ((Button) findViewById(R.id.Button_decimal)).setOnClickListener(this);
-        ((Button) findViewById(R.id.Button_minus)).setOnClickListener(this);
+        answerView = (EditText) findViewById(R.id.gameanswer);
+
+
+        Button gamebutton = (Button)findViewById(R.id.gamebutton);
+        gamebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(game.getAnswer().equals(answerView.getText().toString()))
+                {
+
+
+
+                        alarmActive = false;
+                        if (vibrator != null)
+                            vibrator.cancel();
+                        try {
+                            mediaPlayer.stop();
+                        } catch (IllegalStateException ise) {
+
+                        }
+                        try {
+                            mediaPlayer.release();
+                        } catch (Exception e) {
+
+                        }
+                        finish();
+
+
+                }
+            }
+        });
 
         TelephonyManager telephonyManager = (TelephonyManager) this
                 .getSystemService(Context.TELEPHONY_SERVICE);
@@ -191,7 +193,7 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
         }
         super.onDestroy();
     }
-
+/*
     @Override
     public void onClick(View v) {
         if (!alarmActive)
@@ -256,5 +258,5 @@ public class AlarmAlertActivity extends Activity implements OnClickListener {
         }
         return correct;
     }
-
+*/
 }

@@ -1,7 +1,9 @@
 package creativestudioaq.alarmapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,9 @@ import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 public class MainFragment extends android.support.v4.app.Fragment implements View.OnClickListener {
 
     private AnalogClockView mClockView;
+    SubActionButton button1;
+    SubActionButton button2;
+    SubActionButton button3;
 
     @Nullable
     @Override
@@ -37,15 +42,22 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
         // repeat many times:
         ImageView itemIcon1 = new ImageView(getActivity());
         itemIcon1.setImageResource(R.drawable.rabbit);
-        SubActionButton button1 = itemBuilder.setContentView(itemIcon1).build();
+        button1 = itemBuilder.setContentView(itemIcon1).build();
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),MakeAlarmActivity.class);
+                startActivity(intent);
+            }
+        });
 
         ImageView itemIcon2 = new ImageView(getActivity());
         itemIcon2.setImageResource(R.drawable.rabbit);
-        SubActionButton button2 = itemBuilder.setContentView(itemIcon2).build();
+        button2 = itemBuilder.setContentView(itemIcon2).build();
 
         ImageView itemIcon3 = new ImageView(getActivity());
         itemIcon3.setImageResource(R.drawable.rabbit);
-        SubActionButton button3 = itemBuilder.setContentView(itemIcon3).build();
+        button3 = itemBuilder.setContentView(itemIcon3).build();
 
         FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(getActivity())
                 .setStartAngle(225)
@@ -57,8 +69,12 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
                 .build();
 
 
+
+
+
         return view;
     }
+
 
     @Override
     public void onResume() {
@@ -70,6 +86,8 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
     public void onPause() {
         super.onPause();
         mClockView.stop();
+        Log.v("@@@???","???");
+
     }
 
 

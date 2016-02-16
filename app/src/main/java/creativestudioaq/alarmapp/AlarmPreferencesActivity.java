@@ -27,10 +27,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -40,9 +38,7 @@ import creativestudioaq.alarmapp.AlarmPreference.Key;
 
 public class AlarmPreferencesActivity extends BaseActivity {
 
-    ImageButton deleteButton;
-    TextView okButton;
-    TextView cancelButton;
+
     private Alarm alarm;
     private MediaPlayer mediaPlayer;
 

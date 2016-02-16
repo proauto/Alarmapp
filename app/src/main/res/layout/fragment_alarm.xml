@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,14 +8,17 @@
     <ListView
         android:id="@+id/alarmlist"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:longClickable="true" >
+        android:layout_height="match_parent"
+        android:longClickable="true"
+        android:layout_above="@+id/plusbutton">
     </ListView>
 
     <Button
+        android:text="알람추가"
         android:id="@+id/plusbutton"
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"/>
 
 
-</LinearLayout>
+</RelativeLayout>

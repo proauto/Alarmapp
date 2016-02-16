@@ -37,7 +37,23 @@
         <activity android:name=".NameActivity"/>
         <activity android:name=".VersionActivity"/>
         <activity android:name=".WhoMakeActivity"/>
-        <activity android:name=".AlarmPreferencesActivity"/>
+        <activity android:name=".AlarmAlertActivity"/>
+        <activity android:name=".AlarmPreferencesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+            </activity>
+        <service android:name=".AlarmService"
+            android:process=".serviceProcess"
+            />
+        <receiver android:name=".AlarmAlertBroadcastReciever"/>
+
+        <receiver android:name=".AlarmServiceBroadcastReciever">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+            </receiver>
+
     </application>
 
 </manifest>

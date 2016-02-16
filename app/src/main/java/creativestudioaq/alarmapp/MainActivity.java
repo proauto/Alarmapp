@@ -1,6 +1,5 @@
 package creativestudioaq.alarmapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -77,11 +76,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             backpress.onBackPressed();
         }
-    }
-
-    public void callMathAlarmScheduleService() {
-        Intent mathAlarmServiceIntent = new Intent(this, AlarmServiceBroadcastReciever.class);
-       sendBroadcast(mathAlarmServiceIntent, null);
     }
 
 }
