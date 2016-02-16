@@ -44,6 +44,7 @@ public class AlarmFragment extends android.support.v4.app.Fragment {
         AlarmlistAdapter adapter = new AlarmlistAdapter(getActivity(), R.layout.alarmlist_sub, _lists);
         alarmlist.setAdapter(adapter);
 
+
         alarmplus.setText("알람추가");
         alarmplus.setOnClickListener(new View.OnClickListener() {
             @Override

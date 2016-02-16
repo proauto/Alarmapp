@@ -149,37 +149,5 @@ public class RepeatNumberActivity extends Activity implements View.OnClickListen
         repeatlist.add(s);
 
     }
-/*
 
-    private class RepeatListViewItemClickListener implements AdapterView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
-
-
-                int i = 0;
-                String content = "";
-                Repeatlist s = new Repeatlist(content, false);
-
-
-                for (i = 0; i < 5; i++) {
-                    content = repeatlist.get(i).gettime();
-                    s = new Repeatlist(content, false);
-                    repeatlist.set(i, s);
-                    if (i == position) {
-                        s = new Repeatlist(content, true);
-                        repeatlist.set(i, s);
-                    }
-
-                }
-
-                adapter2.notifyDataSetChanged();
-
-
-
-        }
-
-    }
-    */
 }

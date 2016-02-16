@@ -7,17 +7,23 @@
     <TextView
         android:id="@+id/nametext"
         android:layout_width="match_parent"
-        android:layout_height="60dp" />
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/notring"
         android:layout_width="match_parent"
-        android:layout_height="60dp" />
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/whomake"
         android:layout_width="match_parent"
-        android:layout_height="60dp" />
+        android:layout_height="60dp"
+        android:gravity="center"
+        android:textSize="18sp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,27 +34,36 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp" />
 
         <Button
             android:id="@+id/kakao"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp" />
 
         <Button
             android:id="@+id/tweet"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true" />
+            android:layout_alignParentRight="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp" />
 
         <TextView
             android:id="@+id/version"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_alignParentBottom="true"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textSize="18sp" />
+
     </RelativeLayout>
 
 </LinearLayout>
