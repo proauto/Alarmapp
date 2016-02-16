@@ -24,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -33,9 +34,9 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.example.hosungkim.alicealarm.AlarmPreference.Key;
-
 import java.util.Calendar;
+
+import creativestudioaq.alarmapp.AlarmPreference.Key;
 
 public class AlarmPreferencesActivity extends BaseActivity {
 
@@ -52,8 +53,23 @@ public class AlarmPreferencesActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        //actionBar.setDisplayHomeAsUpEnabled(true);
         setContentView(R.layout.alarm_preferences);
+        Button buttonahahah = (Button)findViewById(R.id.buttonahahah);
+        buttonahahah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Database.init(getApplicationContext());
+                if (getMathAlarm().getId() < 1) {
+                    Database.create(getMathAlarm());
+                } else {
+                    Database.update(getMathAlarm());
+                }
+                callMathAlarmScheduleService();
+                Toast.makeText(AlarmPreferencesActivity.this, getMathAlarm().getTimeUntilNextAlarmMessage(), Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.containsKey("alarm")) {

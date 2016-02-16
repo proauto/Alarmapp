@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import java.lang.reflect.Field;
 
-public abstract class BaseActivity  extends ActionBarActivity implements android.view.View.OnClickListener{
+public abstract class BaseActivity extends ActionBarActivity implements android.view.View.OnClickListener{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -10,8 +10,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.hosungkim.alicealarm.Alarm.Difficulty;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -20,6 +18,8 @@ import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.List;
+
+import creativestudioaq.alarmapp.Alarm.Difficulty;
 
 
 public class Database extends SQLiteOpenHelper {

@@ -4,6 +4,7 @@ package creativestudioaq.alarmapp;
  * Created by HosungKim on 2016-02-13.
  */
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,14 +17,17 @@ import java.util.List;
 
 public class AlarmListAdapter3 extends BaseAdapter {
 
-    private AlarmActivity alarmActivity;
+    private static AlarmFragment _alarmFragment;
     private List<Alarm> alarms = new ArrayList<Alarm>();
+    private static Context m_ctx;
 
     public static final String ALARM_FIELDS[] = { Database.COLUMN_ALARM_ACTIVE,
             Database.COLUMN_ALARM_TIME, Database.COLUMN_ALARM_DAYS };
 
-    public AlarmListAdapter3(AlarmActivity alarmActivity) {
-        this.alarmActivity = alarmActivity;
+    public AlarmListAdapter3(AlarmFragment alarmFragment,Context ctx) {
+
+        _alarmFragment=alarmFragment;
+        m_ctx=ctx;
 
     }
 
@@ -45,7 +49,7 @@ public class AlarmListAdapter3 extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
         if (null == view)
-            view = LayoutInflater.from(alarmActivity).inflate(
+            view = LayoutInflater.from(m_ctx).inflate(
                     R.layout.alarm_list_element, null);
 
         Alarm alarm = (Alarm) getItem(position);
@@ -53,7 +57,7 @@ public class AlarmListAdapter3 extends BaseAdapter {
         CheckBox checkBox = (CheckBox) view.findViewById(R.id.checkBox_alarm_active);
         checkBox.setChecked(alarm.getAlarmActive());
         checkBox.setTag(position);
-        checkBox.setOnClickListener(alarmActivity);
+        checkBox.setOnClickListener(_alarmFragment);
 
         TextView alarmTimeView = (TextView) view
                 .findViewById(R.id.textView_alarm_time);

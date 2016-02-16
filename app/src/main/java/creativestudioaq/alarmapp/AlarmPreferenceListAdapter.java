@@ -17,8 +17,7 @@ import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
 import android.widget.TextView;
 
-import com.example.hosungkim.alicealarm.AlarmPreference.Type;
-
+import creativestudioaq.alarmapp.AlarmPreference.Type;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
