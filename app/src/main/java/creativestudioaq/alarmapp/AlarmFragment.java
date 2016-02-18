@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -42,7 +42,7 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
 
 
         ListView alarmlist = (ListView) view.findViewById(R.id.alarmlist);
-        Button plusbutton = (Button)view.findViewById(R.id.plusbutton);
+        LinearLayout plusbutton = (LinearLayout)view.findViewById(R.id.plusbutton);
         plusbutton.setOnClickListener(this);
 
 
@@ -148,8 +148,9 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
             }
         }else if(v.getId()==R.id.plusbutton){
 
-            Intent intent = new Intent(getActivity(),AlarmPreferencesActivity.class);
-            startActivity(intent);
+            //Intent intent = new Intent(getActivity(), AlarmPreferencesActivity.class);
+            //startActivity(intent);
+            showTimePickerDialog();
 
         }
 
@@ -172,7 +173,7 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
             public void onPositiveActionClicked(DialogFragment fragment) {
                 TimePickerDialog dialog = (TimePickerDialog) fragment.getDialog();
 
-                SimpleDateFormat dateFormat3 = new SimpleDateFormat("aa HH시 mm분", java.util.Locale.getDefault());
+                SimpleDateFormat dateFormat3 = new SimpleDateFormat("HH:mm:ss", java.util.Locale.getDefault());
                 Intent intent1 = new Intent(getActivity(), MakeAlarmActivity.class);
                 intent1.putExtra("time", dialog.getFormattedTime(dateFormat3));
                 getActivity().startActivity(intent1);

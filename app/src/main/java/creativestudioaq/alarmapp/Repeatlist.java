@@ -18,9 +18,18 @@ public class Repeatlist {
         return _check;
     }
 
+    public void setcheck(Boolean check){
+        _check = check;
+    }
+
 
     public Repeatlist(String time, Boolean check) {
         _time = time;
         _check = check;
+    }
+
+    public Repeatlist(String time){
+        _time = time;
+        _check = false;
     }
 }

@@ -12,7 +12,9 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AlarmListAdapter3 extends BaseAdapter {
@@ -50,7 +52,7 @@ public class AlarmListAdapter3 extends BaseAdapter {
     public View getView(int position, View view, ViewGroup viewGroup) {
         if (null == view)
             view = LayoutInflater.from(m_ctx).inflate(
-                    R.layout.alarm_list_element, null);
+                    R.layout.alarm_list_element_new, null);
 
         Alarm alarm = (Alarm) getItem(position);
 
@@ -61,12 +63,36 @@ public class AlarmListAdapter3 extends BaseAdapter {
 
         TextView alarmTimeView = (TextView) view
                 .findViewById(R.id.textView_alarm_time);
-        alarmTimeView.setText(alarm.getAlarmTimeString());
+
+
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("aa KK:mm", java.util.Locale.getDefault());
+        SimpleDateFormat dateFormat2 = new SimpleDateFormat("HH:mm", java.util.Locale.getDefault());
+
+        Date date = new Date();
+
+        try{
+            date = dateFormat2.parse(alarm.getAlarmTimeString());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        String time2 = dateFormat1.format(date);
+
+        alarmTimeView.setText(time2);
+
+        /*
+        final SpannableStringBuilder sps = new SpannableStringBuilder(time2);
+        sps.setSpan(new AbsoluteSizeSpan(50), 0, 2, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        alarmTimeView.append(sps);
+
+        */
 
 
         TextView alarmDaysView = (TextView) view
                 .findViewById(R.id.textView_alarm_days);
         alarmDaysView.setText(alarm.getRepeatDaysString());
+
+
 
 
         return view;
