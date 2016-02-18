@@ -1,6 +1,7 @@
 package creativestudioaq.alarmapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,11 +24,17 @@ public class RepeatNumberActivity extends Activity implements View.OnClickListen
     ListView minutelistview;
     ListView repeatlistview;
 
+    int minute, num;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_repeatnumber);
+
+        Intent intent = getIntent();
+        minute = intent.getIntExtra("minute", 0);
+        num = intent.getIntExtra("num", 0);
 
         Button cancelbutton = (Button) findViewById(R.id.cancelbutton);
         Button savebutton = (Button) findViewById(R.id.savebutton);
@@ -40,10 +47,8 @@ public class RepeatNumberActivity extends Activity implements View.OnClickListen
 
 
         //어댑터생성
-
         adapter1 = new MinutelistAdapter(this, R.layout.repeatlist_sub, minutelist);
         minutelistview.setAdapter(adapter1);
-
 
         adapter2 = new RepeatlistAdapter(this, R.layout.repeatlist_sub, repeatlist);
         repeatlistview.setAdapter(adapter2);
@@ -52,6 +57,8 @@ public class RepeatNumberActivity extends Activity implements View.OnClickListen
         repeatlistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                num = position;
 
                 int i = 0;
                 String content = "";
@@ -67,17 +74,17 @@ public class RepeatNumberActivity extends Activity implements View.OnClickListen
                         s = new Repeatlist(content, true);
                         repeatlist.set(i, s);
                     }
-
                 }
-
                 adapter2.notifyDataSetChanged();
-
 
             }
         });
+
         minutelistview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                minute = position;
 
                 int i = 0;
                 String content = "";
@@ -94,7 +101,6 @@ public class RepeatNumberActivity extends Activity implements View.OnClickListen
                         s = new Repeatlist(content, true);
                         minutelist.set(i, s);
                     }
-
                 }
 
                 adapter1.notifyDataSetChanged();
@@ -114,40 +120,44 @@ public class RepeatNumberActivity extends Activity implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.cancelbutton:
-                finish();
                 break;
             case R.id.savebutton:
-                finish();
+                Intent intent = new Intent();
+                intent.putExtra("minute", minute);
+                intent.putExtra("num", num);
+                setResult(RESULT_OK, intent);
                 break;
         }
+        finish();
     }
 
     private void makeListContent() {
 
         //minutelist 채우기
-        Repeatlist s = new Repeatlist("3분", true);
+        Repeatlist s = new Repeatlist("3분");
         minutelist.add(s);
-        s = new Repeatlist("5분", false);
+        s = new Repeatlist("5분");
         minutelist.add(s);
-        s = new Repeatlist("10분", false);
+        s = new Repeatlist("10분");
         minutelist.add(s);
-        s = new Repeatlist("15분", false);
+        s = new Repeatlist("15분");
         minutelist.add(s);
-        s = new Repeatlist("30분", false);
+        s = new Repeatlist("30분");
         minutelist.add(s);
+        minutelist.get(minute).setcheck(true);
 
         //repeatlist 채우기
-        s = new Repeatlist("1회", true);
+        s = new Repeatlist("1회");
         repeatlist.add(s);
-        s = new Repeatlist("2회", false);
+        s = new Repeatlist("2회");
         repeatlist.add(s);
-        s = new Repeatlist("3회", false);
+        s = new Repeatlist("3회");
         repeatlist.add(s);
-        s = new Repeatlist("5회", false);
+        s = new Repeatlist("5회");
         repeatlist.add(s);
-        s = new Repeatlist("10회", false);
+        s = new Repeatlist("10회");
         repeatlist.add(s);
-
+        repeatlist.get(num).setcheck(true);
     }
 
 }

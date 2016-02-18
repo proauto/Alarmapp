@@ -17,10 +17,11 @@ import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
 import android.widget.TextView;
 
-import creativestudioaq.alarmapp.AlarmPreference.Type;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import creativestudioaq.alarmapp.AlarmPreference.Type;
 
 public class AlarmPreferenceListAdapter extends BaseAdapter implements Serializable {
 
@@ -36,14 +37,10 @@ public class AlarmPreferenceListAdapter extends BaseAdapter implements Serializa
     public AlarmPreferenceListAdapter(Context context, Alarm alarm) {
         setContext(context);
 
-
-
         Log.d("PreferenceListAdapter", "Loading Ringtones...");
 
         RingtoneManager ringtoneMgr = new RingtoneManager(getContext());
-
         ringtoneMgr.setType(RingtoneManager.TYPE_ALARM);
-
         Cursor alarmsCursor = ringtoneMgr.getCursor();
 
         alarmTones = new String[alarmsCursor.getCount()+1];

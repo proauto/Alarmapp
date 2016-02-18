@@ -19,8 +19,6 @@ import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.List;
 
-import creativestudioaq.alarmapp.Alarm.Difficulty;
-
 
 public class Database extends SQLiteOpenHelper {
     static Database instance = null;
@@ -34,10 +32,17 @@ public class Database extends SQLiteOpenHelper {
     public static final String COLUMN_ALARM_ACTIVE = "alarm_active";
     public static final String COLUMN_ALARM_TIME = "alarm_time";
     public static final String COLUMN_ALARM_DAYS = "alarm_days";
-    public static final String COLUMN_ALARM_DIFFICULTY = "alarm_difficulty";
     public static final String COLUMN_ALARM_TONE = "alarm_tone";
+    public static final String COLUMN_ALARM_VOLUME = "alarm_volume";
     public static final String COLUMN_ALARM_VIBRATE = "alarm_vibrate";
-    public static final String COLUMN_ALARM_NAME = "alarm_name";
+    public static final String COLUMN_ALARM_SIMPLE = "alarm_simple";
+    public static final String COLUMN_ALARM_FEELING_OK = "alarm_feeling_ok";
+    public static final String COLUMN_ALARM_RABBIT_FEELING = "alarm_rabbit_feeling";
+    public static final String COLUMN_ALARM_MY_FEELING = "alarm_feeling";
+    public static final String COLUMN_ALARM_REPEAT_USE = "alarm_repeat_use";
+    public static final String COLUMN_ALARM_REPEAT_MINUTE = "alarm_repeat_minute";
+    public static final String COLUMN_ALARM_REPEAT_NUM = "alarm_repeat_num";
+
 
     public static void init(Context context) {
         if (null == instance) {
@@ -77,10 +82,18 @@ public class Database extends SQLiteOpenHelper {
         } catch (Exception e) {
         }
 
-        cv.put(COLUMN_ALARM_DIFFICULTY, alarm.getDifficulty().ordinal());
+        //  cv.put(COLUMN_ALARM_DIFFICULTY, alarm.getDifficulty().ordinal()); 
         cv.put(COLUMN_ALARM_TONE, alarm.getAlarmTonePath());
+        cv.put(COLUMN_ALARM_VOLUME, alarm.getVolume());
         cv.put(COLUMN_ALARM_VIBRATE, alarm.getVibrate());
-        cv.put(COLUMN_ALARM_NAME, alarm.getAlarmName());
+        //   cv.put(COLUMN_ALARM_NAME, alarm.getAlarmName()); 
+        cv.put(COLUMN_ALARM_SIMPLE, alarm.getSimple());
+        cv.put(COLUMN_ALARM_FEELING_OK, alarm.getFeelingOk());
+        cv.put(COLUMN_ALARM_RABBIT_FEELING, alarm.getRabbitFeeling());
+        cv.put(COLUMN_ALARM_MY_FEELING, alarm.getMyFeeling());
+        cv.put(COLUMN_ALARM_REPEAT_USE, alarm.getRepeatUse());
+        cv.put(COLUMN_ALARM_REPEAT_MINUTE, alarm.getRepeatMinute());
+        cv.put(COLUMN_ALARM_REPEAT_NUM, alarm.getRepeatNum());
 
         return getDatabase().insert(ALARM_TABLE, null, cv);
     }
@@ -102,10 +115,19 @@ public class Database extends SQLiteOpenHelper {
         } catch (Exception e) {
         }
 
-        cv.put(COLUMN_ALARM_DIFFICULTY, alarm.getDifficulty().ordinal());
+        //  cv.put(COLUMN_ALARM_DIFFICULTY, alarm.getDifficulty().ordinal()); 
         cv.put(COLUMN_ALARM_TONE, alarm.getAlarmTonePath());
+        cv.put(COLUMN_ALARM_VOLUME, alarm.getVolume());
         cv.put(COLUMN_ALARM_VIBRATE, alarm.getVibrate());
-        cv.put(COLUMN_ALARM_NAME, alarm.getAlarmName());
+        //   cv.put(COLUMN_ALARM_NAME, alarm.getAlarmName()); 
+        cv.put(COLUMN_ALARM_SIMPLE, alarm.getSimple());
+        cv.put(COLUMN_ALARM_FEELING_OK, alarm.getFeelingOk());
+        cv.put(COLUMN_ALARM_RABBIT_FEELING, alarm.getRabbitFeeling());
+        cv.put(COLUMN_ALARM_MY_FEELING, alarm.getMyFeeling());
+        cv.put(COLUMN_ALARM_REPEAT_USE, alarm.getRepeatUse());
+        cv.put(COLUMN_ALARM_REPEAT_MINUTE, alarm.getRepeatMinute());
+        cv.put(COLUMN_ALARM_REPEAT_NUM, alarm.getRepeatNum());
+
 
         return getDatabase().update(ALARM_TABLE, cv, "_id=" + alarm.getId(), null);
     }
@@ -129,10 +151,16 @@ public class Database extends SQLiteOpenHelper {
                 COLUMN_ALARM_ACTIVE,
                 COLUMN_ALARM_TIME,
                 COLUMN_ALARM_DAYS,
-                COLUMN_ALARM_DIFFICULTY,
                 COLUMN_ALARM_TONE,
+                COLUMN_ALARM_VOLUME,
                 COLUMN_ALARM_VIBRATE,
-                COLUMN_ALARM_NAME
+                COLUMN_ALARM_SIMPLE,
+                COLUMN_ALARM_FEELING_OK,
+                COLUMN_ALARM_RABBIT_FEELING,
+                COLUMN_ALARM_MY_FEELING,
+                COLUMN_ALARM_REPEAT_USE,
+                COLUMN_ALARM_REPEAT_MINUTE,
+                COLUMN_ALARM_REPEAT_NUM
         };
         Cursor c = getDatabase().query(ALARM_TABLE, columns, COLUMN_ALARM_ID + "=" + id, null, null, null,
                 null);
@@ -163,10 +191,21 @@ public class Database extends SQLiteOpenHelper {
                 e.printStackTrace();
             }
 
-            alarm.setDifficulty(Difficulty.values()[c.getInt(5)]);
-            alarm.setAlarmTonePath(c.getString(6));
-            alarm.setVibrate(c.getInt(7) == 1);
-            alarm.setAlarmName(c.getString(8));
+            // alarm.setDifficulty(Difficulty.values()[cursor.getInt(4)]);
+            alarm.setAlarmTonePath(c.getString(4));
+            alarm.setVolume(c.getFloat(5));
+            alarm.setVibrate(c.getInt(6) == 1);
+            //alarm.setAlarmName(cursor.getString(8));
+
+
+            alarm.setSimple(c.getInt(7) == 1);
+            alarm.setFeelingOk(c.getInt(8) == 1);
+            alarm.setRabbitFeeling(c.getString(9));
+            alarm.setMyFeeling(c.getString(10));
+            alarm.setRepeatUse(c.getInt(11) == 1);
+            alarm.setRepeatMinute(c.getInt(12));
+            alarm.setRepeatNum(c.getInt(13));
+
         }
         c.close();
         return alarm;
@@ -179,10 +218,16 @@ public class Database extends SQLiteOpenHelper {
                 COLUMN_ALARM_ACTIVE,
                 COLUMN_ALARM_TIME,
                 COLUMN_ALARM_DAYS,
-                COLUMN_ALARM_DIFFICULTY,
                 COLUMN_ALARM_TONE,
+                COLUMN_ALARM_VOLUME,
                 COLUMN_ALARM_VIBRATE,
-                COLUMN_ALARM_NAME
+                COLUMN_ALARM_SIMPLE,
+                COLUMN_ALARM_FEELING_OK,
+                COLUMN_ALARM_RABBIT_FEELING,
+                COLUMN_ALARM_MY_FEELING,
+                COLUMN_ALARM_REPEAT_USE,
+                COLUMN_ALARM_REPEAT_MINUTE,
+                COLUMN_ALARM_REPEAT_NUM
         };
         return getDatabase().query(ALARM_TABLE, columns, null, null, null, null,
                 null);
@@ -200,10 +245,16 @@ public class Database extends SQLiteOpenHelper {
                 + COLUMN_ALARM_ACTIVE + " INTEGER NOT NULL, "
                 + COLUMN_ALARM_TIME + " TEXT NOT NULL, "
                 + COLUMN_ALARM_DAYS + " BLOB NOT NULL, "
-                + COLUMN_ALARM_DIFFICULTY + " INTEGER NOT NULL, "
                 + COLUMN_ALARM_TONE + " TEXT NOT NULL, "
+                + COLUMN_ALARM_VOLUME + " REAL NOT NULL, "
                 + COLUMN_ALARM_VIBRATE + " INTEGER NOT NULL, "
-                + COLUMN_ALARM_NAME + " TEXT NOT NULL)");
+                + COLUMN_ALARM_SIMPLE + " INTEGER NOT NULL, "
+                + COLUMN_ALARM_FEELING_OK + " INTEGER NOT NULL, "
+                + COLUMN_ALARM_RABBIT_FEELING + " TEXT NOT NULL, "
+                + COLUMN_ALARM_MY_FEELING + " TEXT NOT NULL, "
+                + COLUMN_ALARM_REPEAT_USE + " INTEGER NOT NULL, "
+                + COLUMN_ALARM_REPEAT_MINUTE + " INTEGER NOT NULL,"
+                + COLUMN_ALARM_REPEAT_NUM + " INTEGER NOT NULL )");
     }
 
     @Override
@@ -218,7 +269,6 @@ public class Database extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
 
             do {
-
 
                 Alarm alarm = new Alarm();
                 alarm.setId(cursor.getInt(0));
@@ -245,10 +295,22 @@ public class Database extends SQLiteOpenHelper {
                     e.printStackTrace();
                 }
 
-                alarm.setDifficulty(Difficulty.values()[cursor.getInt(4)]);
-                alarm.setAlarmTonePath(cursor.getString(5));
+               // alarm.setDifficulty(Difficulty.values()[cursor.getInt(4)]);
+                alarm.setAlarmTonePath(cursor.getString(4));
+                alarm.setVolume(cursor.getFloat(5));
                 alarm.setVibrate(cursor.getInt(6) == 1);
-                alarm.setAlarmName(cursor.getString(7));
+                //alarm.setAlarmName(cursor.getString(8));
+
+
+                alarm.setSimple(cursor.getInt(7) == 1);
+                alarm.setFeelingOk(cursor.getInt(8) == 1);
+                alarm.setRabbitFeeling(cursor.getString(9));
+                alarm.setMyFeeling(cursor.getString(10));
+                alarm.setRepeatUse(cursor.getInt(11) == 1);
+                alarm.setRepeatMinute(cursor.getInt(12));
+                alarm.setRepeatNum(cursor.getInt(13));
+
+
 
                 alarms.add(alarm);
 

@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SplashActivity"
-            android:theme = "@style/SplashTheme">
+            android:theme = "@style/SplashTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,33 +27,42 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            >
+            android:screenOrientation="portrait">
 
         </activity>
 
-        <activity android:name=".MakeAlarmActivity"/>
-        <activity android:name=".AlarmSoundActivity"/>
-        <activity android:name=".FeelTalkActivity"/>
-        <activity android:name=".RepeatNumberActivity"/>
-        <activity android:name=".NameActivity"/>
-        <activity android:name=".VersionActivity"/>
-        <activity android:name=".WhoMakeActivity"/>
-        <activity android:name=".AlarmAlertActivity"/>
-        <activity android:name=".AlarmPreferencesActivity">
+        <activity android:name=".MakeAlarmActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".AlarmSoundActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".FeelTalkActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".RepeatNumberActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".NameActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".VersionActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".WhoMakeActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".AlarmAlertActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name=".AlarmPreferencesActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
             </activity>
-        <service android:name=".AlarmService"
-            android:process=".serviceProcess"
-            />
-        <receiver android:name=".AlarmAlertBroadcastReciever"/>
 
-        <receiver android:name=".AlarmServiceBroadcastReciever">
+        <service
+            android:process=".serviceProcess"
+            android:name=".AlarmService"
+            android:icon="@drawable/ic_launcher"
+            android:label="AliceAlarm"
+            >
+        </service>
+        <receiver android:name=".AlarmServiceBroadcastReciever" >
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
-            </receiver>
+        </receiver>
+
+
+        <receiver android:name=".AlarmAlertBroadcastReciever" >
+        </receiver>
 
     </application>
 

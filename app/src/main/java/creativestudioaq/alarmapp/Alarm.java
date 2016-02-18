@@ -54,19 +54,19 @@ public class Alarm implements Serializable {
         public String toString() {
             switch(this.ordinal()){
                 case 0:
-                    return "Sunday";
+                    return "일";
                 case 1:
-                    return "Monday";
+                    return "월";
                 case 2:
-                    return "Tuesday";
+                    return "화";
                 case 3:
-                    return "Wednesday";
+                    return "수";
                 case 4:
-                    return "Thursday";
+                    return "목";
                 case 5:
-                    return "Friday";
+                    return "금";
                 case 6:
-                    return "Saturday";
+                    return "토";
             }
             return super.toString();
         }
@@ -78,9 +78,17 @@ public class Alarm implements Serializable {
     private Calendar alarmTime = Calendar.getInstance();
     private Day[] days = {Day.MONDAY, Day.TUESDAY, Day.WEDNESDAY, Day.THURSDAY, Day.FRIDAY, Day.SATURDAY, Day.SUNDAY};
     private String alarmTonePath = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM).toString();
-    private Boolean vibrate = true;
+    private Boolean vibrate = false;
     private String alarmName = "AliceAlarm";
     private Difficulty difficulty = Difficulty.EASY;
+    private Boolean simple = false;
+    private Boolean feelingOk = false;
+    private String rabbitFeeling = "";
+    private String myFeeling = "";
+    private float volume = 50f;
+    private Boolean repeatUse = false;
+    private int repeatMinute = 3;
+    private int repeatNum = 1;
 
     public Alarm() {
 
@@ -223,6 +231,46 @@ public class Alarm implements Serializable {
         this.alarmName = alarmName;
     }
 
+    public Boolean getSimple() {
+        return simple;
+    }
+
+    public void setSimple(Boolean simple) {
+        this.simple = simple;
+    }
+
+    public Boolean getFeelingOk() {
+        return feelingOk;
+    }
+
+    public String getRabbitFeeling() {
+        return rabbitFeeling;
+    }
+
+    public void setRabbitFeeling(String rabbitFeeling) {
+        this.rabbitFeeling = rabbitFeeling;
+    }
+
+    public void setFeelingOk(Boolean feelingOk) {
+        this.feelingOk = feelingOk;
+    }
+
+    public String getMyFeeling() {
+        return myFeeling;
+    }
+
+    public void setMyFeeling(String myFeeling) {
+        this.myFeeling = myFeeling;
+    }
+
+    public float getVolume() {
+        return volume;
+    }
+
+    public void setVolume(float volume) {
+        this.volume = volume;
+    }
+
     public Difficulty getDifficulty() {
         return difficulty;
     }
@@ -239,18 +287,46 @@ public class Alarm implements Serializable {
         this.id = id;
     }
 
+    public Boolean getRepeatUse() {
+        return repeatUse;
+    }
+
+    public void setRepeatUse(Boolean repeatUse) {
+        this.repeatUse = repeatUse;
+    }
+
+    public int getRepeatMinute() {
+        return repeatMinute;
+    }
+
+    public void setRepeatMinute(int repeatMinute) {
+        this.repeatMinute = repeatMinute;
+    }
+
+    public int getRepeatNum() {
+        return repeatNum;
+    }
+
+    public void setRepeatNum(int repeatNum) {
+        this.repeatNum = repeatNum;
+    }
+
     public String getRepeatDaysString() {
+
+
         StringBuilder daysStringBuilder = new StringBuilder();
-        if(getDays().length == Day.values().length){
-            daysStringBuilder.append("Every Day");
-        }else{
+
+
+       // if(getDays().length == Day.values().length){
+       //     daysStringBuilder.append("Every Day");
+       // }else{
             Arrays.sort(getDays(), new Comparator<Day>() {
                 @Override
                 public int compare(Day lhs, Day rhs) {
-
                     return lhs.ordinal() - rhs.ordinal();
                 }
             });
+
             for(Day d : getDays()){
                 switch(d){
                     case TUESDAY:
@@ -258,13 +334,14 @@ public class Alarm implements Serializable {
 //					daysStringBuilder.append(d.toString().substring(0, 4));
 //					break;
                     default:
-                        daysStringBuilder.append(d.toString().substring(0, 3));
+                        // daysStringBuilder.append(d.toString().substring(0, 3));
+                        daysStringBuilder.append(d.toString());
                         break;
                 }
-                daysStringBuilder.append(',');
+                daysStringBuilder.append(' ');
             }
             daysStringBuilder.setLength(daysStringBuilder.length()-1);
-        }
+       // }
 
         return daysStringBuilder.toString();
     }
