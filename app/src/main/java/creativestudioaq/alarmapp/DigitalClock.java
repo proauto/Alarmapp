@@ -11,7 +11,10 @@ import android.database.ContentObserver;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.provider.Settings;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.text.format.DateFormat;
+import android.text.style.AbsoluteSizeSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
@@ -75,7 +78,11 @@ public class DigitalClock extends TextView {
             public void run() {
                 if (mTickerStopped) return;
                 mCalendar.setTimeInMillis(System.currentTimeMillis());
-                setText(DateFormat.format(mFormat, mCalendar));
+
+                final SpannableStringBuilder sps = new SpannableStringBuilder(DateFormat.format(mFormat, mCalendar));
+                sps.setSpan(new AbsoluteSizeSpan(50), 0, 2, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+                setText(sps);
+
                 invalidate();
                 long now = SystemClock.uptimeMillis();
                 long next = now + (1000 - now % 1000);

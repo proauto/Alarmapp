@@ -327,20 +327,24 @@ public class Alarm implements Serializable {
                 }
             });
 
+
+
             for(Day d : getDays()){
-                switch(d){
-                    case TUESDAY:
-                    case THURSDAY:
-//					daysStringBuilder.append(d.toString().substring(0, 4));
-//					break;
-                    default:
-                        // daysStringBuilder.append(d.toString().substring(0, 3));
+//                switch(d){
+//                    case TUESDAY:
+//                    case THURSDAY:
+//					    daysStringBuilder.append(d.toString().substring(0, 4));
+//					    break;
+//                    default:
+//                      daysStringBuilder.append(d.toString().substring(0, 3));
                         daysStringBuilder.append(d.toString());
-                        break;
-                }
+//                        break;
+//                }
                 daysStringBuilder.append(' ');
             }
-            daysStringBuilder.setLength(daysStringBuilder.length()-1);
+
+
+            daysStringBuilder.setLength(daysStringBuilder.length());
        // }
 
         return daysStringBuilder.toString();

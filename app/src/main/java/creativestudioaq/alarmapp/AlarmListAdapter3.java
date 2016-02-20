@@ -5,6 +5,9 @@ package creativestudioaq.alarmapp;
  */
 
 import android.content.Context;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.AbsoluteSizeSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class AlarmListAdapter3 extends BaseAdapter {
 
@@ -63,10 +67,12 @@ public class AlarmListAdapter3 extends BaseAdapter {
 
         TextView alarmTimeView = (TextView) view
                 .findViewById(R.id.textView_alarm_time);
+        TextView alarmTimeAP = (TextView)view.findViewById(R.id.textView_time_ap);
 
 
-        SimpleDateFormat dateFormat1 = new SimpleDateFormat("aa KK:mm", java.util.Locale.getDefault());
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("KK:mm", java.util.Locale.getDefault());
         SimpleDateFormat dateFormat2 = new SimpleDateFormat("HH:mm", java.util.Locale.getDefault());
+        SimpleDateFormat dateFormat3 = new SimpleDateFormat("aa", Locale.US);
 
         Date date = new Date();
 
@@ -77,19 +83,20 @@ public class AlarmListAdapter3 extends BaseAdapter {
         }
 
         String time2 = dateFormat1.format(date);
+        String time3 = dateFormat3.format(date);
 
         alarmTimeView.setText(time2);
+        alarmTimeAP.setText(time3);
 
         /*
         final SpannableStringBuilder sps = new SpannableStringBuilder(time2);
-        sps.setSpan(new AbsoluteSizeSpan(50), 0, 2, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        alarmTimeView.append(sps);
-
+        sps.setSpan(new AbsoluteSizeSpan(30), 0, 2, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        alarmTimeView.setText(sps);
         */
+        
 
 
-        TextView alarmDaysView = (TextView) view
-                .findViewById(R.id.textView_alarm_days);
+        TextView alarmDaysView = (TextView) view.findViewById(R.id.textView_alarm_days);
         alarmDaysView.setText(alarm.getRepeatDaysString());
 
 

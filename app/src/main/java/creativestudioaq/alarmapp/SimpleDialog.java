@@ -1,0 +1,70 @@
+package creativestudioaq.alarmapp;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
+/**
+ * Created by MIN on 2016. 2. 20..
+ */
+public class SimpleDialog extends Activity {
+
+    private TextView tvHour, tvMinute;
+    private int hour, minute;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.dialog_simple);
+
+        this.setFinishOnTouchOutside(false);
+
+        tvHour = (TextView)findViewById(R.id.simple_tv_hour);
+        tvMinute = (TextView)findViewById(R.id.simple_tv_minute);
+
+        hour = minute = 0;
+
+        displayTime(0);
+    }
+
+    public void displayTime(int plus){
+
+        minute += plus;
+        hour += minute/60;
+        minute %= 60;
+
+        tvHour.setText(String.format("%d", hour));
+        tvMinute.setText(String.format("%02d", minute));
+    }
+
+    public void simpleTimeSelect(View v){
+        int plus = 0;
+        switch (v.getId()){
+            case R.id.simple_button_plus_1:
+                plus = 1;
+                break;
+            case R.id.simple_button_plus_5:
+                plus = 5;
+                break;
+            case R.id.simple_button_plus_10:
+                plus = 10;
+                break;
+            case R.id.simple_button_plus_60:
+                plus = 60;
+                break;
+        }
+
+        displayTime(plus);
+    }
+
+    public void DialogFinishClick(View v){
+        switch (v.getId()){
+            case R.id.simple_button_ok:
+                break;
+            case R.id.simple_button_cancel:
+                break;
+        }
+        finish();
+    }
+}

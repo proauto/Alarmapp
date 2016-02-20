@@ -22,6 +22,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -48,8 +50,8 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
     private TextView alarmsound, firsttalk, secondtalk, repeatnumber, repeatminute;
 
     private final int REPEAT_REQUEST_CODE = 100;
-    private int[] numlist = {1, 2, 3, 5, 10};
-    private int[] minuitelist = {3, 5, 10, 15, 30};
+    private final int[] numlist = {1, 2, 3, 5, 10};
+    private final int[] minuitelist = {3, 5, 10, 15, 30};
 
 
     @Override
@@ -83,7 +85,7 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
             time1 = alarm.getAlarmTimeString();
         }
 
-        SimpleDateFormat dateFormat1 = new SimpleDateFormat("aa KK:mm", java.util.Locale.getDefault());
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("aa KK시 mm분", java.util.Locale.getDefault());
         SimpleDateFormat dateFormat2 = new SimpleDateFormat("HH:mm", java.util.Locale.getDefault());
 
         Date date = new Date();
@@ -116,12 +118,18 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         Switch repeatSwitch = (Switch) findViewById(R.id.repeatbutton);
         Switch feelingSwitch = (Switch) findViewById(R.id.feelbutton);
 
+        CheckBox[] dayCheckArray = new CheckBox[7];
+        dayCheckArray[0] = (CheckBox) findViewById(R.id.sunday);
+        dayCheckArray[1] = (CheckBox) findViewById(R.id.monday);
+        dayCheckArray[2] = (CheckBox) findViewById(R.id.tuesday);
+        dayCheckArray[3] = (CheckBox) findViewById(R.id.wednesday);
+        dayCheckArray[4] = (CheckBox) findViewById(R.id.thursday);
+        dayCheckArray[5] = (CheckBox) findViewById(R.id.friday);
+        dayCheckArray[6] = (CheckBox) findViewById(R.id.saturday);
 
         cancelbutton.setText("< 시간 설정");
         savebutton.setText("저장");
 
-        //selecttime.setText(time2);
-        //selectday.setText("월 목");
 
         alarmsound.setText(RingtoneManager.getRingtone(this, Uri.parse(alarm.getAlarmTonePath())).getTitle(this));
 
@@ -138,6 +146,10 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         repeatminute.setText(alarm.getRepeatMinute() + "분");
         repeatnumber.setText(alarm.getRepeatNum() + "회");
 
+        for (Alarm.Day day : alarm.getDays()) {
+            dayCheckArray[day.ordinal()].setChecked(true);
+        }
+
 
         cancelbutton.setOnClickListener(this);
         savebutton.setOnClickListener(this);
@@ -150,6 +162,10 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         vibrateSwitch.setOnCheckedChangeListener(switchCheckListener);
         repeatSwitch.setOnCheckedChangeListener(switchCheckListener);
         feelingSwitch.setOnCheckedChangeListener(switchCheckListener);
+
+        for (int i=0; i<7; i++) {
+            dayCheckArray[i].setOnCheckedChangeListener(checkedChangeListener);
+        }
     }
 
 
@@ -185,11 +201,16 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         }
     }
 
+    /*
     public void daySelect(View v){
         switch (v.getId()){
             case R.id.sunday:
-                //alarm.addDay(Alarm.Day.SUNDAY);
-                alarm.removeDay(Alarm.Day.SUNDAY);
+                if(v.isSelected()) {
+                    alarm.addDay(Alarm.Day.SUNDAY);
+                    Toast.makeText(this, "Sunday Select", Toast.LENGTH_SHORT).show();
+                }
+                else
+                    alarm.removeDay(Alarm.Day.SUNDAY);
                 break;
             case R.id.monday:
                 //alarm.addDay(Alarm.Day.MONDAY);
@@ -212,6 +233,7 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
                 break;
         }
     }
+    */
 
 
     public Alarm getMathAlarm() {
@@ -245,17 +267,23 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
 
     public void alarmSave(){
 
-        alarm.setVolume(volumeSlider.getValue());
-
-        Database.init(getApplicationContext());
-        if (getMathAlarm().getId() < 1) {
-            Database.create(getMathAlarm());
-        } else {
-            Database.update(getMathAlarm());
+        if(alarm.getDays().length < 1){
+            Toast.makeText(this, "요일을 선택해주세요.", Toast.LENGTH_SHORT).show();
         }
-        callMathAlarmScheduleService();
-        Toast.makeText(this, getMathAlarm().getTimeUntilNextAlarmMessage(), Toast.LENGTH_LONG).show();
-        finish();
+
+        else {
+            alarm.setVolume(volumeSlider.getValue());
+
+            Database.init(getApplicationContext());
+            if (getMathAlarm().getId() < 1) {
+                Database.create(getMathAlarm());
+            } else {
+                Database.update(getMathAlarm());
+            }
+            callMathAlarmScheduleService();
+            Toast.makeText(this, getMathAlarm().getTimeUntilNextAlarmMessage(), Toast.LENGTH_LONG).show();
+            finish();
+        }
     }
 
     protected void callMathAlarmScheduleService() {
@@ -281,6 +309,41 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
                     alarm.setRepeatUse(checked);
                     break;
             }
+        }
+    };
+
+    public CheckBox.OnCheckedChangeListener checkedChangeListener = new CheckBox.OnCheckedChangeListener(){
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            Alarm.Day day = Alarm.Day.SUNDAY;
+            switch (buttonView.getId()){
+                case R.id.sunday:
+                    day = Alarm.Day.SUNDAY;
+                    break;
+                case R.id.monday:
+                    day = Alarm.Day.MONDAY;
+                    break;
+                case R.id.tuesday:
+                    day = Alarm.Day.TUESDAY;
+                    break;
+                case R.id.wednesday:
+                    day = Alarm.Day.WEDNESDAY;
+                    break;
+                case R.id.thursday:
+                    day = Alarm.Day.THURSDAY;
+                    break;
+                case R.id.friday:
+                    day = Alarm.Day.FRIDAY;
+                    break;
+                case R.id.saturday:
+                    day = Alarm.Day.SATURDAY;
+                    break;
+            }
+
+            if(isChecked)
+                alarm.addDay(day);
+            else
+                alarm.removeDay(day);
         }
     };
 

@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="#222526">
 
     <creativestudioaq.alarmapp.DigitalClock
         android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="#FFFFFF"
         android:textSize="40sp"/>
 
 
@@ -19,8 +23,6 @@
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:background="#ffffff" >
-
-
 
         <creativestudioaq.alarmapp.PickerView
             android:id="@+id/minute_pv"
@@ -58,19 +60,67 @@
 
     -->
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/simple_tv_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="35sp"
+            android:textColor="#000000"
+            android:background="@drawable/whiterectangle"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:padding="10dp"
+            android:textSize="15sp"
+            android:text="시간"/>
+
+        <TextView
+            android:id="@+id/simple_tv_minute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="35sp"
+            android:textColor="#000000"
+            android:background="@drawable/whiterectangle"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:text="분"/>
+
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/simple_guide_sentence"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="30sp"
+        android:layout_margin="20dp"
+        android:textSize="25sp"
+        android:textColor="#FFFFFF"
         android:text="뒤에 알람이 울립니다"/>
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal">
+        android:gravity="center_horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="15dp">
 
         <Button
             android:id="@+id/simple_button_plus_1"
@@ -78,6 +128,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="simpleTimeSelect"
+            android:background="#222526"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
             android:text="+1"/>
 
         <Button
@@ -86,6 +139,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="simpleTimeSelect"
+            android:background="#222526"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
             android:text="+5"/>
 
         <Button
@@ -94,6 +150,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="simpleTimeSelect"
+            android:background="#222526"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
             android:text="+10"/>
 
         <Button
@@ -102,7 +161,49 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="simpleTimeSelect"
+            android:background="#222526"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"
             android:text="+60"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#CCCCCC"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center">
+
+        <Button
+            android:id="@+id/simple_button_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#222526"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:onClick="DialogFinishClick"
+            android:text="취소"/>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="#CCCCCC"/>
+
+        <Button
+            android:id="@+id/simple_button_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#222526"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:onClick="DialogFinishClick"
+            android:text="확인"/>
 
     </LinearLayout>
 

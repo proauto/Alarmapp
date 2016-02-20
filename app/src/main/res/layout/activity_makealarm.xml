@@ -147,75 +147,61 @@
             android:layout_height="50dp"
             android:layout_above="@+id/buttonslayout">
 
-            <Button
+            <CheckBox
                 android:id="@+id/sunday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
-                android:text="일"
-                android:onClick="daySelect"
-                android:background="@drawable/roundedbutton"/>
+                android:text="일"/>
 
-            <Button
+            <CheckBox
                 android:id="@+id/monday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
-                android:text="월"
-                android:onClick="daySelect"
-                android:background="@drawable/roundedbutton"/>
+                android:text="월"/>
 
-            <Button
+            <CheckBox
                 android:id="@+id/tuesday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
-                android:text="화"
-                android:onClick="daySelect"
-                android:background="@drawable/roundedbutton"/>
+                android:text="화"/>
 
-            <Button
+            <CheckBox
                 android:id="@+id/wednesday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
-                android:text="수"
-                android:onClick="daySelect"
-                android:background="@drawable/roundedbutton"/>
+                android:text="수"/>
 
-            <Button
+            <CheckBox
                 android:id="@+id/thursday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
-                android:text="목"
-                android:onClick="daySelect"
-                android:background="@drawable/roundedbutton"/>
+                android:text="목"/>
 
-            <Button
+            <CheckBox
                 android:id="@+id/friday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
-                android:text="금"
-                android:onClick="daySelect"
-                android:background="@drawable/roundedbutton"/>
+                android:text="금"/>
 
-            <Button
+            <CheckBox
                 android:id="@+id/saturday"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
-                android:text="토"
-                android:onClick="daySelect"
-                android:background="@drawable/roundedbutton"/>
+                android:text="토"/>
 
         </LinearLayout>
 

@@ -63,6 +63,13 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
         ImageView itemIcon2 = new ImageView(getActivity());
         itemIcon2.setImageResource(R.drawable.icon2);
         button2 = itemBuilder.setContentView(itemIcon2).build();
+        button2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SimpleDialog.class);
+                startActivity(intent);
+            }
+        });
 
         ImageView itemIcon3 = new ImageView(getActivity());
         itemIcon3.setImageResource(R.drawable.icon3);
