@@ -42,7 +42,8 @@
         android:longClickable="true"
         android:background="#54AFA6"
         android:layout_below="@id/ceiling"
-        android:layout_above="@+id/plusbutton">
+        android:layout_above="@+id/plusbutton"
+        android:divider="#00000000">
     </ListView>
 
     <LinearLayout
