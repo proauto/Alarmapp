@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animation-list
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item
+        android:drawable="@drawable/swing1"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/swing2"
+        android:duration="100" />
+    <item
+        android:drawable="@drawable/swing3"
+        android:duration="100" />
+    <item
+        android:drawable="@drawable/swing4"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/swing3"
+        android:duration="100" />
+    <item
+        android:drawable="@drawable/swing2"
+        android:duration="100" />
+    <item
+        android:drawable="@drawable/full_1"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/full_2"
+        android:duration="100" />
+    <item
+        android:drawable="@drawable/full_3"
+        android:duration="100" />
+    <item
+        android:drawable="@drawable/full_4"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/full_3"
+        android:duration="100" />
+    <item
+        android:drawable="@drawable/full_2"
+        android:duration="100" />
+    <item
+        android:drawable="@drawable/full_1"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/full_2_blink"
+        android:duration="100" />
+    <item
+        android:drawable="@drawable/full_3_blink"
+        android:duration="100" />
+    <item
+        android:drawable="@drawable/full_4"
+        android:duration="200" />
+    <item
+        android:drawable="@drawable/full_3_ear"
+        android:duration="230" />
+    <item
+        android:drawable="@drawable/full_2_blink"
+        android:duration="100" />
+    <item
+        android:drawable="@drawable/full_1"
+        android:duration="100" />
+    <item
+        android:drawable="@drawable/full_3_ear"
+        android:duration="230" />
+    <item
+        android:drawable="@drawable/full_4"
+        android:duration="100" />
+    <item
+        android:drawable="@drawable/full_3"
+        android:duration="100" />
+    <item
+        android:drawable="@drawable/full_3"
+        android:duration="100" />
+
+
+</animation-list>
+

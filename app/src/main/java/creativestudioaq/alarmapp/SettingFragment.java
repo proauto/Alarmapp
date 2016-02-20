@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -22,27 +21,21 @@ public class SettingFragment extends android.support.v4.app.Fragment implements 
         TextView nameText = (TextView) view.findViewById(R.id.nametext);
         TextView notring = (TextView) view.findViewById(R.id.notring);
         TextView whomake = (TextView) view.findViewById(R.id.whomake);
-        Button facebook = (Button) view.findViewById(R.id.facebook);
-        Button kakao = (Button) view.findViewById(R.id.kakao);
-        Button tweet = (Button) view.findViewById(R.id.tweet);
+        TextView share = (TextView) view.findViewById(R.id.share);
         TextView version = (TextView) view.findViewById(R.id.version);
 
         nameText.setText("이름");
         notring.setText("공휴일에 알람 울리지 않기");
         whomake.setText("만든 사람들");
         version.setText("버전정보");
-        facebook.setText("페북");
-        kakao.setText("카톡");
-        tweet.setText("트윗");
+        share.setText("공유");
+
 
         nameText.setOnClickListener(this);
         whomake.setOnClickListener(this);
         notring.setOnClickListener(this);
         version.setOnClickListener(this);
-        facebook.setOnClickListener(this);
-        kakao.setOnClickListener(this);
-        tweet.setOnClickListener(this);
-
+        share.setOnClickListener(this);
 
         return view;
     }
@@ -61,12 +54,16 @@ public class SettingFragment extends android.support.v4.app.Fragment implements 
                 Intent intent2 = new Intent(getActivity(), WhoMakeActivity.class);
                 startActivity(intent2);
                 break;
-            case R.id.facebook:
+            case R.id.share:
+                Intent msg = new Intent(Intent.ACTION_SEND);
+                msg.addCategory(Intent.CATEGORY_DEFAULT);
+                msg.putExtra(Intent.EXTRA_TEXT, "[앨리스] 몽환의 나라로 초대합니다.\n" +
+                        "https://play.google.com/store/apps/details?id=creativestudioaq.daily&hl=ko\n" +
+                        "FROM 시계토끼");
+                msg.setType("text/plain");
+                startActivity(Intent.createChooser(msg, "공유"));
                 break;
-            case R.id.kakao:
-                break;
-            case R.id.tweet:
-                break;
+
             case R.id.version:
                 Intent intent3 = new Intent(getActivity(), VersionActivity.class);
                 startActivity(intent3);
