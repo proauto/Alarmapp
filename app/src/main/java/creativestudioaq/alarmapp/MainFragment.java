@@ -1,6 +1,7 @@
 package creativestudioaq.alarmapp;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -22,6 +23,8 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
     SubActionButton button1;
     SubActionButton button2;
     SubActionButton button3;
+    ImageView rabbitbutton;
+
 
     @Nullable
     @Override
@@ -36,28 +39,35 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
         settingbutton.setOnClickListener(this);
         alarmbutton.setOnClickListener(this);
 
-        ImageView rabbitbutton = (ImageView) view.findViewById(R.id.rabbitbutton);
+        rabbitbutton = (ImageView) view.findViewById(R.id.rabbitbutton);
 
+        rabbitbutton.post(new Runnable() {
+            @Override
+            public void run() {
+                ((AnimationDrawable) rabbitbutton.getBackground()).start();
+            }
+        });
         SubActionButton.Builder itemBuilder = new SubActionButton.Builder(getActivity());
         // repeat many times:
         ImageView itemIcon1 = new ImageView(getActivity());
-        itemIcon1.setImageResource(R.drawable.rabbit);
+        itemIcon1.setImageResource(R.drawable.icon1);
         button1 = itemBuilder.setContentView(itemIcon1).build();
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),MakeAlarmActivity.class);
+                Intent intent = new Intent(getActivity(), MakeAlarmActivity.class);
                 startActivity(intent);
             }
         });
 
         ImageView itemIcon2 = new ImageView(getActivity());
-        itemIcon2.setImageResource(R.drawable.rabbit);
+        itemIcon2.setImageResource(R.drawable.icon2);
         button2 = itemBuilder.setContentView(itemIcon2).build();
 
         ImageView itemIcon3 = new ImageView(getActivity());
-        itemIcon3.setImageResource(R.drawable.rabbit);
+        itemIcon3.setImageResource(R.drawable.icon3);
         button3 = itemBuilder.setContentView(itemIcon3).build();
+
 
         FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(getActivity())
                 .setStartAngle(225)
@@ -67,10 +77,6 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
                 .addSubActionView(button3)
                 .attachTo(rabbitbutton)
                 .build();
-
-
-
-
 
         return view;
     }

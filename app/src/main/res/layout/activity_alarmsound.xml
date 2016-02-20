@@ -14,7 +14,8 @@
             android:layout_height="match_parent"
             android:layout_alignLeft="@+id/centerbar"
             android:layout_alignStart="@+id/centerbar"
-            android:gravity="center" />
+            android:gravity="center"
+            android:background="#6c758e"/>
 
         <Button
             android:id="@+id/savebutton"
