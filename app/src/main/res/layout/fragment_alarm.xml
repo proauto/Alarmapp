@@ -34,16 +34,16 @@
             android:background="@drawable/whitetransparentcircle"
             android:layout_gravity="center"/>-->
 
+         <!--
          <TextView
              android:layout_width="40dp"
              android:layout_height="40dp"
              android:layout_marginTop="10dp"
              android:layout_marginRight="3dp"
-             android:text="ON/OFF"
              android:textColor="#FFFFFF"
              android:textAppearance="?android:attr/textAppearanceSmall"
              android:textSize="12sp"
-             android:layout_gravity="center"/>
+             android:layout_gravity="center"/>-->
 
         </LinearLayout>
 
@@ -76,6 +76,5 @@
         android:text="알람 추가"/>
 
     </LinearLayout>
-
 
 </RelativeLayout>

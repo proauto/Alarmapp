@@ -70,19 +70,6 @@
             android:layout_height="1dp"
             android:background="#64FFFFFF" />
 
-        <TextView
-            android:id="@+id/version"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:textSize="22sp"
-            android:textColor="#FFFFFF"/>
-
-        <View
-            android:layout_width="15dp"
-            android:layout_height="1dp"
-            android:background="#64FFFFFF" />
 
     </LinearLayout>
 

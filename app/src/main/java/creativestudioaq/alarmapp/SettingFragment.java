@@ -30,20 +30,20 @@ public class SettingFragment extends android.support.v4.app.Fragment implements 
        // TextView notring = (TextView) view.findViewById(R.id.notring);
         TextView whomake = (TextView) view.findViewById(R.id.whomake);
         TextView share = (TextView) view.findViewById(R.id.share);
-        TextView version = (TextView) view.findViewById(R.id.version);
+        //TextView version = (TextView) view.findViewById(R.id.version);
         settinglayout = (LinearLayout) view.findViewById(R.id.settingbackground);
 
-        nameText.setText("User name");
+        nameText.setText("My Name");
        // notring.setText("공휴일에 알람 울리지 않기");
-        whomake.setText("Information");
-        version.setText("Version");
+        whomake.setText("Info");
+        //version.setText("Version");
         share.setText("Share");
 
 
         nameText.setOnClickListener(this);
         whomake.setOnClickListener(this);
        // notring.setOnClickListener(this);
-        version.setOnClickListener(this);
+       // version.setOnClickListener(this);
         share.setOnClickListener(this);
 
         setBackgroundColor();
@@ -75,10 +75,10 @@ public class SettingFragment extends android.support.v4.app.Fragment implements 
                 startActivity(Intent.createChooser(msg, "공유"));
                 break;
 
-            case R.id.version:
-                Intent intent3 = new Intent(getActivity(), VersionActivity.class);
-                startActivity(intent3);
-                break;
+//            case R.id.version:
+//                Intent intent3 = new Intent(getActivity(), VersionActivity.class);
+//                startActivity(intent3);
+//                break;
         }
     }
 

@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
-            android:text="User Name"/>
+            android:text="My Name"/>
 
         <com.rey.material.widget.EditText
             android:layout_width="100dp"

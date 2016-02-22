@@ -126,7 +126,7 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         dayCheckArray[5] = (CheckBox) findViewById(R.id.friday);
         dayCheckArray[6] = (CheckBox) findViewById(R.id.saturday);
 
-        cancelbutton.setText("< 시간 설정");
+        cancelbutton.setText("< 취소");
         savebutton.setText("저장");
 
 
