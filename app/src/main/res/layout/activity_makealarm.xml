@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-
-
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -14,7 +11,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:background="#FFFFFF">
+            android:background="#FFFFFF"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
 
             <Button
                 android:id="@+id/cancelbutton"
@@ -22,8 +21,7 @@
                 android:layout_height="match_parent"
                 android:background="#FFFFFFFF"
                 android:gravity="center"
-                android:textColor="#000000"
-                android:layout_marginLeft="10dp"/>
+                android:textColor="#000000"/>
 
             <Button
                 android:id="@+id/savebutton"
@@ -33,15 +31,14 @@
                 android:layout_alignParentRight="true"
                 android:background="#FFFFFFFF"
                 android:gravity="center"
-                android:textColor="#000000"
-                android:layout_marginRight="10dp"/>
+                android:textColor="#000000"/>
 
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:background="#538daf"
+            android:background="#242425"
             android:orientation="vertical">
 
             <TextView
@@ -70,7 +67,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="#e6e6e6"
+            android:background="#58617B"
             android:padding="15dp">
 
             <TextView
@@ -78,8 +75,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:gravity="center"
-                android:text="교감"
+                android:text="교감 미션"
                 android:textSize="15sp"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold"/>
 
             <com.rey.material.widget.Switch
@@ -102,43 +100,46 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="70dp">
+                    android:layout_height="70dp"
+                    android:gravity="center">
 
                     <ImageView
                         android:layout_width="70dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/settingbutton" />
+                        android:src="@mipmap/rabbit" />
 
                     <TextView
                         android:id="@+id/firsttalk"
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
+                        android:layout_width="280dp"
+                        android:layout_height="50dp"
                         android:gravity="center"
-                        android:text="토끼의 말풍선을 채워주세요." />
+                        android:background="@mipmap/nonoline"
+                        android:textColor="#FFFFFF"/>
                 </LinearLayout>
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="70dp">
-
-                    <ImageView
-                        android:id="@+id/myphoto"
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/settingbutton" />
+                    android:layout_height="70dp"
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
                     <TextView
                         android:id="@+id/secondtalk"
-                        android:layout_width="match_parent"
-                        android:layout_height="70dp"
-                        android:layout_toLeftOf="@+id/myphoto"
-                        android:layout_toStartOf="@id/myphoto"
+                        android:layout_width="280dp"
+                        android:layout_height="50dp"
                         android:gravity="center"
-                        android:text="(유저네임)의 말풍선을 채워주세요." />
+                        android:background="@mipmap/nonoline2"
+                        android:textColor="#FFFFFF"/>
 
-                </RelativeLayout>
+                    <TextView
+                        android:id="@+id/myphoto"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:gravity="center"
+                        android:text="나"
+                        android:background="@drawable/whitefullcircle" />
+
+                </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
 
@@ -225,14 +226,24 @@
                 android:id="@+id/alarmsound"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:layout_toEndOf="@+id/alarmtext"
-                android:layout_toRightOf="@+id/alarmtext"
+                android:layout_toEndOf="@id/alarmtext"
+                android:layout_toRightOf="@id/alarmtext"
                 android:gravity="center"
                 android:paddingLeft="20dp"
                 android:paddingStart="20dp"
                 android:text="Good Morning"
                 android:textSize="12sp"
                 android:textColor="#8f8f8f"/>
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="17dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:src="@mipmap/musicset"/>
+
         </RelativeLayout>
 
         <com.rey.material.widget.Slider

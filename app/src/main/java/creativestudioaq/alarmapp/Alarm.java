@@ -82,7 +82,7 @@ public class Alarm implements Serializable {
     private String alarmName = "AliceAlarm";
     private Difficulty difficulty = Difficulty.EASY;
     private Boolean simple = false;
-    private Boolean feelingOk = false;
+    private Boolean feelingOk = true;
     private String rabbitFeeling = "";
     private String myFeeling = "";
     private float volume = 50f;

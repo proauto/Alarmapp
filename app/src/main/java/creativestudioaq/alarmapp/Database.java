@@ -304,6 +304,7 @@ public class Database extends SQLiteOpenHelper {
 
                 alarm.setSimple(cursor.getInt(7) == 1);
                 alarm.setFeelingOk(cursor.getInt(8) == 1);
+
                 alarm.setRabbitFeeling(cursor.getString(9));
                 alarm.setMyFeeling(cursor.getString(10));
                 alarm.setRepeatUse(cursor.getInt(11) == 1);

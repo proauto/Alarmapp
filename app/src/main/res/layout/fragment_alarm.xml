@@ -12,6 +12,7 @@
         android:layout_height="60dp"
         android:orientation="horizontal">
 
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,11 +26,24 @@
             android:layout_marginTop="15dp"
             android:gravity="center">
 
+
+            <!--
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="@drawable/whitetransparentcircle"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"/>-->
+
+         <!--
+         <TextView
+             android:layout_width="40dp"
+             android:layout_height="40dp"
+             android:layout_marginTop="10dp"
+             android:layout_marginRight="3dp"
+             android:textColor="#FFFFFF"
+             android:textAppearance="?android:attr/textAppearanceSmall"
+             android:textSize="12sp"
+             android:layout_gravity="center"/>-->
 
         </LinearLayout>
 
@@ -43,7 +57,7 @@
         android:background="#54AFA6"
         android:layout_below="@id/ceiling"
         android:layout_above="@+id/plusbutton"
-        android:divider="#00000000">
+        android:divider="#54AFA6">
     </ListView>
 
     <LinearLayout
@@ -62,6 +76,5 @@
         android:text="알람 추가"/>
 
     </LinearLayout>
-
 
 </RelativeLayout>

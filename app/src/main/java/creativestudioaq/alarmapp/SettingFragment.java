@@ -1,41 +1,52 @@
 package creativestudioaq.alarmapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.util.Calendar;
 
 /**
  * Created by honggyu on 2016-01-31.
  */
 public class SettingFragment extends android.support.v4.app.Fragment implements View.OnClickListener {
+
+    private LinearLayout settinglayout;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_setting, container, false);
 
+
         TextView nameText = (TextView) view.findViewById(R.id.nametext);
-        TextView notring = (TextView) view.findViewById(R.id.notring);
+       // TextView notring = (TextView) view.findViewById(R.id.notring);
         TextView whomake = (TextView) view.findViewById(R.id.whomake);
         TextView share = (TextView) view.findViewById(R.id.share);
-        TextView version = (TextView) view.findViewById(R.id.version);
+        //TextView version = (TextView) view.findViewById(R.id.version);
+        settinglayout = (LinearLayout) view.findViewById(R.id.settingbackground);
 
-        nameText.setText("이름");
-        notring.setText("공휴일에 알람 울리지 않기");
-        whomake.setText("만든 사람들");
-        version.setText("버전정보");
-        share.setText("공유");
+        nameText.setText("My Name");
+       // notring.setText("공휴일에 알람 울리지 않기");
+        whomake.setText("Info");
+        //version.setText("Version");
+        share.setText("Share");
 
 
         nameText.setOnClickListener(this);
         whomake.setOnClickListener(this);
-        notring.setOnClickListener(this);
-        version.setOnClickListener(this);
+       // notring.setOnClickListener(this);
+       // version.setOnClickListener(this);
         share.setOnClickListener(this);
+
+        setBackgroundColor();
 
         return view;
     }
@@ -47,9 +58,9 @@ public class SettingFragment extends android.support.v4.app.Fragment implements 
                 Intent intent1 = new Intent(getActivity(), NameActivity.class);
                 startActivity(intent1);
                 break;
-            case R.id.notring:
+          //  case R.id.notring:
 
-                break;
+            //    break;
             case R.id.whomake:
                 Intent intent2 = new Intent(getActivity(), WhoMakeActivity.class);
                 startActivity(intent2);
@@ -64,10 +75,38 @@ public class SettingFragment extends android.support.v4.app.Fragment implements 
                 startActivity(Intent.createChooser(msg, "공유"));
                 break;
 
-            case R.id.version:
-                Intent intent3 = new Intent(getActivity(), VersionActivity.class);
-                startActivity(intent3);
-                break;
+//            case R.id.version:
+//                Intent intent3 = new Intent(getActivity(), VersionActivity.class);
+//                startActivity(intent3);
+//                break;
         }
     }
+
+
+    public void setBackgroundColor(){
+
+        Calendar tempCal = Calendar.getInstance();
+        int hour = tempCal.getTime().getHours();
+
+        String backgroundColor;
+
+
+        if( hour < 2 )
+            backgroundColor = "#3D4244";
+        else if ( hour < 7 )
+            backgroundColor = "#6C758E";
+        else if ( hour < 12 )
+            backgroundColor = "#FF8E81";
+        else if ( hour < 17)
+            backgroundColor = "#64A0BC";
+        else if ( hour < 22 )
+            backgroundColor = "#284C76";
+        else
+            backgroundColor = "#3D4244";
+
+        settinglayout.setBackgroundColor(Color.parseColor(backgroundColor));
+    }
+
+
+
 }

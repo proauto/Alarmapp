@@ -45,7 +45,6 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
         LinearLayout plusbutton = (LinearLayout)view.findViewById(R.id.plusbutton);
         plusbutton.setOnClickListener(this);
 
-
         alarmlist.setLongClickable(true);
         alarmlist.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override

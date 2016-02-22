@@ -12,7 +12,7 @@ public class NameActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_name);
+        setContentView(R.layout.dialog_namesetting);
 
         Button cancelbutton = (Button) findViewById(R.id.cancelbutton);
         Button savebutton = (Button) findViewById(R.id.savebutton);

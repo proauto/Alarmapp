@@ -1,9 +1,15 @@
 package creativestudioaq.alarmapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by MIN on 2016. 2. 20..
@@ -12,6 +18,7 @@ public class SimpleDialog extends Activity {
 
     private TextView tvHour, tvMinute;
     private int hour, minute;
+    private Alarm alarm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,10 +68,33 @@ public class SimpleDialog extends Activity {
     public void DialogFinishClick(View v){
         switch (v.getId()){
             case R.id.simple_button_ok:
+                alarm = new Alarm();
+                /*
+                Date date = new Date();
+                date.setHours(hour);
+                date.setMinutes(minute);
+
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(date);
+
+                alarm.setAlarmTime(calendar);
+
+                Database.init(getApplicationContext());
+                Database.create(alarm);
+
+                callMathAlarmScheduleService();
+                Toast.makeText(this, alarm.getTimeUntilNextAlarmMessage(), Toast.LENGTH_LONG).show();
+                */
+
                 break;
             case R.id.simple_button_cancel:
                 break;
         }
         finish();
+    }
+
+    protected void callMathAlarmScheduleService() {
+        Intent mathAlarmServiceIntent = new Intent(this, AlarmServiceBroadcastReciever.class);
+        sendBroadcast(mathAlarmServiceIntent, null);
     }
 }
