@@ -1,8 +1,10 @@
 package creativestudioaq.alarmapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
@@ -18,6 +22,7 @@ import com.rey.material.app.DialogFragment;
 import com.rey.material.app.TimePickerDialog;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -30,7 +35,8 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
     SubActionButton button2;
     SubActionButton button3;
     ImageView rabbitbutton;
-
+    LinearLayout mainlayout;
+    TextView rabbitTongue;
 
     @Nullable
     @Override
@@ -41,7 +47,9 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
 
         Button settingbutton = (Button) view.findViewById(R.id.settingbutton);
         Button alarmbutton = (Button) view.findViewById(R.id.alarmbutton);
+        mainlayout = (LinearLayout) view.findViewById(R.id.mainlayout);
         mClockView = (AnalogClockView) view.findViewById(R.id.clock);
+        rabbitTongue = (TextView)view.findViewById(R.id.rabbitTongue);
         settingbutton.setOnClickListener(this);
         alarmbutton.setOnClickListener(this);
 
@@ -79,6 +87,21 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
         ImageView itemIcon3 = new ImageView(getActivity());
         itemIcon3.setImageResource(R.drawable.icon3);
         button3 = itemBuilder.setContentView(itemIcon3).build();
+        button3.setOnClickListener(new View.OnClickListener(){
+            Handler handler = new Handler();
+            @Override
+            public void onClick(View v) {
+                rabbitbutton.performClick();
+                rabbitTongue.setVisibility(View.VISIBLE);
+
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        rabbitTongue.setVisibility(View.INVISIBLE);
+                    }
+                }, 3000);
+            }
+        });
 
 
         FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(getActivity())
@@ -98,6 +121,7 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
     public void onResume() {
         super.onResume();
         mClockView.start();
+        setBackgroundColor();
     }
 
     @Override
@@ -105,9 +129,7 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
         super.onPause();
         mClockView.stop();
         Log.v("@@@???", "???");
-
     }
-
 
     @Override
     public void onClick(View v) {
@@ -115,11 +137,9 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
 
         switch (v.getId()) {
             case R.id.settingbutton:
-
                 ((MainActivity) getActivity()).getViewPager().setCurrentItem(0);
                 break;
             case R.id.alarmbutton:
-
                 ((MainActivity) getActivity()).getViewPager().setCurrentItem(2);
                 break;
 
@@ -160,5 +180,29 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
         builder.positiveAction("저장").negativeAction("취소");
         DialogFragment fragment = DialogFragment.newInstance(builder);
         fragment.show(getFragmentManager(), null);
+    }
+
+    public void setBackgroundColor(){
+
+        Calendar tempCal = Calendar.getInstance();
+        int hour = tempCal.getTime().getHours();
+
+        String backgroundColor;
+
+
+        if( hour < 2 )
+            backgroundColor = "#3D4244";
+        else if ( hour < 7 )
+            backgroundColor = "#6C758E";
+        else if ( hour < 12 )
+           backgroundColor = "#FF8E81";
+        else if ( hour < 17)
+           backgroundColor = "#64A0BC";
+        else if ( hour < 22 )
+            backgroundColor = "#284C76";
+        else
+            backgroundColor = "#3D4244";
+
+        mainlayout.setBackgroundColor(Color.parseColor(backgroundColor));
     }
 }

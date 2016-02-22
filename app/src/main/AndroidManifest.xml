@@ -15,7 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SplashActivity"
-            android:theme = "@style/SplashTheme"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,7 +34,7 @@
         <activity android:name=".AlarmSoundActivity" android:screenOrientation="portrait"/>
         <activity android:name=".FeelTalkActivity" android:screenOrientation="portrait"/>
         <activity android:name=".RepeatNumberActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".NameActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".NameActivity" android:screenOrientation="portrait" android:theme="@style/Theme.UserDialog"/>
         <activity android:name=".VersionActivity" android:screenOrientation="portrait"/>
         <activity android:name=".WhoMakeActivity" android:screenOrientation="portrait"/>
         <activity android:name=".AlarmAlertActivity" android:screenOrientation="portrait"/>

@@ -4,45 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:gravity="center_vertical">
+    android:orientation="horizontal">
 
-    <!--
-
-    <View
-        android:id="@+id/view1"
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:layout_marginRight="10dp"
-        android:background="#CCCCCC"
-        android:paddingRight="10dp" />
-
-    -->
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:layout_weight="8"
         android:paddingLeft="10dp"
         android:paddingBottom="5dp"
         android:paddingTop="5dp">
 
-        <TextView
-            android:id="@+id/textView_time_ap"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginTop="2dp"
-            android:textSize="13sp"
-            android:textColor="#FFFFFF"/>
+            android:background="@drawable/icon1" />
 
         <TextView
             android:id="@+id/textView_alarm_time"
-            android:layout_width="110dp"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="45sp"
+            android:textSize="30sp"
             android:layout_marginLeft="10dp"
             android:textColor="#FFFFFF"/>
 
@@ -54,7 +40,6 @@
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textSize="12sp"
             android:textColor="#FFFFFF"/>
 
     </LinearLayout>
@@ -66,13 +51,13 @@
         android:layout_gravity="center">
 
 
-    <CheckBox
-        android:id="@+id/checkBox_alarm_active"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:focusable="false"
-        android:button="@drawable/whitecheckbox"/>
+        <CheckBox
+            android:id="@+id/checkBox_alarm_active"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:focusable="false"
+            android:button="@drawable/whitecheckbox"/>
 
     </LinearLayout>
 

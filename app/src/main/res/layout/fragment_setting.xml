@@ -1,45 +1,97 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/settingbackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#58617B"
     android:orientation="vertical">
 
-
-    <TextView
-        android:id="@+id/nametext"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:textSize="18sp" />
+    <!--
 
     <TextView
         android:id="@+id/notring"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:gravity="center"
-        android:textSize="18sp" />
+        android:textSize="18sp" /> -->
 
-    <TextView
-        android:id="@+id/whomake"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:textSize="18sp" />
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </RelativeLayout>
 
-
-    <TextView
-        android:id="@+id/share"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center"
-        android:textSize="18sp" />
+        android:layout_height="400dp"
+        android:orientation="vertical"
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/version"
+        <View
+            android:layout_width="15dp"
+            android:layout_height="1dp"
+            android:background="#64FFFFFF" />
+
+        <TextView
+            android:id="@+id/nametext"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textColor="#FFFFFF"/>
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="1dp"
+            android:background="#64FFFFFF" />
+
+        <TextView
+            android:id="@+id/whomake"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textColor="#FFFFFF"/>
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="1dp"
+            android:background="#64FFFFFF" />
+
+        <TextView
+            android:id="@+id/share"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textColor="#FFFFFF"/>
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="1dp"
+            android:background="#64FFFFFF" />
+
+        <TextView
+            android:id="@+id/version"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textColor="#FFFFFF"/>
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="1dp"
+            android:background="#64FFFFFF" />
+
+    </LinearLayout>
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:textSize="18sp" />
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </RelativeLayout>
 
 
 </LinearLayout>

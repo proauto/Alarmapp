@@ -69,7 +69,6 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         super.onResume();
     }
 
-
     public void putTimeString(){
         Intent intentget = getIntent();
 
