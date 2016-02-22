@@ -3,21 +3,140 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/mission_bg_pattern">
 
-    <TextView
-        android:id="@+id/gamequestion"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="80dp"
+        android:orientation="horizontal"
 
-    <EditText
-        android:id="@+id/gameanswer"
+        >
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            />
+        <TextView
+            android:id="@+id/mention"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            />
+    </LinearLayout>
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:hint="그래로 쳐서 해제"/>
+        android:layout_height="150dp">
+
+
+        <TextView
+            android:id="@+id/gamequestion"
+            android:layout_width="197dp"
+            android:layout_height="78dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:background="@drawable/mission_speechbubble"/>
+
+        <ImageView
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/swing3"/>
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/whiterectangle"
+        android:orientation="vertical"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp">
+        <TextView
+            android:id="@+id/realanswer"
+            android:layout_width="match_parent"
+            android:layout_height="75dp" />
+        <View
+            android:background="#000"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            />
+
+        <EditText
+            android:id="@+id/gameanswer"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:hint="그래로 쳐서 해제"
+            />
+    </LinearLayout>
+
 
     <Button
+        android:layout_marginTop="20dp"
+        android:text="보내기"
         android:id="@+id/gamebutton"
         android:layout_width="match_parent"
-        android:layout_height="100dp" />
+        android:layout_height="50dp"
+        android:textSize="20sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:background="@drawable/pinkrectangle"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"/>
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/pausebutton"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="중지"
+            android:layout_toLeftOf="@+id/voidbar"
+            android:layout_toStartOf="@+id/voidbar"
+            android:background="@drawable/whiterectangcircle"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"/>
+        <View
+            android:id="@+id/voidbar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            />
+        <Button
+            android:id="@+id/repeatbutton"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="다시반복"
+            android:layout_toRightOf="@+id/voidbar"
+            android:layout_toEndOf="@+id/voidbar"
+            android:background="@drawable/whiterectangcircle"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"/>
+    </RelativeLayout>
 </LinearLayout>

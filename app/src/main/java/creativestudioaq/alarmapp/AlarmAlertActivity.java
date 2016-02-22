@@ -49,6 +49,14 @@ public class AlarmAlertActivity extends Activity  {
         Bundle bundle = this.getIntent().getExtras();
         alarm = (Alarm) bundle.getSerializable("alarm");
 
+        TextView time =(TextView)findViewById(R.id.time);
+        TextView mention = (TextView)findViewById(R.id.mention);
+        TextView gamequestion = (TextView)findViewById(R.id.gamequestion);
+
+        time.setText("12:00");
+        mention.setText("시계토끼와 대화하면\n알람이 꺼져요.");
+        gamequestion.setText("오늘 나는 행복해.\n오늘 나는 행복해.");
+
 
 
       //게임 띄우기
@@ -126,7 +134,7 @@ public class AlarmAlertActivity extends Activity  {
         // Toast.makeText(this, answerString, Toast.LENGTH_LONG).show();
 
         startAlarm();
-
+        mediaPlayer.stop();
     }
 
     @Override
