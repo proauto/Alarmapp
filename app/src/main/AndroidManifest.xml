@@ -42,6 +42,7 @@
         <activity android:name=".VersionActivity" android:screenOrientation="portrait"/>
         <activity android:name=".WhoMakeActivity" android:screenOrientation="portrait"/>
         <activity android:name=".AlarmAlertActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".AlarmAlertActivity2" android:screenOrientation="portrait"/>
         <activity android:name=".SimpleDialog" android:screenOrientation="portrait" android:theme="@style/Theme.UserDialog"/>
         <activity
             android:name=".AlarmPreferencesActivity"

@@ -9,21 +9,25 @@ import android.os.Bundle;
 import android.os.Vibrator;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 
-public class AlarmAlertActivity extends Activity {
+public class AlarmAlertActivity2 extends Activity  {
 
     private Alarm alarm;
     private MediaPlayer mediaPlayer;
@@ -31,14 +35,12 @@ public class AlarmAlertActivity extends Activity {
     private StringBuilder answerBuilder = new StringBuilder();
 
 
-    private Game game;
+
     private Vibrator vibrator;
 
     private boolean alarmActive;
 
-    private TextView problemView;
-    private EditText answerView;
-    private String answerString;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +51,7 @@ public class AlarmAlertActivity extends Activity {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
                 | WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 
-        setContentView(R.layout.alarm_alert);
+        setContentView(R.layout.alarm_alert2);
 
         Bundle bundle = this.getIntent().getExtras();
         alarm = (Alarm) bundle.getSerializable("alarm");
@@ -62,75 +64,48 @@ public class AlarmAlertActivity extends Activity {
         SimpleDateFormat sdfNow = new SimpleDateFormat("HH:mm");
         String strNow = sdfNow.format(date);
 
-        TextView time = (TextView) findViewById(R.id.time);
-        TextView mention = (TextView) findViewById(R.id.mention);
-        TextView gamequestion = (TextView) findViewById(R.id.gamequestion);
+
+
+
+        TextView time = (TextView)findViewById(R.id.time);
+        TextView mention = (TextView)findViewById(R.id.mention);
+
 
         time.setText(strNow);
         mention.setText("시계토끼와 대화하면\n알람이 꺼져요.");
-        gamequestion.setText("오늘 나는 행복해.\n오늘 나는 행복해.");
+
+
 
 
         //게임 띄우기
 
-        game = new Game();
 
 
-        problemView = (TextView) findViewById(R.id.gamequestion);
-        problemView.setText(game.getAnswer());
 
-        answerView = (EditText) findViewById(R.id.gameanswer);
+        View rootLayout = (View) findViewById(R.id.main_activity_card_face);
 
-
-        final Button gamebutton = (Button) findViewById(R.id.gamebutton);
-        TextWatcher textWatcher = new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable edit) {
-                String s = edit.toString();
-                if (s.length() > 0)
-                    gamebutton.setBackgroundResource(R.drawable.redrectangle);
-                else
-                    gamebutton.setBackgroundResource(R.drawable.pinkrectangle);
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count,
-                                          int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before,
-                                      int count) {
-            }
-        };
-        answerView.addTextChangedListener(textWatcher);
-
-        gamebutton.setOnClickListener(new View.OnClickListener() {
+        rootLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getAnswer().equals(answerView.getText().toString())) {
 
 
-                    alarmActive = false;
-                    if (vibrator != null)
-                        vibrator.cancel();
-                    try {
-                        mediaPlayer.stop();
-                    } catch (IllegalStateException ise) {
+                alarmActive = false;
+                if (vibrator != null)
+                    vibrator.cancel();
+                try {
+                    mediaPlayer.stop();
+                } catch (IllegalStateException ise) {
 
-                    }
-                    try {
-                        mediaPlayer.release();
-                    } catch (Exception e) {
-
-                    }
-                    finish();
-
-
-                } else {
-                    answerView.setText(null);
-                    answerView.setHint("다시 한번 써보세요");
                 }
+                try {
+                    mediaPlayer.release();
+                } catch (Exception e) {
+
+                }
+                flipCard();
+                //finish();
+
+
             }
         });
 
@@ -184,7 +159,7 @@ public class AlarmAlertActivity extends Activity {
             mediaPlayer = new MediaPlayer();
             if (alarm.getVibrate()) {
                 vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-                long[] pattern = {1000, 200, 200, 200};
+                long[] pattern = { 1000, 200, 200, 200 };
                 vibrator.vibrate(pattern, 0);
             }
             try {
@@ -236,4 +211,20 @@ public class AlarmAlertActivity extends Activity {
         }
         super.onDestroy();
     }
+
+private void flipCard()
+{
+    View rootLayout = (View) findViewById(R.id.main_activity_root);
+    View cardFace = (View) findViewById(R.id.main_activity_card_face);
+    View cardBack = (View) findViewById(R.id.main_activity_card_back);
+
+    FlipAnimation flipAnimation = new FlipAnimation(cardFace, cardBack);
+
+    if (cardFace.getVisibility() == View.GONE)
+    {
+        flipAnimation.reverse();
+    }
+    rootLayout.startAnimation(flipAnimation);
+}
+
 }

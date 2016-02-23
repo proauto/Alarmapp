@@ -15,7 +15,7 @@ public class AlarmAlertBroadcastReciever extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 
-        Log.v("","dddd");
+
         Intent mathAlarmServiceIntent = new Intent(
                 context,
                 AlarmServiceBroadcastReciever.class);
@@ -24,10 +24,19 @@ public class AlarmAlertBroadcastReciever extends BroadcastReceiver {
         StaticWakeLock.lockOn(context);
         Bundle bundle = intent.getExtras();
         final Alarm alarm = (Alarm) bundle.getSerializable("alarm");
+        boolean feelingok = alarm.getFeelingOk();
 
         Intent mathAlarmAlertActivityIntent;
 
-        mathAlarmAlertActivityIntent = new Intent(context, AlarmAlertActivity.class);
+        if(feelingok==true){
+
+            mathAlarmAlertActivityIntent = new Intent(context, AlarmAlertActivity.class);
+
+        }else{
+
+            mathAlarmAlertActivityIntent = new Intent(context, AlarmAlertActivity2.class);
+
+        }
 
         mathAlarmAlertActivityIntent.putExtra("alarm", alarm);
 
