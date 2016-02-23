@@ -35,7 +35,6 @@ public class AlarmAlertActivity2 extends Activity  {
     private StringBuilder answerBuilder = new StringBuilder();
 
 
-
     private Vibrator vibrator;
 
     private boolean alarmActive;
