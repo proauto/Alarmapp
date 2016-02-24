@@ -69,23 +69,21 @@ public class SimpleDialog extends Activity {
         switch (v.getId()){
             case R.id.simple_button_ok:
                 alarm = new Alarm();
-                /*
+
                 Date date = new Date();
-                date.setHours(hour);
-                date.setMinutes(minute);
+                long now = date.getTime();
+                now = now + minute * 60000 + hour * 60000 * 60;
 
                 Calendar calendar = Calendar.getInstance();
-                calendar.setTime(date);
+                calendar.setTimeInMillis(now);
 
                 alarm.setAlarmTime(calendar);
 
-                Database.init(getApplicationContext());
-                Database.create(alarm);
+                DatabaseSimple.init(getApplicationContext());
+                DatabaseSimple.create(alarm);
 
                 callMathAlarmScheduleService();
                 Toast.makeText(this, alarm.getTimeUntilNextAlarmMessage(), Toast.LENGTH_LONG).show();
-                */
-
                 break;
             case R.id.simple_button_cancel:
                 break;

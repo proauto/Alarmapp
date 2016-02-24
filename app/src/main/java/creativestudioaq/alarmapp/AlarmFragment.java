@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.rey.material.app.Dialog;
 import com.rey.material.app.DialogFragment;
@@ -31,6 +32,9 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
 
 
     AlarmListAdapter3 alarmListAdapter;
+    SimpleAdapter simpleAdapter;
+    List<Alarm> alarms;
+    List<Alarm> simpleAlarms;
 
     View view;
 
@@ -38,45 +42,48 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-       view = inflater.inflate(R.layout.fragment_alarm, container, false);
-
+        view = inflater.inflate(R.layout.fragment_alarm, container, false);
 
         ListView alarmlist = (ListView) view.findViewById(R.id.alarmlist);
         LinearLayout plusbutton = (LinearLayout)view.findViewById(R.id.plusbutton);
-        plusbutton.setOnClickListener(this);
+        MergeAdapter mergeAdapter = new MergeAdapter();
 
+        plusbutton.setOnClickListener(this);
         alarmlist.setLongClickable(true);
         alarmlist.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
-                view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
-                final Alarm alarm = (Alarm) alarmListAdapter.getItem(position);
-                AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-                dialog.setTitle("Delete");
-                dialog.setMessage("Delete this alarm?");
-                dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                if (simpleAlarms.size() <= position) {
+                    position -= simpleAlarms.size();
+                    view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+                    final Alarm alarm = (Alarm) alarmListAdapter.getItem(position);
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                    dialog.setTitle("Delete");
+                    dialog.setMessage("Delete this alarm?");
+                    dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
-                        Database.init(getActivity());
-                        Database.deleteEntry(alarm);
+                            Database.init(getActivity());
+                            Database.deleteEntry(alarm);
 
-                        Intent mathAlarmServiceIntent = new Intent(getActivity(), AlarmServiceBroadcastReciever.class);
-                        getActivity().sendBroadcast(mathAlarmServiceIntent, null);
+                            Intent mathAlarmServiceIntent = new Intent(getActivity(), AlarmServiceBroadcastReciever.class);
+                            getActivity().sendBroadcast(mathAlarmServiceIntent, null);
 
-                        updateAlarmList();
-                    }
-                });
-                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
+                            updateAlarmList();
+                        }
+                    });
+                    dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
 
-                dialog.show();
-
+                    dialog.show();
+                }
                 return true;
+
             }
         });
 
@@ -84,22 +91,26 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
         Intent mathAlarmServiceIntent = new Intent(getActivity(), AlarmServiceBroadcastReciever.class);
         getActivity().sendBroadcast(mathAlarmServiceIntent, null);
 
+        simpleAdapter = new SimpleAdapter(getActivity());
         alarmListAdapter = new AlarmListAdapter3(this, getActivity());
-        alarmlist.setAdapter(alarmListAdapter);
-        alarmlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
+        mergeAdapter.addAdapter(simpleAdapter);
+        mergeAdapter.addAdapter(alarmListAdapter);
+        alarmlist.setAdapter(mergeAdapter);
+
+        alarmlist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> arg0, View v, int position, long id) {
-                v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
-                Alarm alarm = (Alarm) alarmListAdapter.getItem(position);
-                Intent intent = new Intent(getActivity(), MakeAlarmActivity.class);
-                intent.putExtra("alarm", alarm);
-                startActivity(intent);
+                if (simpleAlarms.size() <= position) {
+                    position -= simpleAlarms.size();
+                    v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+                    Alarm alarm = (Alarm) alarmListAdapter.getItem(position);
+                    Intent intent = new Intent(getActivity(), MakeAlarmActivity.class);
+                    intent.putExtra("alarm", alarm);
+                    startActivity(intent);
+                }
             }
-
         });
-
-
 
         return view;
     }
@@ -110,6 +121,7 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
     public void onPause() {
         // setListAdapter(null);
         Database.deactivate();
+        DatabaseSimple.deactivate();
         super.onPause();
     }
 
@@ -121,14 +133,18 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
 
     public void updateAlarmList(){
         Database.init(getActivity());
-        final List<Alarm> alarms = Database.getAll();
+        alarms = Database.getAll();
         alarmListAdapter.setMathAlarms(alarms);
+
+        DatabaseSimple.init(getActivity());
+        simpleAlarms = DatabaseSimple.getAll();
+        simpleAdapter.setMathAlarms(simpleAlarms);
 
         getActivity().runOnUiThread(new Runnable() {
             public void run() {
                 // reload content
                 alarmListAdapter.notifyDataSetChanged();
-
+                simpleAdapter.notifyDataSetChanged();
             }
         });
     }
@@ -137,7 +153,7 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
     public void onClick(View v) {
         if (v.getId() == R.id.checkBox_alarm_active) {
             CheckBox checkBox = (CheckBox) v;
-            Alarm alarm = (Alarm) alarmListAdapter.getItem((Integer) checkBox.getTag());
+            Alarm alarm = (Alarm) alarmListAdapter.getItem((Integer)checkBox.getTag());
             alarm.setAlarmActive(checkBox.isChecked());
             Database.update(alarm);
             Intent mathAlarmServiceIntent = new Intent(getActivity(), AlarmServiceBroadcastReciever.class);
