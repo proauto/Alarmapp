@@ -53,9 +53,10 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
         alarmlist.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long id) {
+                view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
+
                 if (simpleAlarms.size() <= position) {
                     position -= simpleAlarms.size();
-                    view.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
                     final Alarm alarm = (Alarm) alarmListAdapter.getItem(position);
                     AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
                     dialog.setTitle("Delete");
@@ -81,6 +82,33 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
                     });
 
                     dialog.show();
+                }else{
+                    final Alarm alarm = (Alarm) simpleAdapter.getItem(position);
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+                    dialog.setTitle("Delete");
+                    dialog.setMessage("Delete this alarm?");
+                    dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            DatabaseSimple.init(getActivity());
+                            DatabaseSimple.deleteEntry(alarm);
+
+                            Intent mathAlarmServiceIntent = new Intent(getActivity(), AlarmServiceBroadcastReciever.class);
+                            getActivity().sendBroadcast(mathAlarmServiceIntent, null);
+
+                            updateAlarmList();
+                        }
+                    });
+                    dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    dialog.show();
+
                 }
                 return true;
 
@@ -201,7 +229,7 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
                 super.onNegativeActionClicked(fragment);
             }
         };
-        builder.positiveAction("저장").negativeAction("취소");
+        builder.positiveAction("세부설정").negativeAction("취소");
         DialogFragment fragment = DialogFragment.newInstance(builder);
         fragment.show(getFragmentManager(), null);
     }

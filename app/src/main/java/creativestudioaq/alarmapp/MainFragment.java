@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
@@ -71,6 +72,7 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                rabbitbutton.performClick();
                 Intent intent = new Intent(getActivity(), SimpleDialog.class);
                 startActivity(intent);
             }
@@ -82,6 +84,7 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
         button2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                rabbitbutton.performClick();
                 showTimePickerDialog();
             }
         });
@@ -143,7 +146,6 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
             case R.id.alarmbutton:
                 ((MainActivity) getActivity()).getViewPager().setCurrentItem(2);
                 break;
-
         }
 
     }
@@ -166,9 +168,20 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
                 TimePickerDialog dialog = (TimePickerDialog) fragment.getDialog();
 
                 SimpleDateFormat dateFormat3 = new SimpleDateFormat("HH:mm:ss", java.util.Locale.getDefault());
-                Intent intent1 = new Intent(getActivity(), MakeAlarmActivity.class);
-                intent1.putExtra("time", dialog.getFormattedTime(dateFormat3));
-                getActivity().startActivity(intent1);
+
+                String time = dialog.getFormattedTime(dateFormat3);
+
+                Alarm alarm = new Alarm();
+                alarm.setAlarmTime(time);
+                alarm.setFeelingOk(false);
+
+                Database.init(getActivity());
+                Database.create(alarm);
+
+                callMathAlarmScheduleService();
+                Toast.makeText(getActivity(), alarm.getTimeUntilNextAlarmMessage(), Toast.LENGTH_LONG).show();
+
+                ((MainActivity)getActivity()).getViewPager().getAdapter().notifyDataSetChanged();
 
                 super.onPositiveActionClicked(fragment);
             }
@@ -207,4 +220,11 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
 
         mainlayout.setBackgroundColor(Color.parseColor(backgroundColor));
     }
+
+    protected void callMathAlarmScheduleService() {
+        Intent mathAlarmServiceIntent = new Intent(getActivity(), AlarmServiceBroadcastReciever.class);
+        getActivity().sendBroadcast(mathAlarmServiceIntent, null);
+    }
+
+
 }

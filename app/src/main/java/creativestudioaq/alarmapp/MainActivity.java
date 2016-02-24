@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.ListFragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -32,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setCurrentItem(1);
 
-
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             public void onPageScrollStateChanged(int arg0) {
                 // TODO Auto-generated method stub
@@ -45,27 +45,27 @@ public class MainActivity extends AppCompatActivity {
 
             public void onPageSelected(int position) {
                 // TODO Auto-generated method stub
-                int i=position;
-                if(i==0){
-                    if(MainFragment.button1!=null)
+                int i = position;
+                if (i == 0) {
+                    if (MainFragment.button1 != null)
                         MainFragment.button1.setVisibility(View.INVISIBLE);
-                    if(MainFragment.button2!=null)
+                    if (MainFragment.button2 != null)
                         MainFragment.button2.setVisibility(View.INVISIBLE);
-                    if(MainFragment.button3!=null)
+                    if (MainFragment.button3 != null)
                         MainFragment.button3.setVisibility(View.INVISIBLE);
-                }else if(i==1){
-                    if(MainFragment.button1!=null)
+                } else if (i == 1) {
+                    if (MainFragment.button1 != null)
                         MainFragment.button1.setVisibility(View.VISIBLE);
-                    if(MainFragment.button2!=null)
+                    if (MainFragment.button2 != null)
                         MainFragment.button2.setVisibility(View.VISIBLE);
-                    if(MainFragment.button3!=null)
+                    if (MainFragment.button3 != null)
                         MainFragment.button3.setVisibility(View.VISIBLE);
-                }else{
-                    if(MainFragment.button1!=null)
+                } else {
+                    if (MainFragment.button1 != null)
                         MainFragment.button1.setVisibility(View.INVISIBLE);
-                    if(MainFragment.button2!=null)
+                    if (MainFragment.button2 != null)
                         MainFragment.button2.setVisibility(View.INVISIBLE);
-                    if(MainFragment.button3!=null)
+                    if (MainFragment.button3 != null)
                         MainFragment.button3.setVisibility(View.INVISIBLE);
                 }
             }
@@ -113,6 +113,17 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+        @Override
+        public int getItemPosition(Object object) {
+
+            Fragment fragment = (Fragment) object;
+
+            if(isChangingConfigurations()){
+                    return POSITION_UNCHANGED;
+            }else{
+                    return POSITION_NONE;
+            }
+        }
     }
 
     @Override

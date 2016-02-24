@@ -26,7 +26,6 @@
         <item>@string/question_22</item>
         <item>@string/question_23</item>
         <item>@string/question_24</item>
-
     </string-array>
 
     <string-array name="answer_list">

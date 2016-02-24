@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="#58617B"
-            android:padding="15dp">
+            android:paddingTop="15dp">
 
             <TextView
                 android:id="@+id/feel"
@@ -77,8 +77,9 @@
                 android:gravity="center"
                 android:text="교감 미션"
                 android:textSize="15sp"
+                android:paddingLeft="15dp"
                 android:textColor="#FFFFFF"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <com.rey.material.widget.Switch
                 android:id="@+id/feelbutton"
@@ -89,6 +90,7 @@
                 android:layout_alignParentRight="true"
                 android:checked="false"
                 android:gravity="center"
+                android:paddingRight="15dp"
                 android:layout_marginTop="10dp"/>
 
             <LinearLayout
@@ -148,61 +150,75 @@
             android:layout_height="50dp"
             android:layout_above="@+id/buttonslayout">
 
-            <CheckBox
+            <ToggleButton
                 android:id="@+id/sunday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
-                android:text="일"/>
+                android:background="@drawable/togglebutton_day"
+                android:textOn="일"
+                android:textOff="일"/>
 
-            <CheckBox
+            <ToggleButton
                 android:id="@+id/monday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
-                android:text="월"/>
+                android:background="@drawable/togglebutton_day"
+                android:textOn="월"
+                android:textOff="월"/>
 
-            <CheckBox
+            <ToggleButton
                 android:id="@+id/tuesday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
-                android:text="화"/>
+                android:background="@drawable/togglebutton_day"
+                android:textOn="화"
+                android:textOff="화"/>
 
-            <CheckBox
+            <ToggleButton
                 android:id="@+id/wednesday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
-                android:text="수"/>
+                android:background="@drawable/togglebutton_day"
+                android:textOn="수"
+                android:textOff="수"/>
 
-            <CheckBox
+            <ToggleButton
                 android:id="@+id/thursday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
-                android:text="목"/>
+                android:background="@drawable/togglebutton_day"
+                android:textOn="목"
+                android:textOff="목"/>
 
-            <CheckBox
+            <ToggleButton
                 android:id="@+id/friday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
-                android:text="금"/>
+                android:background="@drawable/togglebutton_day"
+                android:textOn="금"
+                android:textOff="금"/>
 
-            <CheckBox
+            <ToggleButton
                 android:id="@+id/saturday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:layout_weight="1"
                 android:layout_margin="4dp"
-                android:text="토"/>
+                android:background="@drawable/togglebutton_day"
+                android:textOn="토"
+                android:textOff="토"/>
 
         </LinearLayout>
 
@@ -324,17 +340,6 @@
                 android:paddingStart="20dp"
                 android:text="12분"
                 android:textSize="12sp"
-                android:textColor="#8f8f8f"/>
-
-            <TextView
-                android:id="@+id/repeatnumber"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@id/repeatminute"
-                android:gravity="center"
-                android:textSize="12sp"
-                android:text="12회"
                 android:textColor="#8f8f8f"/>
 
         </RelativeLayout>
