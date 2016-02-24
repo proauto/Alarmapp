@@ -20,9 +20,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       Intent intent1 = new Intent(MainActivity.this, SplashActivity.class);
-       startActivity(intent1);
-
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -33,9 +30,7 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setCurrentItem(1);
 
-
         backpress = new BackPressCloseHandler(this);
-
 
     }
 

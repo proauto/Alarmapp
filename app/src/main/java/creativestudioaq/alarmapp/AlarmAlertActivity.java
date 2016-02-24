@@ -110,7 +110,6 @@ public class AlarmAlertActivity extends Activity {
             public void onClick(View v) {
                 if (game.getAnswer().equals(answerView.getText().toString())) {
 
-
                     alarmActive = false;
                     if (vibrator != null)
                         vibrator.cancel();

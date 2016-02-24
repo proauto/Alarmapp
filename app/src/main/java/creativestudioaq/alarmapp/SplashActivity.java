@@ -23,15 +23,24 @@ public class SplashActivity extends Activity {
         RelativeLayout splashlayout = (RelativeLayout)findViewById(R.id.splashlayout);
 
         AlphaAnimation animation1 = new AlphaAnimation(0f, 1.0f);
-        animation1.setDuration(2500);
+        animation1.setDuration(3000);
         dot.startAnimation(animation1);
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                Intent intent = new Intent();
+                intent.setClass(SplashActivity.this, MainActivity.class);
+
+                startActivity(intent);
+                finish();
+
+                // transition from splash to main menu
+                overridePendingTransition(R.anim.fadein,
+                        R.anim.fadeout);
                 finish();
             }
-        }, 2500);
+        }, 3000);
     }
 }

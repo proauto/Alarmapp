@@ -31,10 +31,8 @@ public class AlarmListAdapter3 extends BaseAdapter {
             Database.COLUMN_ALARM_TIME, Database.COLUMN_ALARM_DAYS };
 
     public AlarmListAdapter3(AlarmFragment alarmFragment,Context ctx) {
-
         _alarmFragment=alarmFragment;
         m_ctx=ctx;
-
     }
 
     @Override
@@ -58,7 +56,7 @@ public class AlarmListAdapter3 extends BaseAdapter {
             view = LayoutInflater.from(m_ctx).inflate(
                     R.layout.alarm_list_element_new, null);
 
-        Alarm alarm = (Alarm) getItem(position);
+        Alarm alarm = (Alarm)getItem(position);
 
         CheckBox checkBox = (CheckBox) view.findViewById(R.id.checkBox_alarm_active);
         checkBox.setChecked(alarm.getAlarmActive());
@@ -68,7 +66,6 @@ public class AlarmListAdapter3 extends BaseAdapter {
         TextView alarmTimeView = (TextView) view
                 .findViewById(R.id.textView_alarm_time);
         TextView alarmTimeAP = (TextView)view.findViewById(R.id.textView_time_ap);
-
 
         SimpleDateFormat dateFormat1 = new SimpleDateFormat("KK:mm", java.util.Locale.getDefault());
         SimpleDateFormat dateFormat2 = new SimpleDateFormat("HH:mm", java.util.Locale.getDefault());
@@ -88,19 +85,8 @@ public class AlarmListAdapter3 extends BaseAdapter {
         alarmTimeView.setText(time2);
         alarmTimeAP.setText(time3);
 
-        /*
-        final SpannableStringBuilder sps = new SpannableStringBuilder(time2);
-        sps.setSpan(new AbsoluteSizeSpan(30), 0, 2, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        alarmTimeView.setText(sps);
-        */
-        
-
-
         TextView alarmDaysView = (TextView) view.findViewById(R.id.textView_alarm_days);
         alarmDaysView.setText(alarm.getRepeatDaysString());
-
-
-
 
         return view;
     }
