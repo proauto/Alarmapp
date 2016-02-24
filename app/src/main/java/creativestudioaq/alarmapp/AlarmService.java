@@ -48,7 +48,9 @@ public class AlarmService extends Service {
         });
 
         Database.init(getApplicationContext());
+        DatabaseSimple.init(getApplicationContext());
         List<Alarm> alarms = Database.getAll();
+        alarms.addAll(DatabaseSimple.getAll());
 
         for(Alarm alarm : alarms){
             if(alarm.getAlarmActive())

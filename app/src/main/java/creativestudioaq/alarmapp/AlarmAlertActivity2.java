@@ -90,15 +90,11 @@ public class AlarmAlertActivity2 extends Activity {
 
 
 
-
-
-
         View rootLayout = (View) findViewById(R.id.main_activity_card_face);
 
         rootLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 alarmActive = false;
                 if (vibrator != null)
@@ -126,6 +122,7 @@ public class AlarmAlertActivity2 extends Activity {
                     public void run() {
                         Log.i("Test", "Timer start");
                         finish();
+                        removeSimpleAlarm();
                     }
                 };
                 Timer timer = new Timer();
@@ -176,6 +173,7 @@ public class AlarmAlertActivity2 extends Activity {
             @Override
             public void onClick(View v) {
                 finish();
+                removeSimpleAlarm();
             }
         });
 
@@ -250,6 +248,7 @@ public class AlarmAlertActivity2 extends Activity {
         } catch (Exception e) {
 
         }
+
         super.onDestroy();
     }
 
@@ -291,5 +290,16 @@ public class AlarmAlertActivity2 extends Activity {
     protected void callMathAlarmScheduleService() {
         Intent mathAlarmServiceIntent = new Intent(this, AlarmServiceBroadcastReciever.class);
         sendBroadcast(mathAlarmServiceIntent, null);
+    }
+
+
+    public void removeSimpleAlarm(){
+        if(alarm.getSimple()){
+            DatabaseSimple.init(getApplicationContext());
+            DatabaseSimple.deleteEntry(alarm);
+
+            Intent mathAlarmServiceIntent = new Intent(getApplicationContext(), AlarmServiceBroadcastReciever.class);
+            getApplicationContext().sendBroadcast(mathAlarmServiceIntent);
+        }
     }
 }

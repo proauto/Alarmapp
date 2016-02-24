@@ -33,7 +33,7 @@ public class AnalogClockView extends RelativeLayout {
 
     /* resources */
     private int mDialBackgroundResource = R.drawable.clock_dial_typical;
-    private int mHourBackgroundResource = R.drawable.clock_hand_minute;
+    private int mHourBackgroundResource = R.drawable.clock_min2;
     private int mMinuteBackgroundResource = R.drawable.clock_hand_hour;
     private int mSecondBackgroundResource = R.drawable.clock_hand_second;
 
@@ -42,7 +42,6 @@ public class AnalogClockView extends RelativeLayout {
     private static final int MINUTE_TO_HOUR_DEGREE = 12;
     private static final int HOUR_TO_HOUR_DEGREE = 30;
     private static final String TAG = "clock";
-    private static final String TIMEZONE_ID = "America/Los_Angeles";
 
     public AnalogClockView(Context context) {
         super(context);
@@ -68,8 +67,8 @@ public class AnalogClockView extends RelativeLayout {
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.AnalogClockView);
 
         mDialBackgroundResource = array.getResourceId(R.styleable.AnalogClockView_dial, R.drawable.clock_dial_typical);
-        mHourBackgroundResource = array.getResourceId(R.styleable.AnalogClockView_hand_hour, R.drawable.clock_hand_hour);
-        mMinuteBackgroundResource = array.getResourceId(R.styleable.AnalogClockView_hand_minute, R.drawable.clock_min2);
+        mHourBackgroundResource = array.getResourceId(R.styleable.AnalogClockView_hand_hour, R.drawable.clock_min2);
+        mMinuteBackgroundResource = array.getResourceId(R.styleable.AnalogClockView_hand_minute, R.drawable.clock_hand_hour);
         mSecondBackgroundResource = array.getResourceId(R.styleable.AnalogClockView_hand_second, R.drawable.clock_hand_second);
         array.recycle();
     }

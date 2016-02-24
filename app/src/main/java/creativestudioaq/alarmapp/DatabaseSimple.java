@@ -102,7 +102,8 @@ public class DatabaseSimple extends SQLiteOpenHelper {
             alarm.setId(c.getInt(1));
             alarm.setAlarmActive(c.getInt(2) == 1);
             alarm.setAlarmTime(c.getString(3));
-
+            alarm.setFeelingOk(false);
+            alarm.setSimple(true);
         }
         c.close();
         return alarm;
@@ -145,6 +146,8 @@ public class DatabaseSimple extends SQLiteOpenHelper {
                 alarm.setId(cursor.getInt(0));
                 alarm.setAlarmActive(cursor.getInt(1) == 1);
                 alarm.setAlarmTime(cursor.getString(2));
+                alarm.setFeelingOk(false);
+                alarm.setSimple(true);
 
                 alarms.add(alarm);
 

@@ -28,12 +28,14 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.rey.material.widget.Slider;
 import com.rey.material.widget.Switch;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 
 /**
@@ -47,10 +49,12 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
     private String time1, time2;
     private CountDownTimer alarmToneTimer;
     private MediaPlayer mediaPlayer;
-    private TextView alarmsound, firsttalk, secondtalk, repeatnumber, repeatminute;
+    private TextView alarmsound, firsttalk, secondtalk, repeatminute;
+    private Random random;
+    private String[] rabbitQuestion;
 
     private final int REPEAT_REQUEST_CODE = 100;
-    private final int[] numlist = {1, 2, 3, 5, 10};
+//    private final int[] numlist = {1, 2, 3, 5, 10};
     private final int[] minuitelist = {3, 5, 10, 15, 30};
 
 
@@ -58,6 +62,9 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_makealarm);
+
+        random = new Random();
+        rabbitQuestion = getResources().getStringArray(R.array.question_list);
 
         putTimeString();
         setLayout();
@@ -78,6 +85,7 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
 
             alarm = new Alarm();
             alarm.setAlarmTime(time1);
+            alarm.setRabbitFeeling(rabbitQuestion[random.nextInt(rabbitQuestion.length-1)]);
 
         } else {
             setMathAlarm((Alarm) intentget.getSerializableExtra("alarm"));
@@ -102,7 +110,7 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
     public void setLayout() {
         Button cancelbutton = (Button) findViewById(R.id.cancelbutton);
         Button savebutton = (Button) findViewById(R.id.savebutton);
-        repeatnumber = (TextView) findViewById(R.id.repeatnumber);
+//        repeatnumber = (TextView) findViewById(R.id.repeatnumber);
         repeatminute = (TextView) findViewById(R.id.repeatminute);
         alarmsound = (TextView) findViewById(R.id.alarmsound);
         TextView selecttime = (TextView) findViewById(R.id.selecttime);
@@ -116,14 +124,14 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         Switch repeatSwitch = (Switch) findViewById(R.id.repeatbutton);
         Switch feelingSwitch = (Switch) findViewById(R.id.feelbutton);
 
-        CheckBox[] dayCheckArray = new CheckBox[7];
-        dayCheckArray[0] = (CheckBox) findViewById(R.id.sunday);
-        dayCheckArray[1] = (CheckBox) findViewById(R.id.monday);
-        dayCheckArray[2] = (CheckBox) findViewById(R.id.tuesday);
-        dayCheckArray[3] = (CheckBox) findViewById(R.id.wednesday);
-        dayCheckArray[4] = (CheckBox) findViewById(R.id.thursday);
-        dayCheckArray[5] = (CheckBox) findViewById(R.id.friday);
-        dayCheckArray[6] = (CheckBox) findViewById(R.id.saturday);
+        ToggleButton[] dayCheckArray = new ToggleButton[7];
+        dayCheckArray[0] = (ToggleButton) findViewById(R.id.sunday);
+        dayCheckArray[1] = (ToggleButton) findViewById(R.id.monday);
+        dayCheckArray[2] = (ToggleButton) findViewById(R.id.tuesday);
+        dayCheckArray[3] = (ToggleButton) findViewById(R.id.wednesday);
+        dayCheckArray[4] = (ToggleButton) findViewById(R.id.thursday);
+        dayCheckArray[5] = (ToggleButton) findViewById(R.id.friday);
+        dayCheckArray[6] = (ToggleButton) findViewById(R.id.saturday);
 
         cancelbutton.setText("< 취소");
         savebutton.setText("저장");
@@ -141,8 +149,8 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         repeatSwitch.setChecked(alarm.getRepeatUse());
         feelingSwitch.setChecked(alarm.getFeelingOk());
         volumeSlider.setValue(alarm.getVolume(), true);
-        repeatminute.setText(alarm.getRepeatMinute() + "분");
-        repeatnumber.setText(alarm.getRepeatNum() + "회");
+        repeatminute.setText(alarm.getRepeatMinute() + "분 마다");
+//        repeatnumber.setText(alarm.getRepeatNum() + "회");
 
         for (Alarm.Day day : alarm.getDays()) {
             dayCheckArray[day.ordinal()].setChecked(true);
@@ -151,8 +159,6 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
 
         cancelbutton.setOnClickListener(this);
         savebutton.setOnClickListener(this);
-        //repeatnumber.setOnClickListener(this);
-        //alarmsound.setOnClickListener(this);
         firsttalk.setOnClickListener(this);
         secondtalk.setOnClickListener(this);
         repeatLayout.setOnClickListener(this);
@@ -176,21 +182,21 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
             case R.id.savebutton:
                 alarmSave();
                 break;
-           /* case R.id.feeltalk:
-                Intent intent1 = new Intent(MakeAlarmActivity.this,FeelTalkActivity.class);
-                startActivity(intent1);
-                break;*/
             case R.id.firsttalk:
-                writeFeeling(0);
+                alarm.setRabbitFeeling(rabbitQuestion[random.nextInt(rabbitQuestion.length-1)]);
+                firsttalk.setText(alarm.getRabbitFeeling());
                 break;
             case R.id.secondtalk:
                 writeFeeling(1);
                 break;
             case R.id.repeatLayout:
+                /*
                 Intent intent2 = new Intent(MakeAlarmActivity.this, RepeatNumberActivity.class);
                 intent2.putExtra("minute", whichPositionInList(minuitelist, alarm.getRepeatMinute()));
                 intent2.putExtra("num", whichPositionInList(numlist, alarm.getRepeatNum()));
                 startActivityForResult(intent2, REPEAT_REQUEST_CODE);
+                */
+                repeatMinuteSelect();
                 break;
             case R.id.toneLayout:
                 AlarmToneSelect();
@@ -215,14 +221,14 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
 
                 if (resultCode == RESULT_OK) {
 
-                    int num = data.getIntExtra("num", 0);
+//                    int num = data.getIntExtra("num", 0);
                     int minute = data.getIntExtra("minute", 0);
 
-                    alarm.setRepeatNum(numlist[num]);
+//                    alarm.setRepeatNum(numlist[num]);
                     alarm.setRepeatMinute(minuitelist[minute]);
 
                     repeatminute.setText(alarm.getRepeatMinute() + "분");
-                    repeatnumber.setText(alarm.getRepeatNum() + "회");
+//                    repeatnumber.setText(alarm.getRepeatNum() + "회");
                 }
                 break;
         }
@@ -311,7 +317,7 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
 
     public void AlarmToneSelect() {
         AlertDialog.Builder alert = new AlertDialog.Builder(MakeAlarmActivity.this);
-        alert.setTitle("Test");
+        alert.setTitle("Alarm Tone Select");
 
         RingtoneManager ringtoneMgr = new RingtoneManager(this);
         ringtoneMgr.setType(RingtoneManager.TYPE_ALARM);
@@ -388,6 +394,27 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         alert.show();
     }
 
+    public void repeatMinuteSelect(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(MakeAlarmActivity.this);
+        alert.setTitle("Repeat Select");
+
+        final CharSequence[] items = new CharSequence[minuitelist.length];
+
+        for(int i = 0 ; i < items.length; i++){
+            items[i] = minuitelist[i] + "분 마다";
+        }
+
+        alert.setItems(items, new DialogInterface.OnClickListener(){
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                alarm.setRepeatMinute(minuitelist[which]);
+                repeatminute.setText(items[which]);
+            }
+        });
+
+        alert.show();
+
+    }
 
     public void writeFeeling(final int sep) {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
