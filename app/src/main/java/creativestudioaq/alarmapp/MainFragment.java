@@ -31,12 +31,13 @@ import java.util.Date;
 public class MainFragment extends android.support.v4.app.Fragment implements View.OnClickListener {
 
     private AnalogClockView mClockView;
-    SubActionButton button1;
-    SubActionButton button2;
-    SubActionButton button3;
+    public static SubActionButton button1;
+    public static SubActionButton button2;
+    public static SubActionButton button3;
     ImageView rabbitbutton;
     LinearLayout mainlayout;
     TextView rabbitTongue;
+
 
 
     @Nullable
@@ -129,7 +130,6 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
     public void onPause() {
         super.onPause();
         mClockView.stop();
-        Log.v("@@@???", "???");
     }
 
     @Override
@@ -181,6 +181,7 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
         builder.positiveAction("저장").negativeAction("취소");
         DialogFragment fragment = DialogFragment.newInstance(builder);
         fragment.show(getFragmentManager(), null);
+
     }
 
     public void setBackgroundColor(){

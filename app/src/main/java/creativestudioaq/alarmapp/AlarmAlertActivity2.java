@@ -2,10 +2,12 @@ package creativestudioaq.alarmapp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
@@ -21,14 +23,20 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
-public class AlarmAlertActivity2 extends Activity  {
+public class AlarmAlertActivity2 extends Activity {
 
+    private TimerTask second;
+    private TextView timer_text;
+    private final Handler handler = new Handler();
     private Alarm alarm;
     private MediaPlayer mediaPlayer;
 
@@ -38,8 +46,13 @@ public class AlarmAlertActivity2 extends Activity  {
     private Vibrator vibrator;
 
     private boolean alarmActive;
+    TextView cardname;
+    TextView bottomtext;
+    Button pause;
+    Button repeat;
 
-
+    TextView time;
+    TextView mention;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,19 +77,18 @@ public class AlarmAlertActivity2 extends Activity  {
         String strNow = sdfNow.format(date);
 
 
+        time = (TextView) findViewById(R.id.time);
+        mention = (TextView) findViewById(R.id.mention);
+        pause = (Button) findViewById(R.id.pausebutton);
+        repeat = (Button) findViewById(R.id.repeatbutton);
+        cardname = (TextView) findViewById(R.id.cardname);
+        bottomtext = (TextView) findViewById(R.id.bottomtext);
 
-
-        TextView time = (TextView)findViewById(R.id.time);
-        TextView mention = (TextView)findViewById(R.id.mention);
-
-
+        bottomtext.setVisibility(View.INVISIBLE);
         time.setText(strNow);
         mention.setText("시계토끼와 대화하면\n알람이 꺼져요.");
 
 
-
-
-        //게임 띄우기
 
 
 
@@ -102,8 +114,22 @@ public class AlarmAlertActivity2 extends Activity  {
 
                 }
                 flipCard();
-                //finish();
+                time.setVisibility(View.INVISIBLE);
+                mention.setVisibility(View.INVISIBLE);
+                cardname.setText("사랑의\nHEART");
+                bottomtext.setVisibility(View.VISIBLE);
+                bottomtext.setText("오늘 아끼는 사람에게\n사랑한다고 말해보세요.");
 
+                second = new TimerTask() {
+
+                    @Override
+                    public void run() {
+                        Log.i("Test", "Timer start");
+                        finish();
+                    }
+                };
+                Timer timer = new Timer();
+                timer.schedule(second, 2000);
 
             }
         });
@@ -144,6 +170,22 @@ public class AlarmAlertActivity2 extends Activity  {
 
         startAlarm();
         mediaPlayer.stop();
+
+
+        pause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        repeat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alarmSave();
+                finish();
+            }
+        });
     }
 
     @Override
@@ -158,7 +200,7 @@ public class AlarmAlertActivity2 extends Activity  {
             mediaPlayer = new MediaPlayer();
             if (alarm.getVibrate()) {
                 vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-                long[] pattern = { 1000, 200, 200, 200 };
+                long[] pattern = {1000, 200, 200, 200};
                 vibrator.vibrate(pattern, 0);
             }
             try {
@@ -211,19 +253,43 @@ public class AlarmAlertActivity2 extends Activity  {
         super.onDestroy();
     }
 
-private void flipCard()
-{
-    View rootLayout = (View) findViewById(R.id.main_activity_root);
-    View cardFace = (View) findViewById(R.id.main_activity_card_face);
-    View cardBack = (View) findViewById(R.id.main_activity_card_back);
+    private void flipCard() {
+        View rootLayout = (View) findViewById(R.id.main_activity_root);
+        View cardFace = (View) findViewById(R.id.main_activity_card_face);
+        View cardBack = (View) findViewById(R.id.main_activity_card_back);
 
-    FlipAnimation flipAnimation = new FlipAnimation(cardFace, cardBack);
+        FlipAnimation flipAnimation = new FlipAnimation(cardFace, cardBack);
 
-    if (cardFace.getVisibility() == View.GONE)
-    {
-        flipAnimation.reverse();
+        if (cardFace.getVisibility() == View.GONE) {
+            flipAnimation.reverse();
+        }
+        rootLayout.startAnimation(flipAnimation);
     }
-    rootLayout.startAnimation(flipAnimation);
-}
 
+    public void alarmSave() {
+
+
+        Database.init(getApplicationContext());
+        if (alarm.getId() < 1) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(calendar.MINUTE, +alarm.getRepeatMinute());
+            alarm.setAlarmTime(calendar);
+            Database.create(alarm);
+        } else {
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(calendar.MINUTE, +alarm.getRepeatMinute());
+            alarm.setAlarmTime(calendar);
+            Database.update(alarm);
+        }
+        callMathAlarmScheduleService();
+        Toast.makeText(this, alarm.getTimeUntilNextAlarmMessage(), Toast.LENGTH_LONG).show();
+        finish();
+
+    }
+
+
+    protected void callMathAlarmScheduleService() {
+        Intent mathAlarmServiceIntent = new Intent(this, AlarmServiceBroadcastReciever.class);
+        sendBroadcast(mathAlarmServiceIntent, null);
+    }
 }

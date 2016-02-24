@@ -100,4 +100,22 @@
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"/>
     </RelativeLayout>
+    <TextView
+        android:id="@+id/cardname"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:layout_height="150dp" />
+
+    <TextView
+        android:id="@+id/bottomtext"
+        android:background="#FF605b"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" />
 </RelativeLayout>

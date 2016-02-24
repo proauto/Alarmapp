@@ -2,6 +2,7 @@ package creativestudioaq.alarmapp;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -18,27 +19,26 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class AlarmAlertActivity extends Activity {
 
+    private TimerTask second;
     private Alarm alarm;
     private MediaPlayer mediaPlayer;
-
-    private StringBuilder answerBuilder = new StringBuilder();
-
-
-    private Game game;
     private Vibrator vibrator;
 
     private boolean alarmActive;
-
-    private TextView problemView;
     private EditText answerView;
-    private String answerString;
+    String myfeeling;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +54,10 @@ public class AlarmAlertActivity extends Activity {
         Bundle bundle = this.getIntent().getExtras();
         alarm = (Alarm) bundle.getSerializable("alarm");
 
+        String rabbitfeeling = alarm.getRabbitFeeling();
+        myfeeling = alarm.getMyFeeling();
+        int repeatminute = alarm.getRepeatMinute();
+
 
         long now = System.currentTimeMillis();
 
@@ -65,19 +69,15 @@ public class AlarmAlertActivity extends Activity {
         TextView time = (TextView) findViewById(R.id.time);
         TextView mention = (TextView) findViewById(R.id.mention);
         TextView gamequestion = (TextView) findViewById(R.id.gamequestion);
+        TextView realanswer = (TextView) findViewById(R.id.realanswer);
+        Button pause = (Button) findViewById(R.id.pausebutton);
+        Button repeat = (Button) findViewById(R.id.repeatbutton);
 
         time.setText(strNow);
         mention.setText("시계토끼와 대화하면\n알람이 꺼져요.");
-        gamequestion.setText("오늘 나는 행복해.\n오늘 나는 행복해.");
+        gamequestion.setText(rabbitfeeling);
+        realanswer.setText(myfeeling);
 
-
-        //게임 띄우기
-
-        game = new Game();
-
-
-        problemView = (TextView) findViewById(R.id.gamequestion);
-        problemView.setText(game.getAnswer());
 
         answerView = (EditText) findViewById(R.id.gameanswer);
 
@@ -108,7 +108,7 @@ public class AlarmAlertActivity extends Activity {
         gamebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (game.getAnswer().equals(answerView.getText().toString())) {
+                if (myfeeling.equals(answerView.getText().toString())) {
 
                     alarmActive = false;
                     if (vibrator != null)
@@ -123,7 +123,19 @@ public class AlarmAlertActivity extends Activity {
                     } catch (Exception e) {
 
                     }
-                    finish();
+
+                   Toast.makeText(AlarmAlertActivity.this,"커스텀 토스트로 변경",Toast.LENGTH_LONG).show();
+
+                    second = new TimerTask() {
+
+                        @Override
+                        public void run() {
+                            Log.i("Test", "Timer start");
+                            finish();
+                        }
+                    };
+                    Timer timer = new Timer();
+                    timer.schedule(second, 2000);
 
 
                 } else {
@@ -169,6 +181,22 @@ public class AlarmAlertActivity extends Activity {
 
         startAlarm();
         mediaPlayer.stop();
+
+
+        pause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        repeat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alarmSave();
+                finish();
+            }
+        });
     }
 
     @Override
@@ -235,4 +263,32 @@ public class AlarmAlertActivity extends Activity {
         }
         super.onDestroy();
     }
+
+    public void alarmSave() {
+
+
+        Database.init(getApplicationContext());
+        if (alarm.getId() < 1) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(calendar.MINUTE, +alarm.getRepeatMinute());
+            alarm.setAlarmTime(calendar);
+            Database.create(alarm);
+        } else {
+            Calendar calendar = Calendar.getInstance();
+            calendar.add(calendar.MINUTE, +alarm.getRepeatMinute());
+            alarm.setAlarmTime(calendar);
+            Database.update(alarm);
+        }
+        callMathAlarmScheduleService();
+        Toast.makeText(this, alarm.getTimeUntilNextAlarmMessage(), Toast.LENGTH_LONG).show();
+        finish();
+
+    }
+
+
+    protected void callMathAlarmScheduleService() {
+        Intent mathAlarmServiceIntent = new Intent(this, AlarmServiceBroadcastReciever.class);
+        sendBroadcast(mathAlarmServiceIntent, null);
+    }
+
 }

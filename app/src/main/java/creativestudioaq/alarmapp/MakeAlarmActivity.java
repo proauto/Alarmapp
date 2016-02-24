@@ -69,17 +69,17 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         super.onResume();
     }
 
-    public void putTimeString(){
+    public void putTimeString() {
         Intent intentget = getIntent();
 
-        if(intentget.getSerializableExtra("alarm") == null){
+        if (intentget.getSerializableExtra("alarm") == null) {
 
             time1 = intentget.getStringExtra("time");
 
             alarm = new Alarm();
             alarm.setAlarmTime(time1);
 
-        }else{
+        } else {
             setMathAlarm((Alarm) intentget.getSerializableExtra("alarm"));
             time1 = alarm.getAlarmTimeString();
         }
@@ -89,9 +89,9 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
 
         Date date = new Date();
 
-        try{
+        try {
             date = dateFormat2.parse(time1);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -99,8 +99,7 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
     }
 
 
-
-    public void setLayout(){
+    public void setLayout() {
         Button cancelbutton = (Button) findViewById(R.id.cancelbutton);
         Button savebutton = (Button) findViewById(R.id.savebutton);
         repeatnumber = (TextView) findViewById(R.id.repeatnumber);
@@ -162,11 +161,10 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         repeatSwitch.setOnCheckedChangeListener(switchCheckListener);
         feelingSwitch.setOnCheckedChangeListener(switchCheckListener);
 
-        for (int i=0; i<7; i++) {
+        for (int i = 0; i < 7; i++) {
             dayCheckArray[i].setOnCheckedChangeListener(checkedChangeListener);
         }
     }
-
 
 
     @Override
@@ -200,40 +198,6 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         }
     }
 
-    /*
-    public void daySelect(View v){
-        switch (v.getId()){
-            case R.id.sunday:
-                if(v.isSelected()) {
-                    alarm.addDay(Alarm.Day.SUNDAY);
-                    Toast.makeText(this, "Sunday Select", Toast.LENGTH_SHORT).show();
-                }
-                else
-                    alarm.removeDay(Alarm.Day.SUNDAY);
-                break;
-            case R.id.monday:
-                //alarm.addDay(Alarm.Day.MONDAY);
-                break;
-            case R.id.tuesday:
-                //alarm.addDay(Alarm.Day.TUESDAY);
-                break;
-            case R.id.wednesday:
-                //alarm.addDay(Alarm.Day.WEDNESDAY);
-                break;
-            case R.id.thursday:
-                //alarm.addDay(Alarm.Day.THURSDAY);
-                break;
-            case R.id.friday:
-                //alarm.addDay(Alarm.Day.FRIDAY);
-                break;
-            case R.id.saturday:
-                //alarm.addDay(Alarm.Day.SATURDAY);
-                alarm.removeDay(Alarm.Day.SATURDAY);
-                break;
-        }
-    }
-    */
-
 
     public Alarm getMathAlarm() {
         return alarm;
@@ -245,11 +209,11 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode){
+        switch (requestCode) {
             case REPEAT_REQUEST_CODE:
                 Log.i("Repeat", "Repeat Activity Finish");
 
-                if(resultCode == RESULT_OK){
+                if (resultCode == RESULT_OK) {
 
                     int num = data.getIntExtra("num", 0);
                     int minute = data.getIntExtra("minute", 0);
@@ -264,13 +228,11 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         }
     }
 
-    public void alarmSave(){
+    public void alarmSave() {
 
-        if(alarm.getDays().length < 1){
+        if (alarm.getDays().length < 1) {
             Toast.makeText(this, "요일을 선택해주세요.", Toast.LENGTH_SHORT).show();
-        }
-
-        else {
+        } else {
             alarm.setVolume(volumeSlider.getValue());
 
             Database.init(getApplicationContext());
@@ -290,13 +252,13 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         sendBroadcast(mathAlarmServiceIntent, null);
     }
 
-    public Switch.OnCheckedChangeListener switchCheckListener = new Switch.OnCheckedChangeListener(){
+    public Switch.OnCheckedChangeListener switchCheckListener = new Switch.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(Switch view, boolean checked) {
-            switch (view.getId()){
+            switch (view.getId()) {
                 case R.id.notibutton:
                     alarm.setVibrate(checked);
-                    if(checked){
+                    if (checked) {
                         Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
                         vibrator.vibrate(1000);
                     }
@@ -311,11 +273,11 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         }
     };
 
-    public CheckBox.OnCheckedChangeListener checkedChangeListener = new CheckBox.OnCheckedChangeListener(){
+    public CheckBox.OnCheckedChangeListener checkedChangeListener = new CheckBox.OnCheckedChangeListener() {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             Alarm.Day day = Alarm.Day.SUNDAY;
-            switch (buttonView.getId()){
+            switch (buttonView.getId()) {
                 case R.id.sunday:
                     day = Alarm.Day.SUNDAY;
                     break;
@@ -339,7 +301,7 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
                     break;
             }
 
-            if(isChecked)
+            if (isChecked)
                 alarm.addDay(day);
             else
                 alarm.removeDay(day);
@@ -347,7 +309,7 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
     };
 
 
-    public void AlarmToneSelect(){
+    public void AlarmToneSelect() {
         AlertDialog.Builder alert = new AlertDialog.Builder(MakeAlarmActivity.this);
         alert.setTitle("Test");
 
@@ -355,19 +317,19 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         ringtoneMgr.setType(RingtoneManager.TYPE_ALARM);
         Cursor alarmsCursor = ringtoneMgr.getCursor();
 
-        final String[] alarmTones = new String[alarmsCursor.getCount()+1];
+        final String[] alarmTones = new String[alarmsCursor.getCount() + 1];
         alarmTones[0] = "Silent";
-        final String[] alarmTonePaths = new String[alarmsCursor.getCount()+1];
+        final String[] alarmTonePaths = new String[alarmsCursor.getCount() + 1];
         alarmTonePaths[0] = "";
 
         if (alarmsCursor.moveToFirst()) {
             do {
-                alarmTones[alarmsCursor.getPosition()+1] = ringtoneMgr.getRingtone(alarmsCursor.getPosition()).getTitle(this);
-                alarmTonePaths[alarmsCursor.getPosition()+1] = ringtoneMgr.getRingtoneUri(alarmsCursor.getPosition()).toString();
-            }while(alarmsCursor.moveToNext());
+                alarmTones[alarmsCursor.getPosition() + 1] = ringtoneMgr.getRingtone(alarmsCursor.getPosition()).getTitle(this);
+                alarmTonePaths[alarmsCursor.getPosition() + 1] = ringtoneMgr.getRingtoneUri(alarmsCursor.getPosition()).toString();
+            } while (alarmsCursor.moveToNext());
         }
 
-        CharSequence[] items = new CharSequence[alarmsCursor.getCount()+1];
+        CharSequence[] items = new CharSequence[alarmsCursor.getCount() + 1];
         for (int i = 0; i < items.length; i++)
             items[i] = alarmTones[i];
 
@@ -427,16 +389,16 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
     }
 
 
-    public void writeFeeling(final int sep){
+    public void writeFeeling(final int sep) {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setTitle("대화 설정");
         alert.setMessage("대화 내용을 입력해주세요.");
 
         // Set an EditText view to get user input
         final EditText input = new EditText(this);
-        input.setFilters(new InputFilter[] { new InputFilter.LengthFilter(20) });
+        input.setFilters(new InputFilter[]{new InputFilter.LengthFilter(20)});
 
-        if(sep == 0)
+        if (sep == 0)
             input.setText(alarm.getRabbitFeeling());
         else
             input.setText(alarm.getMyFeeling());
@@ -477,12 +439,12 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         alert.show();
     }
 
-    public int whichPositionInList(int[] list, int v){
+    public int whichPositionInList(int[] list, int v) {
 
         int i;
 
-        for(i = 0; i < list.length; i++){
-            if( list[i] == v )
+        for (i = 0; i < list.length; i++) {
+            if (list[i] == v)
                 break;
         }
 
