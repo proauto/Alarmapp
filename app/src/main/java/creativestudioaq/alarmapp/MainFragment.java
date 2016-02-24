@@ -38,6 +38,7 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
     LinearLayout mainlayout;
     TextView rabbitTongue;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

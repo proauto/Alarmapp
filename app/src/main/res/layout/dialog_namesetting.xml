@@ -19,6 +19,7 @@
             android:text="My Name"/>
 
         <com.rey.material.widget.EditText
+            android:id="@+id/nameinput"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"/>

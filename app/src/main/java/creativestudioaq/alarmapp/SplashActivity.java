@@ -2,6 +2,7 @@ package creativestudioaq.alarmapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -14,9 +15,14 @@ import android.widget.RelativeLayout;
  */
 public class SplashActivity extends Activity {
 
+    SharedPreferences setting;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setting = getSharedPreferences("setting",0);
+        final Boolean tutorial = setting.getBoolean("tutorial",true);
 
         setContentView(R.layout.activity_splash);
         ImageView dot = (ImageView)findViewById(R.id.splash_dot);
@@ -31,7 +37,13 @@ public class SplashActivity extends Activity {
             @Override
             public void run() {
                 Intent intent = new Intent();
-                intent.setClass(SplashActivity.this, MainActivity.class);
+
+                if(tutorial==false){
+                    intent.setClass(SplashActivity.this, MainActivity.class);
+                }else{
+                    intent.setClass(SplashActivity.this, TutorialActivity.class);
+                }
+
 
                 startActivity(intent);
                 finish();

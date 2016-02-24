@@ -1,6 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/clickthis"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/mission_bg_pattern">
+
+    <TextView
+        android:id="@+id/tutorialtalk1"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/mission_speechbubble"
+        android:gravity="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/rabbitpicture"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/swing1" />
+
+    <TextView
+        android:id="@+id/tutorialtalk2"
+        android:layout_width="300dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/rabbitpicture"
+        android:layout_centerHorizontal="true"
+        android:background="#7f000000"
+        android:gravity="center"
+
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/tutorialinput"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/rabbitpicture"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/whiterectangle"
+        android:hint="이름을 알려주세요"
+        android:textColorHint="#f24a4a"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/sendbutton"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/tutorialinput"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/pinkrectangle"
+        android:text="보내기"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/yes"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/rabbitpicture"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="#7f000000"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/no"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/yes"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="#7f000000"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
 
 </RelativeLayout>

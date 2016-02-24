@@ -30,6 +30,11 @@
             android:screenOrientation="portrait">
 
         </activity>
+        <activity
+            android:name=".TutorialActivity"
+            android:screenOrientation="portrait" >
+
+            </activity>
 
         <activity android:name=".MakeAlarmActivity" android:screenOrientation="portrait"/>
         <activity android:name=".AlarmSoundActivity" android:screenOrientation="portrait"/>
