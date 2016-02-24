@@ -38,4 +38,52 @@
     <string name="button_delete">Delete</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+
+    <string name="question_01">내 기분은 내가 정해. 오늘은 ‘행복’이야.\n
+    네가 정한 오늘의 기분은 뭐니 ?</string>
+    <string name="question_02">나와 함께 모험을 해보지 않을래 ?</string>
+    <string name="question_03">오늘은 무슨 꿈을 꿀거야 ?</string>
+    <string name="question_04">가치있는 것을 하는데 있어서 늦었다는 건 없어.</string>
+    <string name="question_05">기회를 놓치는 것이 기회일 수 있어.\n
+    그러니 후회하지 않을거지 ?</string>
+    <string name="question_06">고개를 쉽게 떨구지 마.\n
+    고개를 들고 세상을 똑바로 봐.</string>
+    <string name="question_07">흔들리지 않고 피는 꽃은 없어.\n
+    넌 충분히 젊은 것 같은데 ?</string>
+    <string name="question_08">습관을 조심해. 그게 네 운명이 될 수 있어.</string>
+    <string name="question_09">인간에게는 미소가 필요해. 지금 당장 웃어봐 !</string>
+    <string name="question_10">오늘 하루는 어떻게 보낼 셈이야 ?</string>
+    <string name="question_11">해보지 않고는 무엇을 해낼 수 있는지 알 수 없어.</string>
+    <string name="question_12">1분 전만큼 먼 시간은 없어. 똑 딱 똑 딱 ~</string>
+    <string name="question_13">네 재산은 너의 노고에 달렸어. 좀 더 힘낼거지 ?</string>
+    <string name="question_14">가장 뛰어난 예언자는 과거야.\n
+    과거에게 물어봐. 이 길이 맞는지.</string>
+    <string name="question_15">그래서, 너 자신에게\n
+    가장 하고 싶은 말이 뭔데?</string>
+    <string name="question_16">뭐 먹고 싶어 ?\n
+    나는 구름 위의 무지개 !</string>
+    <string name="question_17">내 행복 줄게. 가져갈래? 옛다</string>
+    <string name="question_18">못생긴 얼굴 언제 필거야?\n
+    으이구 일어나 아침이야.</string>
+    <string name="question_19">야옹 ~ 안일어나면\n
+    체셔 데리고 온다!</string>
+    <string name="question_20">햇님이 나오신 것 같은데\n
+    나랑 마중 나가지 않을래?</string>
+    <string name="question_21">잘 사는 게 최고의 복수야 인간.</string>
+    <string name="question_22">인간! 웃어봐 ~\n
+    웃음은 최고의 안정제이자 진통제란다.</string>
+    <string name="question_23"> 네 옆의 그 사람이 네 편이 아니어도\n
+    햇살과 바람은 너의 편이야.</string>
+    <string name="question_24">내가 보기엔 넌 꽤나 괜찮은 인간인 것 같은데?</string>
+
+    <string name="answer_1">이제 일어날게</string>
+    <string name="answer_2">토끼야 고마워</string>
+    <string name="answer_3">오케이</string>
+    <string name="answer_4">좋은 아침이다</string>
+    <string name="answer_5">고마워 깨워줘서</string>
+    <string name="answer_6">너 때문에 웃는다</string>
+
+
+
+
 </resources>

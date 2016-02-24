@@ -1,0 +1,40 @@
+<!--?xml version="1.0" encoding="utf-8"?-->
+<resources>
+
+    <string-array name="question_list">
+        <item>@string/question_01</item>
+        <item>@string/question_02</item>
+        <item>@string/question_03</item>
+        <item>@string/question_04</item>
+        <item>@string/question_05</item>
+        <item>@string/question_06</item>
+        <item>@string/question_07</item>
+        <item>@string/question_08</item>
+        <item>@string/question_09</item>
+        <item>@string/question_10</item>
+        <item>@string/question_11</item>
+        <item>@string/question_12</item>
+        <item>@string/question_13</item>
+        <item>@string/question_14</item>
+        <item>@string/question_15</item>
+        <item>@string/question_16</item>
+        <item>@string/question_17</item>
+        <item>@string/question_18</item>
+        <item>@string/question_19</item>
+        <item>@string/question_20</item>
+        <item>@string/question_21</item>
+        <item>@string/question_22</item>
+        <item>@string/question_23</item>
+        <item>@string/question_24</item>
+
+    </string-array>
+
+    <string-array name="answer_list">
+        <item>@string/answer_1</item>
+        <item>@string/answer_2</item>
+        <item>@string/answer_3</item>
+        <item>@string/answer_4</item>
+        <item>@string/answer_5</item>
+        <item>@string/answer_6</item>
+    </string-array>
+</resources>
