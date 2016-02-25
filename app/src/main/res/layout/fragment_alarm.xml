@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#54AFA6"
     tools:context=".AlarmActivity" >
 
     <LinearLayout
@@ -57,7 +56,7 @@
         android:background="#54AFA6"
         android:layout_below="@id/ceiling"
         android:layout_above="@+id/plusbutton"
-        android:divider="#54AFA6">
+        android:divider="@android:color/transparent">
     </ListView>
 
     <LinearLayout

@@ -36,4 +36,77 @@
         <item>@string/answer_5</item>
         <item>@string/answer_6</item>
     </string-array>
+
+
+    <string-array name="hello_list">
+        <item>@string/rabbit_hello_1</item>
+        <item>@string/rabbit_hello_2</item>
+        <item>@string/rabbit_hello_3</item>
+        <item>@string/rabbit_hello_4</item>
+        <item>@string/rabbit_hello_5</item>
+        <item>@string/rabbit_hello_6</item>
+        <item>@string/rabbit_hello_7</item>
+        <item>@string/rabbit_hello_8</item>
+        <item>@string/rabbit_hello_9</item>
+        <item>@string/rabbit_hello_10</item>
+        <item>@string/rabbit_hello_11</item>
+        <item>@string/rabbit_hello_12</item>
+        <item>@string/rabbit_hello_13</item>
+        <item>@string/rabbit_hello_14</item>
+        <item>@string/rabbit_hello_15</item>
+        <item>@string/rabbit_hello_16</item>
+        <item>@string/rabbit_hello_17</item>
+        <item>@string/rabbit_hello_18</item>
+        <item>@string/rabbit_hello_19</item>
+        <item>@string/rabbit_hello_20</item>
+        <item>@string/rabbit_hello_21</item>
+        <item>@string/rabbit_hello_22</item>
+        <item>@string/rabbit_hello_23</item>
+        <item>@string/rabbit_hello_24</item>
+        <item>@string/rabbit_hello_25</item>
+        <item>@string/rabbit_hello_26</item>
+        <item>@string/rabbit_hello_27</item>
+        <item>@string/rabbit_hello_28</item>
+        <item>@string/rabbit_hello_29</item>
+        <item>@string/rabbit_hello_30</item>
+        <item>@string/rabbit_hello_31</item>
+        <item>@string/rabbit_hello_32</item>
+    </string-array>
+
+
+    <string-array name="random_card">
+        <item>@mipmap/card_clover</item>
+        <item>@mipmap/card_dia</item>
+        <item>@mipmap/card_heart</item>
+        <item>@mipmap/card_jack</item>
+        <item>@mipmap/card_joker</item>
+        <item>@mipmap/card_king</item>
+        <item>@mipmap/card_queen</item>
+        <item>@mipmap/card_spade</item>
+    </string-array>
+
+    <string-array name="card_text">
+        <item>@string/card_clover</item>
+        <item>@string/card_dia</item>
+        <item>@string/card_heart</item>
+        <item>@string/card_jack</item>
+        <item>@string/card_joker</item>
+        <item>@string/card_king</item>
+        <item>@string/card_queen</item>
+        <item>@string/card_spade</item>
+    </string-array>
+
+    <string-array name="card_name">
+        <item>@string/card_name_clover</item>
+        <item>@string/card_name_dia</item>
+        <item>@string/card_name_heart</item>
+        <item>@string/card_name_jack</item>
+        <item>@string/card_name_joker</item>
+        <item>@string/card_name_king</item>
+        <item>@string/card_name_queen</item>
+        <item>@string/card_name_spade</item>
+    </string-array>
+
+
+
 </resources>

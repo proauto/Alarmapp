@@ -20,7 +20,7 @@
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_marginTop="2dp"
-            android:background="@drawable/icon1" />
+            android:background="@mipmap/icon1" />
 
         <TextView
             android:id="@+id/textView_alarm_time"
