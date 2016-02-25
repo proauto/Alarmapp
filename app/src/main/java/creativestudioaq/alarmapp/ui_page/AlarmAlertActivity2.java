@@ -222,6 +222,8 @@ public class AlarmAlertActivity2 extends Activity {
             super.onBackPressed();
     }
 
+
+
     @Override
     protected void onPause() {
         super.onPause();

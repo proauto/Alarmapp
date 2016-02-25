@@ -361,11 +361,11 @@ public class Alarm implements Serializable {
         String alert = "알람이 ";
         if (days > 0) {
             alert += String.format(
-                    "%d 일, %d 시간, %d 분 ", days,
+                    "%d 일 %d 시간 %d 분 ", days,
                     hours, minutes);
         } else {
             if (hours > 0) {
-                alert += String.format("%d 시간, %d 분 ",
+                alert += String.format("%d 시간 %d 분 ",
                         hours, minutes);
             } else {
                 if (minutes > 0) {
@@ -373,9 +373,12 @@ public class Alarm implements Serializable {
                 } else {
                     alert += String.format("잠시 ");
                 }
-                alert += "후에 울립니다.";
+
             }
         }
+
+        alert += "후에 울립니다.";
+
         return alert;
     }
 }

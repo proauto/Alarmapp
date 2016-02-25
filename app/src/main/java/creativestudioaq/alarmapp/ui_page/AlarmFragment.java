@@ -74,9 +74,9 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
                     position -= simpleAlarms.size();
                     final Alarm alarm = (Alarm) alarmListAdapter.getItem(position);
                     AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-                    dialog.setTitle("Delete");
-                    dialog.setMessage("Delete this alarm?");
-                    dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    dialog.setTitle("알람 삭제");
+                    dialog.setMessage("이 알람을 삭제할까요?");
+                    dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
@@ -89,7 +89,7 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
                             updateAlarmList();
                         }
                     });
-                    dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    dialog.setNegativeButton("취소", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
@@ -100,9 +100,9 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
                 }else{
                     final Alarm alarm = (Alarm) simpleAdapter.getItem(position);
                     AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
-                    dialog.setTitle("Delete");
-                    dialog.setMessage("Delete this alarm?");
-                    dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    dialog.setTitle("알람 삭제");
+                    dialog.setMessage("이 알람을 삭제할까요?");
+                    dialog.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
@@ -115,7 +115,7 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
                             updateAlarmList();
                         }
                     });
-                    dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    dialog.setNegativeButton("취소", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
@@ -205,9 +205,6 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
                 Toast.makeText(getActivity(), alarm.getTimeUntilNextAlarmMessage(), Toast.LENGTH_LONG).show();
             }
         }else if(v.getId()==R.id.plusbutton){
-
-            //Intent intent = new Intent(getActivity(), AlarmPreferencesActivity.class);
-            //startActivity(intent);
             showTimePickerDialog();
         }
     }

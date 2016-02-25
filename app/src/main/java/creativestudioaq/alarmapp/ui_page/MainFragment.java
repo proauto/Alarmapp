@@ -197,7 +197,7 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
                 callMathAlarmScheduleService();
                 Toast.makeText(getActivity(), alarm.getTimeUntilNextAlarmMessage(), Toast.LENGTH_LONG).show();
 
-                //((MainActivity)getActivity()).getViewPager().getAdapter().notifyDataSetChanged();
+                ((MainActivity)getActivity()).getViewPager().getAdapter().notifyDataSetChanged();
 
                 super.onPositiveActionClicked(fragment);
             }

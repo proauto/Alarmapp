@@ -323,7 +323,7 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         Cursor alarmsCursor = ringtoneMgr.getCursor();
 
         final String[] alarmTones = new String[alarmsCursor.getCount() + 1];
-        alarmTones[0] = "Silent";
+        alarmTones[0] = "무음";
         final String[] alarmTonePaths = new String[alarmsCursor.getCount() + 1];
         alarmTonePaths[0] = "";
 
