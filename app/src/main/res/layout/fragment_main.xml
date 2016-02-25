@@ -41,7 +41,7 @@
             android:layout_height="300dp"
             android:background="@drawable/clockposition"/>-->
 
-        <creativestudioaq.alarmapp.AnalogClockView
+        <creativestudioaq.alarmapp.ui_element.AnalogClockView
 
             android:layout_marginTop="50dp"
             android:id="@+id/clock"
@@ -65,12 +65,12 @@
         <TextView
             android:id="@+id/rabbitTongue"
             android:layout_width="100dp"
-            android:layout_height="30dp"
-            android:layout_marginLeft="220dp"
-            android:layout_marginTop="0dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/rabbitbutton"
+            android:layout_marginLeft="-30dp"
+            android:padding="5dp"
             android:background="@mipmap/noline1"
             android:gravity="center"
-            android:text="안녕"
             android:visibility="invisible"/>
 
 

@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:background="#222526">
 
-    <creativestudioaq.alarmapp.DigitalClock
+    <creativestudioaq.alarmapp.ui_element.DigitalClock
         android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -13,52 +13,6 @@
         android:layout_marginBottom="20dp"
         android:textColor="#FFFFFF"
         android:textSize="40sp"/>
-
-
-    <!--
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
-        android:background="#ffffff" >
-
-        <creativestudioaq.alarmapp.PickerView
-            android:id="@+id/minute_pv"
-            android:layout_width="80dp"
-            android:layout_height="160dp" />
-
-        <TextView
-            android:id="@+id/minute_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/minute_pv"
-            android:text="분"
-            android:textColor="#ffaa33"
-            android:textSize="26sp"
-            android:textStyle="bold" />
-
-        <creativestudioaq.alarmapp.PickerView
-            android:id="@+id/second_pv"
-            android:layout_width="80dp"
-            android:layout_height="160dp"
-            android:layout_toRightOf="@id/minute_tv" />
-
-        <TextView
-            android:id="@+id/second_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/second_pv"
-            android:text="초"
-            android:textColor="#ffaa33"
-            android:textSize="26sp"
-            android:textStyle="bold" />
-    </RelativeLayout>
-
-    -->
 
     <LinearLayout
         android:layout_width="match_parent"

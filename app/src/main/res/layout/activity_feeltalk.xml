@@ -38,7 +38,7 @@
         <ImageView
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/settingbutton" />
+            android:src="@mipmap/settingbutton" />
 
         <EditText
             android:id="@+id/firsttalk"
@@ -57,7 +57,7 @@
             android:layout_height="70dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:src="@drawable/settingbutton" />
+            android:src="@mipmap/settingbutton" />
 
         <EditText
             android:id="@+id/secondtalk"

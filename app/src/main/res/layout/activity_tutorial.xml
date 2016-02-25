@@ -2,26 +2,40 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/clickthis"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/mission_bg_pattern">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/tutorialtalk1"
-        android:layout_width="300dp"
-        android:layout_height="100dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/mission_speechbubble"
-        android:gravity="center"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/mission_bg_pattern"/>
+
 
     <ImageView
         android:id="@+id/rabbitpicture"
-        android:layout_width="150dp"
+        android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_centerInParent="true"
-        android:background="@drawable/swing1" />
+        android:background="@mipmap/swing1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rabbitpicture"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tutorialtalk1"
+            android:layout_width="262dp"
+            android:layout_height="116dp"
+            android:layout_marginTop="30dp"
+            android:background="@mipmap/sign_speechbubble"
+            android:paddingBottom="15dp"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="20sp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tutorialtalk2"
@@ -42,7 +56,10 @@
         android:layout_below="@+id/rabbitpicture"
         android:layout_centerHorizontal="true"
         android:background="@drawable/whiterectangle"
+        android:lines="1"
+        android:inputType="textPersonName"
         android:hint="이름을 알려주세요"
+        android:gravity="center"
         android:textColorHint="#f24a4a"
         android:textSize="20sp" />
 
@@ -64,7 +81,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/rabbitpicture"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:background="#7f000000"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />
@@ -75,7 +92,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/yes"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="0dp"
         android:background="#7f000000"
         android:textColor="#FFFFFF"
         android:textSize="20sp" />

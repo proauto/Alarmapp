@@ -6,35 +6,35 @@
     <item
         android:id="@+id/menu_item_new"
         android:title="@string/menu_item_new"
-        android:icon="@drawable/glyphicons_432_plus"
+        android:icon="@mipmap/glyphicons_432_plus"
         appcompat:showAsAction="always">
     </item>
     <item
         android:id="@+id/menu_item_save"
         android:title="@string/menu_item_save"
-        android:icon="@drawable/glyphicons_443_floppy_disk"
+        android:icon="@mipmap/glyphicons_443_floppy_disk"
         appcompat:showAsAction="always">
     </item>
     <item
         android:id="@+id/menu_item_delete"
         android:title="@string/menu_item_delete"
-        android:icon="@drawable/glyphicons_016_bin"
+        android:icon="@mipmap/glyphicons_016_bin"
         appcompat:showAsAction="always">
     </item>
     <item
         android:id="@+id/menu_item_rate"
         android:title="@string/menu_item_rate"
-        android:icon="@drawable/glyphicons_049_star">
+        android:icon="@mipmap/glyphicons_049_star">
     </item>
     <item
         android:id="@+id/menu_item_website"
-        android:icon="@drawable/glyphicons_340_globe"
+        android:icon="@mipmap/glyphicons_340_globe"
         android:title="@string/menu_item_website">
     </item>
     <item
         android:id="@+id/menu_item_report"
         android:title="@string/menu_item_report"
-        android:icon="@drawable/glyphicons_340_globe">
+        android:icon="@mipmap/glyphicons_340_globe">
     </item>
 
 </menu>

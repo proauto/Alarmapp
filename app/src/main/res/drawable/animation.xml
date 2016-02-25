@@ -4,73 +4,73 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:oneshot="false">
     <item
-        android:drawable="@drawable/swing1"
+        android:drawable="@mipmap/swing1"
         android:duration="200" />
     <item
-        android:drawable="@drawable/swing2"
+        android:drawable="@mipmap/swing2"
         android:duration="100" />
     <item
-        android:drawable="@drawable/swing3"
+        android:drawable="@mipmap/swing3"
         android:duration="100" />
     <item
-        android:drawable="@drawable/swing4"
+        android:drawable="@mipmap/swing4"
         android:duration="200" />
     <item
-        android:drawable="@drawable/swing3"
+        android:drawable="@mipmap/swing3"
         android:duration="100" />
     <item
-        android:drawable="@drawable/swing2"
+        android:drawable="@mipmap/swing2"
         android:duration="100" />
     <item
-        android:drawable="@drawable/full_1"
+        android:drawable="@mipmap/full_1"
         android:duration="200" />
     <item
-        android:drawable="@drawable/full_2"
+        android:drawable="@mipmap/full_2"
         android:duration="100" />
     <item
-        android:drawable="@drawable/full_3"
+        android:drawable="@mipmap/full_3"
         android:duration="100" />
     <item
-        android:drawable="@drawable/full_4"
+        android:drawable="@mipmap/full_4"
         android:duration="200" />
     <item
-        android:drawable="@drawable/full_3"
+        android:drawable="@mipmap/full_3"
         android:duration="100" />
     <item
-        android:drawable="@drawable/full_2"
+        android:drawable="@mipmap/full_2"
         android:duration="100" />
     <item
-        android:drawable="@drawable/full_1"
+        android:drawable="@mipmap/full_1"
         android:duration="200" />
     <item
-        android:drawable="@drawable/full_2_blink"
+        android:drawable="@mipmap/full_2_blink"
         android:duration="100" />
     <item
-        android:drawable="@drawable/full_3_blink"
+        android:drawable="@mipmap/full_3_blink"
         android:duration="100" />
     <item
-        android:drawable="@drawable/full_4"
+        android:drawable="@mipmap/full_4"
         android:duration="200" />
     <item
-        android:drawable="@drawable/full_3_ear"
+        android:drawable="@mipmap/full_3_ear"
         android:duration="230" />
     <item
-        android:drawable="@drawable/full_2_blink"
+        android:drawable="@mipmap/full_2_blink"
         android:duration="100" />
     <item
-        android:drawable="@drawable/full_1"
+        android:drawable="@mipmap/full_1"
         android:duration="100" />
     <item
-        android:drawable="@drawable/full_3_ear"
+        android:drawable="@mipmap/full_3_ear"
         android:duration="230" />
     <item
-        android:drawable="@drawable/full_4"
+        android:drawable="@mipmap/full_4"
         android:duration="100" />
     <item
-        android:drawable="@drawable/full_3"
+        android:drawable="@mipmap/full_3"
         android:duration="100" />
     <item
-        android:drawable="@drawable/full_3"
+        android:drawable="@mipmap/full_3"
         android:duration="100" />
 
 

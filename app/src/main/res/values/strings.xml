@@ -36,8 +36,8 @@
     <color name="title_background_color">#000000</color>
 
     <string name="button_delete">Delete</string>
-    <string name="ok">OK</string>
-    <string name="cancel">Cancel</string>
+    <string name="ok">확인</string>
+    <string name="cancel">취소</string>
 
     <string name="question_01">내 기분은 내가 정해. 오늘은 ‘행복’이야.\n
     네가 정한 오늘의 기분은 뭐니 ?</string>
@@ -82,6 +82,60 @@
     <string name="answer_4">좋은 아침이다</string>
     <string name="answer_5">고마워 깨워줘서</string>
     <string name="answer_6">너 때문에 웃는다</string>
+
+
+    <string name="rabbit_hello_1">당근 케이크 맛집 좀 알려줘</string>
+    <string name="rabbit_hello_2">안녕? 방가워</string>
+    <string name="rabbit_hello_3">뀨 ~ 기분좋다</string>
+    <string name="rabbit_hello_4">똑-딱 시간아 흘러라</string>
+    <string name="rabbit_hello_5">배고팡 !</string>
+    <string name="rabbit_hello_6">지금 몇시지 ?</string>
+    <string name="rabbit_hello_7">궁시렁 궁시렁</string>
+    <string name="rabbit_hello_8">울 엄마는 잔소리쟁이야</string>
+    <string name="rabbit_hello_9">체셔 무서워</string>
+    <string name="rabbit_hello_10">꾸엑 그만 눌러</string>
+    <string name="rabbit_hello_11">메롱 ~</string>
+    <string name="rabbit_hello_12">내 애인은 태어났으려나 ?</string>
+    <string name="rabbit_hello_13">인간들이란</string>
+    <string name="rabbit_hello_14">난 밀당의 고수라규</string>
+    <string name="rabbit_hello_15">너 어제 늦잠잤지 !</string>
+    <string name="rabbit_hello_16">앨리스 ~ 나랑 놀자</string>
+    <string name="rabbit_hello_17">나랑 놀자 응 ??</string>
+    <string name="rabbit_hello_18">난 초록색을 좋아해</string>
+    <string name="rabbit_hello_19">엣취 !</string>
+    <string name="rabbit_hello_20">난 네가 한 일을 알고 있다</string>
+    <string name="rabbit_hello_21">뭘 봐 ?</string>
+    <string name="rabbit_hello_22">내가 여기 짱이야</string>
+    <string name="rabbit_hello_23">오늘은 행운이 가득한 날</string>
+    <string name="rabbit_hello_24">아 너무 씐나 !!!!</string>
+    <string name="rabbit_hello_25">좋다......</string>
+    <string name="rabbit_hello_26">흥 !</string>
+    <string name="rabbit_hello_27">넌 어디서 왔니 ?</string>
+    <string name="rabbit_hello_28">에잇 030</string>
+    <string name="rabbit_hello_29">오늘 날씨 딱 내 스탈</string>
+    <string name="rabbit_hello_30">둠칫 둠칫</string>
+    <string name="rabbit_hello_31">티라미수 먹고싶어</string>
+    <string name="rabbit_hello_32">앨리스는 뭐하고 있을까</string>
+
+
+    <string name="card_clover">행운의 CLOVER</string>
+    <string name="card_dia">승리의 DIAMOND</string>
+    <string name="card_heart">사랑의 HEART</string>
+    <string name="card_jack">꼼꼼한 JACK</string>
+    <string name="card_joker">JOKER</string>
+    <string name="card_king">다정한 KING</string>
+    <string name="card_queen">지혜로운 QUEEN</string>
+    <string name="card_spade">최고의 SPADE</string>
+
+
+    <string name="card_name_clover">오늘 너에게 다가오는 행운을\n 놓치지 말고 잡아봐!</string>
+    <string name="card_name_dia">오늘 모든 일이 잘 풀리도록\n 자신에게 용기를 불어 넣어봐!</string>
+    <string name="card_name_heart">오늘은 아끼는 사람에게\n 사랑한다고 말해봐!</string>
+    <string name="card_name_jack">오늘 해야 할 것들을\n 내일의 나에게 미루지 말기!</string>
+    <string name="card_name_joker">실수하지 않도록\n 한 번쯤은 의심해봐!</string>
+    <string name="card_name_king">오늘은 친구들에게\n 칭찬 한 마디씩 해보는건 어때?</string>
+    <string name="card_name_queen">따라 소리내서 말해봐.\n 내가 최고다!</string>
+    <string name="card_name_spade">오늘 하루는 너가 주인공이\n 되어보는건 어때?</string>
 
 
 
