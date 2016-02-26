@@ -184,20 +184,9 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
                 TimePickerDialog dialog = (TimePickerDialog) fragment.getDialog();
 
                 SimpleDateFormat dateFormat3 = new SimpleDateFormat("HH:mm:ss", java.util.Locale.getDefault());
-
-                String time = dialog.getFormattedTime(dateFormat3);
-
-                Alarm alarm = new Alarm();
-                alarm.setAlarmTime(time);
-                alarm.setFeelingOk(false);
-
-                Database.init(getActivity());
-                Database.create(alarm);
-
-                callMathAlarmScheduleService();
-                Toast.makeText(getActivity(), alarm.getTimeUntilNextAlarmMessage(), Toast.LENGTH_LONG).show();
-
-                ((MainActivity)getActivity()).getViewPager().getAdapter().notifyDataSetChanged();
+                Intent intent1 = new Intent(getActivity(), MakeAlarmActivity.class);
+                intent1.putExtra("time", dialog.getFormattedTime(dateFormat3));
+                getActivity().startActivity(intent1);
 
                 super.onPositiveActionClicked(fragment);
             }
@@ -207,10 +196,9 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
                 super.onNegativeActionClicked(fragment);
             }
         };
-        builder.positiveAction("저장").negativeAction("취소");
+        builder.positiveAction("세부설정").negativeAction("취소");
         DialogFragment fragment = DialogFragment.newInstance(builder);
         fragment.show(getFragmentManager(), null);
-
     }
 
     public void setBackgroundColor(){

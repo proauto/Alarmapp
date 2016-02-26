@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
+import android.support.v4.app.FragmentActivity;
 import android.text.InputFilter;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
@@ -30,6 +31,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.rey.material.app.Dialog;
+import com.rey.material.app.DialogFragment;
+import com.rey.material.app.TimePickerDialog;
 import com.rey.material.widget.Slider;
 import com.rey.material.widget.Switch;
 
@@ -47,7 +51,7 @@ import creativestudioaq.alarmapp.data.Database;
  * Created by honggyu on 2016-01-31.
  */
 
-public class MakeAlarmActivity extends Activity implements View.OnClickListener {
+public class MakeAlarmActivity extends FragmentActivity implements View.OnClickListener {
 
     public Alarm alarm;
     private Slider volumeSlider;
@@ -57,6 +61,7 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
     private TextView alarmsound, firsttalk, secondtalk, repeatminute;
     private Random random;
     private String[] rabbitQuestion;
+    TextView selecttime;
 
     private final int REPEAT_REQUEST_CODE = 100;
     private final int[] minuitelist = {3, 5, 10, 15, 30};
@@ -89,7 +94,7 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
 
             alarm = new Alarm();
             alarm.setAlarmTime(time1);
-            alarm.setRabbitFeeling(rabbitQuestion[random.nextInt(rabbitQuestion.length-1)]);
+            alarm.setRabbitFeeling(rabbitQuestion[random.nextInt(rabbitQuestion.length - 1)]);
 
         } else {
             setMathAlarm((Alarm) intentget.getSerializableExtra("alarm"));
@@ -110,13 +115,45 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         time2 = dateFormat1.format(date);
     }
 
+    public void putClickTimeString(String time) {
+
+
+            time1 = time;
+
+            alarm = new Alarm();
+            alarm.setAlarmTime(time1);
+            alarm.setRabbitFeeling(rabbitQuestion[random.nextInt(rabbitQuestion.length - 1)]);
+
+
+
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("aa KK시 mm분", java.util.Locale.getDefault());
+        SimpleDateFormat dateFormat2 = new SimpleDateFormat("HH:mm", java.util.Locale.getDefault());
+
+        Date date = new Date();
+
+        try {
+            date = dateFormat2.parse(time1);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        time2 = dateFormat1.format(date);
+
+        selecttime.setText(null);
+        final SpannableStringBuilder sps = new SpannableStringBuilder(time2);
+        sps.setSpan(new AbsoluteSizeSpan(50), 0, 2, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        selecttime.append(sps);
+
+    }
+
+
 
     public void setLayout() {
         Button cancelbutton = (Button) findViewById(R.id.cancelbutton);
         Button savebutton = (Button) findViewById(R.id.savebutton);
         repeatminute = (TextView) findViewById(R.id.repeatminute);
         alarmsound = (TextView) findViewById(R.id.alarmsound);
-        TextView selecttime = (TextView) findViewById(R.id.selecttime);
+        selecttime = (TextView) findViewById(R.id.selecttime);
         firsttalk = (TextView) findViewById(R.id.firsttalk);
         secondtalk = (TextView) findViewById(R.id.secondtalk);
         RelativeLayout toneLayout = (RelativeLayout) findViewById(R.id.toneLayout);
@@ -145,15 +182,15 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         sps.setSpan(new AbsoluteSizeSpan(50), 0, 2, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
         selecttime.append(sps);
 
-        if(alarm.getRabbitFeeling().isEmpty()) {
-            firsttalk.setText(rabbitQuestion[random.nextInt(rabbitQuestion.length-1)]);
-        }else{
+        if (alarm.getRabbitFeeling().isEmpty()) {
+            firsttalk.setText(rabbitQuestion[random.nextInt(rabbitQuestion.length - 1)]);
+        } else {
             firsttalk.setText(alarm.getRabbitFeeling());
         }
 
-        if(alarm.getMyFeeling().isEmpty()) {
+        if (alarm.getMyFeeling().isEmpty()) {
             secondtalk.setText("시계토끼의 말에 이곳을 클릭해서 대답해주세요.");
-        }else{
+        } else {
             secondtalk.setText(alarm.getMyFeeling());
         }
 
@@ -173,6 +210,7 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         firsttalk.setOnClickListener(this);
         secondtalk.setOnClickListener(this);
         repeatLayout.setOnClickListener(this);
+        selecttime.setOnClickListener(this);
         toneLayout.setOnClickListener(this);
         vibrateSwitch.setOnCheckedChangeListener(switchCheckListener);
         repeatSwitch.setOnCheckedChangeListener(switchCheckListener);
@@ -193,7 +231,7 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
                 alarmSave();
                 break;
             case R.id.firsttalk:
-                alarm.setRabbitFeeling(rabbitQuestion[random.nextInt(rabbitQuestion.length-1)]);
+                alarm.setRabbitFeeling(rabbitQuestion[random.nextInt(rabbitQuestion.length - 1)]);
                 firsttalk.setText(alarm.getRabbitFeeling());
                 break;
             case R.id.secondtalk:
@@ -204,6 +242,10 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
                 break;
             case R.id.toneLayout:
                 AlarmToneSelect();
+                break;
+
+            case R.id.selecttime:
+                showTimePickerDialog();
                 break;
         }
     }
@@ -393,13 +435,13 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
         alert.show();
     }
 
-    public void repeatMinuteSelect(){
+    public void repeatMinuteSelect() {
         AlertDialog.Builder alert = new AlertDialog.Builder(MakeAlarmActivity.this);
         alert.setTitle("반복 선택");
 
         final CharSequence[] items = new CharSequence[minuitelist.length];
 
-        for(int i = 0 ; i < items.length; i++){
+        for (int i = 0; i < items.length; i++) {
             items[i] = minuitelist[i] + "분 마다";
         }
 
@@ -462,6 +504,41 @@ public class MakeAlarmActivity extends Activity implements View.OnClickListener 
                 });
 
         alert.show();
+    }
+
+    private void showTimePickerDialog() {
+
+        long now = System.currentTimeMillis();
+        SimpleDateFormat dateFormat1 = new SimpleDateFormat("HH", java.util.Locale.getDefault());
+        SimpleDateFormat dateFormat2 = new SimpleDateFormat("mm", java.util.Locale.getDefault());
+        Date date = new Date(now);
+        String strDate1 = dateFormat1.format(date);
+        String strDate2 = dateFormat2.format(date);
+        int numInt1 = Integer.parseInt(strDate1);
+        int numInt2 = Integer.parseInt(strDate2);
+
+
+        Dialog.Builder builder = new TimePickerDialog.Builder(R.style.Material_App_Dialog_TimePicker_gogo, numInt1, numInt2) {
+            @Override
+            public void onPositiveActionClicked(DialogFragment fragment) {
+                TimePickerDialog dialog = (TimePickerDialog) fragment.getDialog();
+
+                SimpleDateFormat dateFormat3 = new SimpleDateFormat("HH:mm:ss", java.util.Locale.getDefault());
+                String newtime = dialog.getFormattedTime(dateFormat3);
+
+                putClickTimeString(newtime);
+
+                super.onPositiveActionClicked(fragment);
+            }
+
+            @Override
+            public void onNegativeActionClicked(DialogFragment fragment) {
+                super.onNegativeActionClicked(fragment);
+            }
+        };
+        builder.positiveAction("세부설정").negativeAction("취소");
+        DialogFragment fragment = DialogFragment.newInstance(builder);
+        fragment.show(getSupportFragmentManager(), null);
     }
 
 }
