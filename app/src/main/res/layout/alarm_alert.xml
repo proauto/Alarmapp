@@ -25,6 +25,7 @@
                 android:layout_height="match_parent"
                 android:textSize="20sp"
                 android:textColor="#FFFFFF"
+                android:textStyle="bold"
                 android:gravity="center"/>
 
             <TextView
@@ -91,7 +92,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:gravity="center"
-                android:hint="그래로 쳐서 해제"
+                android:hint="똑같이 입력해주세요!"
+                android:textColorHint="#FFb0ad"
                 />
         </LinearLayout>
 

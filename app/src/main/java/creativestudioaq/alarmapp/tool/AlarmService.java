@@ -20,7 +20,6 @@ import java.util.TreeSet;
 import creativestudioaq.alarmapp.data.Alarm;
 import creativestudioaq.alarmapp.data.Database;
 import creativestudioaq.alarmapp.data.DatabaseSimple;
-import creativestudioaq.alarmapp.tool.AlarmAlertBroadcastReciever;
 
 public class AlarmService extends Service {
 
@@ -91,7 +90,6 @@ public class AlarmService extends Service {
 
             alarmManager.cancel(pendingIntent);
         }
-        return START_NOT_STICKY;
+        return START_STICKY;
     }
-
 }

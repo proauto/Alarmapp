@@ -21,6 +21,7 @@
             android:layout_height="match_parent"
             android:textSize="20sp"
             android:textColor="#FFFFFF"
+            android:textStyle="bold"
             android:gravity="center"
             />
         <TextView
@@ -68,8 +69,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="40dp"
-        >
+        android:layout_marginBottom="40dp" >
 
         <Button
             android:id="@+id/pausebutton"
@@ -107,7 +107,6 @@
     <TextView
         android:id="@+id/cardname"
         android:gravity="center"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:textColor="#FFFFFF"
         android:textSize="20sp"

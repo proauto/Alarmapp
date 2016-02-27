@@ -28,10 +28,10 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import creativestudioaq.alarmapp.data.Alarm;
-import creativestudioaq.alarmapp.tool.AlarmServiceBroadcastReciever;
-import creativestudioaq.alarmapp.data.Database;
 import creativestudioaq.alarmapp.R;
+import creativestudioaq.alarmapp.data.Alarm;
+import creativestudioaq.alarmapp.data.Database;
+import creativestudioaq.alarmapp.tool.AlarmServiceBroadcastReciever;
 import creativestudioaq.alarmapp.tool.StaticWakeLock;
 
 
@@ -157,7 +157,7 @@ public class AlarmAlertActivity extends Activity {
 
                 } else {
                     answerView.setText(null);
-                    answerView.setHint("다시 한번 써보세요");
+                    answerView.setHint("다시 한번 써보세요!");
                 }
             }
         });
@@ -231,7 +231,8 @@ public class AlarmAlertActivity extends Activity {
                 vibrator.vibrate(pattern, 0);
             }
             try {
-                mediaPlayer.setVolume(1.0f, 1.0f);
+                float volume = alarm.getVolume() * 0.01f;
+                mediaPlayer.setVolume(volume, volume);
                 mediaPlayer.setDataSource(this,
                         Uri.parse(alarm.getAlarmTonePath()));
                 mediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
