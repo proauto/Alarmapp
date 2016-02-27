@@ -3,7 +3,6 @@ package creativestudioaq.alarmapp.ui_page;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.HapticFeedbackConstants;
@@ -21,18 +20,17 @@ import com.rey.material.app.DialogFragment;
 import com.rey.material.app.TimePickerDialog;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import creativestudioaq.alarmapp.R;
 import creativestudioaq.alarmapp.data.Alarm;
 import creativestudioaq.alarmapp.data.AlarmListAdapter3;
-import creativestudioaq.alarmapp.tool.AlarmServiceBroadcastReciever;
 import creativestudioaq.alarmapp.data.Database;
 import creativestudioaq.alarmapp.data.DatabaseSimple;
 import creativestudioaq.alarmapp.data.MergeAdapter;
-import creativestudioaq.alarmapp.R;
 import creativestudioaq.alarmapp.data.SimpleAdapter;
+import creativestudioaq.alarmapp.tool.AlarmServiceBroadcastReciever;
 
 /**
  * Created by honggyu on 2016-01-31.
@@ -244,29 +242,10 @@ public class AlarmFragment extends android.support.v4.app.Fragment implements Vi
         fragment.show(getFragmentManager(), null);
     }
 
-    public void setBackgroundColor(){
-
-        Calendar tempCal = Calendar.getInstance();
-        int hour = tempCal.getTime().getHours();
-
-        String backgroundColor;
-
-
-        if( hour < 2 )
-            backgroundColor = "#3D4244";
-        else if ( hour < 7 )
-            backgroundColor = "#6C758E";
-        else if ( hour < 12 )
-            backgroundColor = "#FF8E81";
-        else if ( hour < 17)
-            backgroundColor = "#64A0BC";
-        else if ( hour < 22 )
-            backgroundColor = "#284C76";
-        else
-            backgroundColor = "#3D4244";
-
-        background.setBackgroundColor(Color.parseColor(backgroundColor));
-        alarmlist.setBackgroundColor(Color.parseColor(backgroundColor));
+    public void setBackgroundColor() {
+        int backgroundColor = ((MainActivity)getActivity()).getBackgroundColor();
+        background.setBackgroundColor(backgroundColor);
+        alarmlist.setBackgroundColor(backgroundColor);
     }
 
 }

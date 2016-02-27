@@ -1,5 +1,6 @@
 package creativestudioaq.alarmapp.ui_page;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,8 +9,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import creativestudioaq.alarmapp.tool.BackPressCloseHandler;
+import java.util.Calendar;
+
 import creativestudioaq.alarmapp.R;
+import creativestudioaq.alarmapp.tool.BackPressCloseHandler;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -95,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
 
             if (position == 0) {
 
-
                 return new SettingFragment();
 
             } else if (position == 1) {
@@ -120,9 +122,9 @@ public class MainActivity extends AppCompatActivity {
             Fragment fragment = (Fragment) object;
 
             if(isChangingConfigurations()){
-                    return POSITION_UNCHANGED;
+                return POSITION_UNCHANGED;
             }else{
-                    return POSITION_NONE;
+                return POSITION_NONE;
             }
         }
     }
@@ -136,4 +138,27 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    public int getBackgroundColor() {
+
+        Calendar tempCal = Calendar.getInstance();
+        int hour = tempCal.getTime().getHours();
+
+        String backgroundColor;
+
+        if( hour < 2 )
+            backgroundColor = "#3D4244";
+        else if ( hour < 7 )
+            backgroundColor = "#6C758E";
+        else if ( hour < 12 )
+            backgroundColor = "#FF8E81";
+        else if ( hour < 17)
+            backgroundColor = "#64A0BC";
+        else if ( hour < 22 )
+            backgroundColor = "#284C76";
+        else
+            backgroundColor = "#3D4244";
+
+        return Color.parseColor(backgroundColor);
+    }
 }

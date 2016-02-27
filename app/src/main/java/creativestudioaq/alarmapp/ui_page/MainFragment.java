@@ -1,7 +1,6 @@
 package creativestudioaq.alarmapp.ui_page;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,7 +13,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
@@ -23,14 +21,11 @@ import com.rey.material.app.DialogFragment;
 import com.rey.material.app.TimePickerDialog;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
-import creativestudioaq.alarmapp.tool.AlarmServiceBroadcastReciever;
 import creativestudioaq.alarmapp.R;
-import creativestudioaq.alarmapp.data.Alarm;
-import creativestudioaq.alarmapp.data.Database;
+import creativestudioaq.alarmapp.tool.AlarmServiceBroadcastReciever;
 import creativestudioaq.alarmapp.ui_element.AnalogClockView;
 
 /**
@@ -46,7 +41,7 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
     LinearLayout mainlayout;
     TextView rabbitTongue;
     Random random;
-   String[] rabbitHello;
+    String[] rabbitHello;
 
 
 
@@ -201,35 +196,13 @@ public class MainFragment extends android.support.v4.app.Fragment implements Vie
         fragment.show(getFragmentManager(), null);
     }
 
-    public void setBackgroundColor(){
-
-        Calendar tempCal = Calendar.getInstance();
-        int hour = tempCal.getTime().getHours();
-
-        String backgroundColor;
-
-
-        if( hour < 2 )
-            backgroundColor = "#3D4244";
-        else if ( hour < 7 )
-            backgroundColor = "#6C758E";
-        else if ( hour < 12 )
-           backgroundColor = "#FF8E81";
-        else if ( hour < 17)
-           backgroundColor = "#64A0BC";
-        else if ( hour < 22 )
-            backgroundColor = "#284C76";
-        else
-            backgroundColor = "#3D4244";
-
-        mainlayout.setBackgroundColor(Color.parseColor(backgroundColor));
-
+    public void setBackgroundColor() {
+        int backgroundColor = ((MainActivity)getActivity()).getBackgroundColor();
+        mainlayout.setBackgroundColor(backgroundColor);
     }
 
     protected void callMathAlarmScheduleService() {
         Intent mathAlarmServiceIntent = new Intent(getActivity(), AlarmServiceBroadcastReciever.class);
         getActivity().sendBroadcast(mathAlarmServiceIntent, null);
     }
-
-
 }

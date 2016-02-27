@@ -1,6 +1,5 @@
 package creativestudioaq.alarmapp.ui_page;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -41,10 +40,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
-import creativestudioaq.alarmapp.tool.AlarmServiceBroadcastReciever;
 import creativestudioaq.alarmapp.R;
 import creativestudioaq.alarmapp.data.Alarm;
 import creativestudioaq.alarmapp.data.Database;
+import creativestudioaq.alarmapp.tool.AlarmServiceBroadcastReciever;
 
 
 /**
@@ -94,7 +93,7 @@ public class MakeAlarmActivity extends FragmentActivity implements View.OnClickL
 
             alarm = new Alarm();
             alarm.setAlarmTime(time1);
-            alarm.setRabbitFeeling(rabbitQuestion[random.nextInt(rabbitQuestion.length - 1)]);
+            alarm.setRabbitFeeling(rabbitQuestion[random.nextInt(rabbitQuestion.length)]);
 
         } else {
             setMathAlarm((Alarm) intentget.getSerializableExtra("alarm"));
@@ -118,13 +117,8 @@ public class MakeAlarmActivity extends FragmentActivity implements View.OnClickL
     public void putClickTimeString(String time) {
 
 
-            time1 = time;
-
-            alarm = new Alarm();
-            alarm.setAlarmTime(time1);
-            alarm.setRabbitFeeling(rabbitQuestion[random.nextInt(rabbitQuestion.length - 1)]);
-
-
+        time1 = time;
+        alarm.setAlarmTime(time1);
 
         SimpleDateFormat dateFormat1 = new SimpleDateFormat("aa KK시 mm분", java.util.Locale.getDefault());
         SimpleDateFormat dateFormat2 = new SimpleDateFormat("HH:mm", java.util.Locale.getDefault());
@@ -139,10 +133,9 @@ public class MakeAlarmActivity extends FragmentActivity implements View.OnClickL
 
         time2 = dateFormat1.format(date);
 
-        selecttime.setText(null);
         final SpannableStringBuilder sps = new SpannableStringBuilder(time2);
         sps.setSpan(new AbsoluteSizeSpan(50), 0, 2, Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        selecttime.append(sps);
+        selecttime.setText(sps);
 
     }
 
@@ -174,7 +167,6 @@ public class MakeAlarmActivity extends FragmentActivity implements View.OnClickL
 
         cancelbutton.setText("< 취소");
         savebutton.setText("저장");
-
 
         alarmsound.setText(RingtoneManager.getRingtone(this, Uri.parse(alarm.getAlarmTonePath())).getTitle(this));
 
@@ -231,7 +223,7 @@ public class MakeAlarmActivity extends FragmentActivity implements View.OnClickL
                 alarmSave();
                 break;
             case R.id.firsttalk:
-                alarm.setRabbitFeeling(rabbitQuestion[random.nextInt(rabbitQuestion.length - 1)]);
+                alarm.setRabbitFeeling(rabbitQuestion[random.nextInt(rabbitQuestion.length)]);
                 firsttalk.setText(alarm.getRabbitFeeling());
                 break;
             case R.id.secondtalk:
@@ -536,7 +528,7 @@ public class MakeAlarmActivity extends FragmentActivity implements View.OnClickL
                 super.onNegativeActionClicked(fragment);
             }
         };
-        builder.positiveAction("세부설정").negativeAction("취소");
+        builder.positiveAction("확인").negativeAction("취소");
         DialogFragment fragment = DialogFragment.newInstance(builder);
         fragment.show(getSupportFragmentManager(), null);
     }

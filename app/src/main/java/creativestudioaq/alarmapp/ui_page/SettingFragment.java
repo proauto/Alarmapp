@@ -71,28 +71,9 @@ public class SettingFragment extends android.support.v4.app.Fragment implements 
     }
 
 
-    public void setBackgroundColor(){
-
-        Calendar tempCal = Calendar.getInstance();
-        int hour = tempCal.getTime().getHours();
-
-        String backgroundColor;
-
-
-        if( hour < 2 )
-            backgroundColor = "#3D4244";
-        else if ( hour < 7 )
-            backgroundColor = "#6C758E";
-        else if ( hour < 12 )
-            backgroundColor = "#FF8E81";
-        else if ( hour < 17)
-            backgroundColor = "#64A0BC";
-        else if ( hour < 22 )
-            backgroundColor = "#284C76";
-        else
-            backgroundColor = "#3D4244";
-
-        settinglayout.setBackgroundColor(Color.parseColor(backgroundColor));
+    public void setBackgroundColor() {
+        int backgroundColor = ((MainActivity)getActivity()).getBackgroundColor();
+        settinglayout.setBackgroundColor(backgroundColor);
     }
 
 

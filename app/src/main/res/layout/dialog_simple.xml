@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/simple_dialog_background"
     android:orientation="vertical"
     android:layout_width="300dp"
     android:layout_height="wrap_content"
@@ -54,7 +55,6 @@
             android:textSize="20sp"
             android:text="분"/>
 
-
     </LinearLayout>
 
     <TextView
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="simpleTimeSelect"
-            android:background="#222526"
+            android:background="#00000000"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
             android:text="+1"/>
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="simpleTimeSelect"
-            android:background="#222526"
+            android:background="#00000000"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
             android:text="+5"/>
@@ -104,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="simpleTimeSelect"
-            android:background="#222526"
+            android:background="#00000000"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
             android:text="+10"/>
@@ -115,7 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="simpleTimeSelect"
-            android:background="#222526"
+            android:background="#00000000"
             android:textColor="#FFFFFF"
             android:textSize="25sp"
             android:text="+60"/>
@@ -137,7 +137,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#222526"
+            android:background="#00000000"
             android:textColor="#FFFFFF"
             android:textSize="15sp"
             android:onClick="DialogFinishClick"
@@ -153,7 +153,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="#222526"
+            android:background="#00000000"
             android:textColor="#FFFFFF"
             android:textSize="15sp"
             android:onClick="DialogFinishClick"

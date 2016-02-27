@@ -118,26 +118,23 @@
     <string name="rabbit_hello_32">앨리스는 뭐하고 있을까</string>
 
 
-    <string name="card_clover">행운의 CLOVER</string>
-    <string name="card_dia">승리의 DIAMOND</string>
-    <string name="card_heart">사랑의 HEART</string>
-    <string name="card_jack">꼼꼼한 JACK</string>
-    <string name="card_joker">JOKER</string>
-    <string name="card_king">다정한 KING</string>
-    <string name="card_queen">지혜로운 QUEEN</string>
-    <string name="card_spade">최고의 SPADE</string>
+    <string name="card_name_clover">행운의 \nCLOVER</string>
+    <string name="card_name_dia">승리의 \nDIAMOND</string>
+    <string name="card_name_heart">사랑의 \nHEART</string>
+    <string name="card_name_jack">꼼꼼한 \nJACK</string>
+    <string name="card_name_joker">JOKER</string>
+    <string name="card_name_king">다정한 \nKING</string>
+    <string name="card_name_queen">지혜로운\nQUEEN</string>
+    <string name="card_name_spade">최고의 \nSPADE</string>
 
 
-    <string name="card_name_clover">오늘 너에게 다가오는 행운을\n 놓치지 말고 잡아봐!</string>
-    <string name="card_name_dia">오늘 모든 일이 잘 풀리도록\n 자신에게 용기를 불어 넣어봐!</string>
-    <string name="card_name_heart">오늘은 아끼는 사람에게\n 사랑한다고 말해봐!</string>
-    <string name="card_name_jack">오늘 해야 할 것들을\n 내일의 나에게 미루지 말기!</string>
-    <string name="card_name_joker">실수하지 않도록\n 한 번쯤은 의심해봐!</string>
-    <string name="card_name_king">오늘은 친구들에게\n 칭찬 한 마디씩 해보는건 어때?</string>
-    <string name="card_name_queen">따라 소리내서 말해봐.\n 내가 최고다!</string>
-    <string name="card_name_spade">오늘 하루는 너가 주인공이\n 되어보는건 어때?</string>
-
-
-
+    <string name="card_clover">오늘 너에게 다가오는 행운을\n 놓치지 말고 잡아봐!</string>
+    <string name="card_dia">오늘 모든 일이 잘 풀리도록\n 자신에게 용기를 불어 넣어봐!</string>
+    <string name="card_heart">오늘은 아끼는 사람에게\n 사랑한다고 말해봐!</string>
+    <string name="card_jack">오늘 해야 할 것들을\n 내일의 나에게 미루지 말기!</string>
+    <string name="card_joker">실수하지 않도록\n 한 번쯤은 의심해봐!</string>
+    <string name="card_king">오늘은 친구들에게\n 칭찬 한 마디씩 해보는건 어때?</string>
+    <string name="card_queen">따라 소리내서 말해봐.\n 내가 최고다!</string>
+    <string name="card_spade">오늘 하루는 너가 주인공이\n 되어보는건 어때?</string>
 
 </resources>

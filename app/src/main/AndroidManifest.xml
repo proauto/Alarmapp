@@ -69,11 +69,6 @@
 
         <receiver android:name=".tool.AlarmAlertBroadcastReciever" >
         </receiver>
-        <receiver android:name = "tool.PhoneStateChangedBroadcastReciever">
-            <intent-filter>
-                <action android:name="android.intent.action.PHONE_STATE" />
-            </intent-filter>
-        </receiver>
 
     </application>
 
